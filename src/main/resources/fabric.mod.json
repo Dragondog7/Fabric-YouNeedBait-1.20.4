@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "youneedbait",
+	"version": "${version}",
+	"name": "You Need Bait",
+	"description": "This is a fishing mod made by Dragondog7 and TheChickenHulk or all together CookieBrain",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/youneedbait/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.cookiebrain.youneedbait.YouNeedBait"
+		],
+		"client": [
+			"net.cookiebrain.youneedbait.YouNeedBaitClient"
+		],
+		"fabric-datagen": [
+			"net.cookiebrain.youneedbait.YouNeedBaitDataGenerator"
+		]
+	},
+	"mixins": [
+		"youneedbait.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
