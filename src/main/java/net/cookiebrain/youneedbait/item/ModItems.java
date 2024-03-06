@@ -10,6 +10,10 @@ import net.minecraft.util.Identifier;
 public class ModItems {
     public static final Item MUSKELLUNGE = registerItem("muskellunge", new Item(new FabricItemSettings()));
     public static final Item NORTHERNPIKE = registerItem("northernpike", new Item(new FabricItemSettings()));
+    public static final Item BLACKCRAPPIE = registerItem("blackcrappie", new Item(new FabricItemSettings()));
+    public static final Item WALLEYE = registerItem("walleye", new Item(new FabricItemSettings()));
+    public static final Item LARGEMOUTHBASS = registerItem("largemouthbass", new Item(new FabricItemSettings()));
+    public static final Item REDHERRING = registerItem("redherring", new Item(new FabricItemSettings()));
     public static final Item SALT = registerItem("salt", new Item(new FabricItemSettings()));
 
     public static final Item RAWFISHFILET = registerItem("rawfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.RAWFISHFILET)));

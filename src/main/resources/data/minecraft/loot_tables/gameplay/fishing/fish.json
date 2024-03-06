@@ -1,0 +1,70 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cod",
+          "weight": 60
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:salmon",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:tropical_fish",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pufferfish",
+          "weight": 13
+        },
+        {
+          "type": "minecraft:item",
+          "name": "youneedbait:muskellunge",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "youneedbait:largemouthbass",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "youneedbait:blackcrappie",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "youneedbait:northernpike",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "name": "youneedbait:walleye",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "youneedbait:redherring",
+          "conditions": [
+            {
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biome": "minecraft:bamboo_jungle"
+              }
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecraft:gameplay/fishing/fish"
+}

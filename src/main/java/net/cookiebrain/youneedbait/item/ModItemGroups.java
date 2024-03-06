@@ -21,6 +21,9 @@ public class ModItemGroups {
                         entries.add(ModItems.RAWFISHFILET);
                         entries.add(ModItems.SALTEDFISHFILET);
                         entries.add(ModItems.DRIEDFISHFILET);
+                        entries.add(ModItems.BLACKCRAPPIE);
+                        entries.add(ModItems.LARGEMOUTHBASS);
+                        entries.add(ModItems.WALLEYE);
 
                         entries.add(ModBlocks.RAWSALT_BLOCK);
 
