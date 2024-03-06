@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "youneedbait:salt"
+    }
+  },
+  "result": {
+    "item": "youneedbait:salt_block"
+  }
+}

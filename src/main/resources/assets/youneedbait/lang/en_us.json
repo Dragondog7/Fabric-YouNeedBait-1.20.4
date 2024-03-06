@@ -1,0 +1,12 @@
+{
+  "item.youneedbait.muskellunge": "Muskellunge",
+  "item.youneedbait.northernpike": "Northern Pike",
+  "item.youneedbait.salt": "Raw Salt",
+  "item.youneedbait.rawfishfilet": "Raw Fish Filet",
+  "item.youneedbait.saltedfishfilet": "Salted Fish Filet",
+  "item.youneedbait.driedfishfilet": "Dried Fish Filet",
+
+  "block.youneedbait.salt_block": "Salt Ore",
+
+  "itemgroup.muskellunge": "YouNeedBait"
+}

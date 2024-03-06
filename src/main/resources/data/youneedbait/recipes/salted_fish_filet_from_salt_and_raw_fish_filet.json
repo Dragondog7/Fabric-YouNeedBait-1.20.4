@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "youneedbait:rawfishfilet"
+    },
+    {
+      "item": "youneedbait:salt"
+    }
+  ],
+  "result": {
+    "item": "youneedbait:saltedfishfilet",
+    "count": 1
+  }
+}
