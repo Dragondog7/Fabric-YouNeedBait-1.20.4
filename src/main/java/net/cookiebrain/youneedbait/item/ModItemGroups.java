@@ -15,22 +15,34 @@ public class ModItemGroups {
             new Identifier(YouNeedBait.MOD_ID, "muskellunge"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.muskellunge"))
                     .icon(() -> new ItemStack(ModItems.MUSKELLUNGE)).entries((displayContext, entries) -> {
-                        entries.add(ModItems.MUSKELLUNGE);
-                        entries.add(ModItems.NORTHERNPIKE);
+                        //Items
                         entries.add(ModItems.SALT);
                         entries.add(ModItems.HOOK);
+                        entries.add(ModItems.FILETKNIFE_ITEM);
+
+                        //Bait
                         entries.add(ModItems.WORM);
                         entries.add(ModItems.CATERPILLAR);
+                        entries.add(ModItems.MINNOW_ITEM);
+                        entries.add(ModItems.SUCKERMINNOW_ITEM);
+
+
+                        //Food
                         entries.add(ModItems.RAWFISHFILET);
                         entries.add(ModItems.SALTEDFISHFILET);
                         entries.add(ModItems.DRIEDFISHFILET);
                         entries.add(ModItems.BEEFJERKY);
+
+                        //Fish
+                        entries.add(ModItems.MUSKELLUNGE);
+                        entries.add(ModItems.NORTHERNPIKE);
                         entries.add(ModItems.BLACKCRAPPIE);
                         entries.add(ModItems.LARGEMOUTHBASS);
                         entries.add(ModItems.WALLEYE);
                         entries.add(ModItems.SALTEDBEEF);
                         entries.add(ModItems.MUSKELLUNGESPAWNEGG);
 
+                        //Blocks
                         entries.add(ModBlocks.RAWSALT_BLOCK);
 
 

@@ -27,9 +27,13 @@ public class ModItems {
     public static final Item DRIEDFISHFILET = registerItem("driedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.DRIEDFISHFILET)));
     public static final Item BEEFJERKY = registerItem("beefjerky", new Item(new FabricItemSettings().food(ModFoodComponents.BEEFJERKY)));
 
+    public static final Item FILETKNIFE_ITEM = registerItem("filetknife", new Item(new FabricItemSettings()));
+    public static final Item MINNOW_ITEM = registerItem("minnow", new Item(new FabricItemSettings()));
+    public static final Item SUCKERMINNOW_ITEM = registerItem("suckerminnow", new Item(new FabricItemSettings()));
     public static final Item MUSKELLUNGESPAWNEGG = registerItem("muskellungespawnegg",
             new SpawnEggItem(ModEntities.MUSKELLUNGE, 669900, 73426, new FabricItemSettings()));
-
+    public static final Item NORTHERNPIKESPAWNEGG = registerItem("northernpikespawnegg",
+            new SpawnEggItem(ModEntities.MUSKELLUNGE, 669900, 73426, new FabricItemSettings()));
     public static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(YouNeedBait.MOD_ID, name), item);
     }
