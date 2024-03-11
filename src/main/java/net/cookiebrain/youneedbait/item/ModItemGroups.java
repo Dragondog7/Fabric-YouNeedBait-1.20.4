@@ -24,8 +24,10 @@ public class ModItemGroups {
                         entries.add(ModItems.BLACKCRAPPIE);
                         entries.add(ModItems.LARGEMOUTHBASS);
                         entries.add(ModItems.WALLEYE);
+                        entries.add(ModItems.MUSKELLUNGE_SPAWN_EGG);
 
                         entries.add(ModBlocks.RAWSALT_BLOCK);
+
 
                     }).build());
 
