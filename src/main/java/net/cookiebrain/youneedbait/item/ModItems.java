@@ -20,7 +20,9 @@ public class ModItems {
 
     public static final Item RAWFISHFILET = registerItem("rawfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.RAWFISHFILET)));
     public static final Item SALTEDFISHFILET = registerItem("saltedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.SALTEDFISHFILET)));
+    public static final Item SALTEDBEEF = registerItem("saltedbeef", new Item(new FabricItemSettings().food(ModFoodComponents.SALTEDBEEF)));
     public static final Item DRIEDFISHFILET = registerItem("driedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.DRIEDFISHFILET)));
+    public static final Item BEEFJERKY = registerItem("beefjerky", new Item(new FabricItemSettings().food(ModFoodComponents.BEEFJERKY)));
 
     public static final Item MUSKELLUNGE_SPAWN_EGG = registerItem("muskellunge_spawn_egg",
             new SpawnEggItem(ModEntities.MUSKELLUNGE,0xa86518,0x3b260f,new FabricItemSettings()));

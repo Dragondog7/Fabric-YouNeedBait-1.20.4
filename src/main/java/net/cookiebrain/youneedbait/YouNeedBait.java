@@ -3,6 +3,7 @@ package net.cookiebrain.youneedbait;
 import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.entity.ModEntities;
 import net.cookiebrain.youneedbait.entity.custom.MuskellungeEntity;
+import net.cookiebrain.youneedbait.entity.custom.NorthernPikeEntity;
 import net.cookiebrain.youneedbait.item.ModItemGroups;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -23,6 +24,8 @@ public class YouNeedBait implements ModInitializer {
 		ModBlocks.registerModBlocks();
 
 		FabricDefaultAttributeRegistry.register(ModEntities.MUSKELLUNGE, MuskellungeEntity.createMuskellungeAttributes());
+
+		FabricDefaultAttributeRegistry.register(ModEntities.NORTHERNPIKE, NorthernPikeEntity.createNorthernPikeAttributes());
 
 	}
 }

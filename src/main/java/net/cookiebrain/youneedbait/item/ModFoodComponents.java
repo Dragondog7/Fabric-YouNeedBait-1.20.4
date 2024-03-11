@@ -9,5 +9,7 @@ public class ModFoodComponents {
             .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 200), 0.9f).build();
     public static final FoodComponent SALTEDFISHFILET = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build();
     public static final FoodComponent DRIEDFISHFILET = new FoodComponent.Builder().hunger(4).saturationModifier(0.3f).build();
+    public static final FoodComponent BEEFJERKY = new FoodComponent.Builder().hunger(4).saturationModifier(0.3f).build();
+    public static final FoodComponent SALTEDBEEF = new FoodComponent.Builder().hunger(1).saturationModifier(0.1f).build();
 
 }
