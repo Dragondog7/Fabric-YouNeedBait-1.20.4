@@ -17,6 +17,9 @@ public class ModItems {
     public static final Item LARGEMOUTHBASS = registerItem("largemouthbass", new Item(new FabricItemSettings()));
     public static final Item REDHERRING = registerItem("redherring", new Item(new FabricItemSettings()));
     public static final Item SALT = registerItem("salt", new Item(new FabricItemSettings()));
+    public static final Item HOOK = registerItem("hook", new Item(new FabricItemSettings()));
+    public static final Item WORM = registerItem("worm", new Item(new FabricItemSettings()));
+    public static final Item CATERPILLAR = registerItem("caterpillar", new Item(new FabricItemSettings()));
 
     public static final Item RAWFISHFILET = registerItem("rawfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.RAWFISHFILET)));
     public static final Item SALTEDFISHFILET = registerItem("saltedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.SALTEDFISHFILET)));
@@ -24,10 +27,10 @@ public class ModItems {
     public static final Item DRIEDFISHFILET = registerItem("driedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.DRIEDFISHFILET)));
     public static final Item BEEFJERKY = registerItem("beefjerky", new Item(new FabricItemSettings().food(ModFoodComponents.BEEFJERKY)));
 
-    public static final Item MUSKELLUNGE_SPAWN_EGG = registerItem("muskellunge_spawn_egg",
-            new SpawnEggItem(ModEntities.MUSKELLUNGE,0xa86518,0x3b260f,new FabricItemSettings()));
+    public static final Item MUSKELLUNGESPAWNEGG = registerItem("muskellungespawnegg",
+            new SpawnEggItem(ModEntities.MUSKELLUNGE, 669900, 73426, new FabricItemSettings()));
 
-    private static Item registerItem(String name, Item item) {
+    public static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(YouNeedBait.MOD_ID, name), item);
     }
 

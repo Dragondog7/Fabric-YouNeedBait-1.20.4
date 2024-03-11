@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 100,
+          "name": "minecraft:dirt"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "youneedbait:worm",
+          "replace": false
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "minecraft:dirt"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:blocks/dirt",
+  "replace": false
+}

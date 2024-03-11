@@ -18,6 +18,9 @@ public class ModItemGroups {
                         entries.add(ModItems.MUSKELLUNGE);
                         entries.add(ModItems.NORTHERNPIKE);
                         entries.add(ModItems.SALT);
+                        entries.add(ModItems.HOOK);
+                        entries.add(ModItems.WORM);
+                        entries.add(ModItems.CATERPILLAR);
                         entries.add(ModItems.RAWFISHFILET);
                         entries.add(ModItems.SALTEDFISHFILET);
                         entries.add(ModItems.DRIEDFISHFILET);
@@ -26,7 +29,7 @@ public class ModItemGroups {
                         entries.add(ModItems.LARGEMOUTHBASS);
                         entries.add(ModItems.WALLEYE);
                         entries.add(ModItems.SALTEDBEEF);
-                        entries.add(ModItems.MUSKELLUNGE_SPAWN_EGG);
+                        entries.add(ModItems.MUSKELLUNGESPAWNEGG);
 
                         entries.add(ModBlocks.RAWSALT_BLOCK);
 
