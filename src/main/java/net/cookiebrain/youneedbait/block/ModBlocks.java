@@ -1,6 +1,7 @@
 package net.cookiebrain.youneedbait.block;
 
 import net.cookiebrain.youneedbait.YouNeedBait;
+import net.cookiebrain.youneedbait.block.custom.OnionCropBlock;
 import net.cookiebrain.youneedbait.block.custom.MinnowTrapBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -23,6 +24,9 @@ public class ModBlocks {
 
     public static final Block MINNOWTRAP_BLOCK = registerBlock("minnowtrap",
             new MinnowTrapBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
+    public static final Block ONION_CROP = Registry.register(Registries.BLOCK, new Identifier(YouNeedBait.MOD_ID, "onion_crop"),
+            new OnionCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT)));
 
     private static Block registerBlock (String name, Block block) {
         registerBlockItem(name, block);

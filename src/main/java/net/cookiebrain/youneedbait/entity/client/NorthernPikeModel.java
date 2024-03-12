@@ -106,7 +106,7 @@ public class NorthernPikeModel<T extends NorthernPikeEntity> extends SinglePartE
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
 
 		this.animateMovement(ModAnimations.NORTHERNPIKE_SWIM,limbSwing,limbSwingAmount, 2f, 2.5f);
-		this.updateAnimation(entity.idleAnimationState,ModAnimations.NORTHERNPIKE_SWIM,ageInTicks,1f);
+		this.updateAnimation(entity.idleAnimationState,ModAnimations.IDLE,ageInTicks,1f);
 	}
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {

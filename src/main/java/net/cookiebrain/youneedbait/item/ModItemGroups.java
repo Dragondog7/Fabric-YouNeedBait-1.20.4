@@ -19,6 +19,7 @@ public class ModItemGroups {
                         entries.add(ModItems.SALT);
                         entries.add(ModItems.HOOK);
                         entries.add(ModItems.FILETKNIFE_ITEM);
+                        entries.add(ModItems.ONION_BULBS);
 
                         //Bait
                         entries.add(ModItems.WORM);
@@ -31,6 +32,7 @@ public class ModItemGroups {
                         entries.add(ModItems.SALTEDFISHFILET);
                         entries.add(ModItems.DRIEDFISHFILET);
                         entries.add(ModItems.BEEFJERKY);
+                        entries.add(ModItems.ONION);
 
                         //Fish
                         entries.add(ModItems.MUSKELLUNGE);
@@ -41,6 +43,8 @@ public class ModItemGroups {
                         entries.add(ModItems.SALTEDBEEF);
                         entries.add(ModItems.MUSKELLUNGESPAWNEGG);
                         entries.add(ModItems.NORTHERNPIKESPAWNEGG);
+                        entries.add(ModItems.LARGEMOUTHBASSSPAWNEGG);
+                        entries.add(ModItems.BLACKCRAPPIESPAWNEGG);
 
                         //Blocks
                         entries.add(ModBlocks.RAWSALT_BLOCK);

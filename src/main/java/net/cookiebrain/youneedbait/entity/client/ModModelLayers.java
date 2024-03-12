@@ -10,5 +10,12 @@ public class ModModelLayers {
 
     public static final EntityModelLayer NORTHERNPIKE =
             new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"northernpike"),"main");
+
+    public static final EntityModelLayer LARGEMOUTHBASS =
+            new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"largemouthbass"),"main");
+
+    public static final EntityModelLayer BLACKCRAPPIE =
+            new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"blackcrappie"),"main");
+
 }
 

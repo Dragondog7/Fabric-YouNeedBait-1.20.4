@@ -12,10 +12,10 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 
-public class NorthernPikeEntity extends FishEntity {
+public class BlackCrappieEntity extends FishEntity {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
-    public NorthernPikeEntity(EntityType<? extends FishEntity> entityType, World world) {
+    public BlackCrappieEntity(EntityType<? extends FishEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -27,10 +27,10 @@ public class NorthernPikeEntity extends FishEntity {
             --this.idleAnimationTimeout;
         }
     }
-    public static DefaultAttributeContainer.Builder createNorthernPikeAttributes() {
+    public static DefaultAttributeContainer.Builder createblackcrappieAttributes() {
         return MobEntity.createMobAttributes()
         .add(EntityAttributes.GENERIC_MAX_HEALTH,15)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 3f);
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 2f);
 
     }
 

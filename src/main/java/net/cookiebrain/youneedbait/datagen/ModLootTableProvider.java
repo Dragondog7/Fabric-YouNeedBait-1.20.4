@@ -1,20 +1,24 @@
 package net.cookiebrain.youneedbait.datagen;
 
 import net.cookiebrain.youneedbait.block.ModBlocks;
+import net.cookiebrain.youneedbait.block.custom.OnionCropBlock;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
+import net.minecraft.predicate.StatePredicate;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
@@ -26,7 +30,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         addDrop(ModBlocks.RAWSALT_BLOCK);
         addDrop(ModBlocks.SALT_ORE,saltOreDrops(ModBlocks.SALT_ORE,ModItems.SALT));
+
+
+        BlockStatePropertyLootCondition.Builder builder = BlockStatePropertyLootCondition.builder(ModBlocks.ONION_CROP).properties(StatePredicate.Builder.create()
+                .exactMatch(OnionCropBlock.AGE, 2));
+        addDrop(ModBlocks.ONION_CROP, cropDrops(ModBlocks.ONION_CROP, ModItems.ONION, ModItems.ONION_BULBS, builder));
     }
+
+
 
     public LootTable.Builder saltOreDrops(Block drop, Item item) {
         return BlockLootTableGenerator.dropsWithSilkTouch(drop,

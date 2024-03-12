@@ -32,7 +32,7 @@ public class MuskellungeEntity extends FishEntity {
     public static DefaultAttributeContainer.Builder createMuskellungeAttributes() {
         return MobEntity.createMobAttributes()
         .add(EntityAttributes.GENERIC_MAX_HEALTH,15)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3f);
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 2.5f);
 
     }
 
