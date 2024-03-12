@@ -2,7 +2,6 @@ package net.cookiebrain.youneedbait.util;
 
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.village.TradeOffer;
@@ -27,5 +26,19 @@ public class ModCustomTrades {
                             3,8,0.02f));
                 });
 
+        TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 1,
+                factories -> {
+                    factories.add((entity, random) -> new TradeOffer(
+                            new ItemStack(Items.EMERALD,4),
+                            new ItemStack(ModItems.ONION_BULBS,8),
+                            3,8,0.02f));
+                });
+        TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 2,
+                factories -> {
+                    factories.add((entity, random) -> new TradeOffer(
+                            new ItemStack(Items.EMERALD,4),
+                            new ItemStack(ModItems.ONION,4),
+                            3,8,0.02f));
+                });
     }
 }
