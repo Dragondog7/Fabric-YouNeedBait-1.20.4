@@ -11,9 +11,9 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
-    public static final ItemGroup MUSKELLUNGE_GROUP = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(YouNeedBait.MOD_ID, "muskellunge"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.muskellunge"))
+    public static final ItemGroup YOUNEEDBAIT_GROUP = Registry.register(Registries.ITEM_GROUP,
+            new Identifier(YouNeedBait.MOD_ID, "youneedbait"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.youneedbait"))
                     .icon(() -> new ItemStack(ModItems.MUSKELLUNGE)).entries((displayContext, entries) -> {
                         //Items
                         entries.add(ModItems.SALT);
@@ -25,7 +25,6 @@ public class ModItemGroups {
                         entries.add(ModItems.CATERPILLAR);
                         entries.add(ModItems.MINNOW_ITEM);
                         entries.add(ModItems.SUCKERMINNOW_ITEM);
-
 
                         //Food
                         entries.add(ModItems.RAWFISHFILET);
@@ -41,6 +40,7 @@ public class ModItemGroups {
                         entries.add(ModItems.WALLEYE);
                         entries.add(ModItems.SALTEDBEEF);
                         entries.add(ModItems.MUSKELLUNGESPAWNEGG);
+                        entries.add(ModItems.NORTHERNPIKESPAWNEGG);
 
                         //Blocks
                         entries.add(ModBlocks.RAWSALT_BLOCK);

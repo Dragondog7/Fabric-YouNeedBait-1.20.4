@@ -1,5 +1,6 @@
 package net.cookiebrain.youneedbait.datagen;
 
+import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -13,5 +14,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
+        //getOrCreateTagBuilder()
+//                .add()
     }
 }
