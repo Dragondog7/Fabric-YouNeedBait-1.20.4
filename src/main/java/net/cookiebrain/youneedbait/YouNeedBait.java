@@ -1,6 +1,7 @@
 package net.cookiebrain.youneedbait;
 
 import net.cookiebrain.youneedbait.block.ModBlocks;
+import net.cookiebrain.youneedbait.block.entity.ModBlockEntities;
 import net.cookiebrain.youneedbait.entity.ModEntities;
 import net.cookiebrain.youneedbait.entity.custom.MuskellungeEntity;
 import net.cookiebrain.youneedbait.entity.custom.NorthernPikeEntity;
@@ -24,6 +25,7 @@ public class YouNeedBait implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModBlockEntities.registerBlockEntities();
 		ModLootTableModifiers.modifyLootTables();
 		ModCustomTrades.registerCustomTrades();
 

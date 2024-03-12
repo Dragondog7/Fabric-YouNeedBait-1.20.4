@@ -27,8 +27,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("I  ")
                 .pattern("II ")
                 .pattern("   ")
-                .input('I', Items.IRON_INGOT)
-                .criterion(hasItem(Items.IRON_INGOT),conditionsFromItem(Items.IRON_INGOT))
+                .input('I', Items.IRON_NUGGET)
+                .criterion(hasItem(Items.IRON_NUGGET),conditionsFromItem(Items.IRON_NUGGET))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.HOOK)));
     }
 }

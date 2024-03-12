@@ -44,6 +44,7 @@ public class ModItemGroups {
 
                         //Blocks
                         entries.add(ModBlocks.RAWSALT_BLOCK);
+                        entries.add(ModBlocks.MINNOWTRAP_BLOCK);
 
 
                     }).build());

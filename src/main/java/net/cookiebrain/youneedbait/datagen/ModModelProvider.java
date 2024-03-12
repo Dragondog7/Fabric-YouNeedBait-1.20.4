@@ -1,5 +1,6 @@
 package net.cookiebrain.youneedbait.datagen;
 
+import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -19,6 +20,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        blockStateModelGenerator.registerSimpleState(ModBlocks.MINNOWTRAP_BLOCK);
 
     }
 

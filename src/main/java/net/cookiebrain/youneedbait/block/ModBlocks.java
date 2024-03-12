@@ -1,6 +1,7 @@
 package net.cookiebrain.youneedbait.block;
 
 import net.cookiebrain.youneedbait.YouNeedBait;
+import net.cookiebrain.youneedbait.block.custom.MinnowTrapBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -19,6 +20,9 @@ public class ModBlocks {
 
     public static final Block SALT_ORE = registerBlock("salt_ore",
             new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.STONE).strength(2f)));
+
+    public static final Block MINNOWTRAP_BLOCK = registerBlock("minnowtrap",
+            new MinnowTrapBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
     private static Block registerBlock (String name, Block block) {
         registerBlockItem(name, block);
