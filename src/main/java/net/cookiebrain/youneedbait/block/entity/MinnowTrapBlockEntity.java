@@ -52,7 +52,7 @@ public class MinnowTrapBlockEntity extends BlockEntity implements ExtendedScreen
 
     @Override
     public DefaultedList<ItemStack> getItems() {
-        return null;
+        return inventory;
     }
 
     @Override

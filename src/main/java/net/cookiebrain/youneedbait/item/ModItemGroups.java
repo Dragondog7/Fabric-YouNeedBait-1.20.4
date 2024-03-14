@@ -52,6 +52,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.SALT_BLOCK);
                         entries.add(ModBlocks.MINNOWTRAP_BLOCK);
                         entries.add(ModBlocks.TACKLEBOX_BLOCK);
+                        entries.add(ModBlocks.MINNOWBUCKET_BLOCK);
 
 
                     }).build());

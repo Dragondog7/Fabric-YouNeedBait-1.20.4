@@ -49,7 +49,7 @@ public class TackleBoxBlockEntity extends BlockEntity implements ExtendedScreenH
 
     @Override
     public DefaultedList<ItemStack> getItems() {
-        return null;
+        return inventory;
     }
 
     @Override

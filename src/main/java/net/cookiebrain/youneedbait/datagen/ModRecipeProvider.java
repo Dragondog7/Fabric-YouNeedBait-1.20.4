@@ -31,12 +31,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.IRON_NUGGET),conditionsFromItem(Items.IRON_NUGGET))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.HOOK)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,ModBlocks.SALT_BLOCK,3)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,ModBlocks.AZUROMITE_BLOCK,3)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("AAA")
                 .input('A', ModItems.AZUROMITE_INGOT)
                 .criterion(hasItem(ModItems.AZUROMITE_INGOT),conditionsFromItem(ModItems.AZUROMITE_INGOT))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.HOOK)));
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.AZUROMITE_BLOCK)));
     }
 }
