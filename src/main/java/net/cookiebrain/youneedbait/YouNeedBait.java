@@ -11,6 +11,7 @@ import net.cookiebrain.youneedbait.item.ModItemGroups;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.cookiebrain.youneedbait.util.ModCustomTrades;
 import net.cookiebrain.youneedbait.util.ModLootTableModifiers;
+import net.cookiebrain.youneedbait.world.gen.ModWorldGeneration;
 import net.cookiebrain.youneedbait.util.ModRegistries;
 import net.cookiebrain.youneedbait.villager.ModVillagers;
 import net.fabricmc.api.ModInitializer;
@@ -28,21 +29,14 @@ public class YouNeedBait implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 
 		ModItems.registerModItems();
-
 		ModBlocks.registerModBlocks();
-
 		ModBlockEntities.registerBlockEntities();
-
 		ModLootTableModifiers.modifyLootTables();
-
 		ModCustomTrades.registerCustomTrades();
+		ModWorldGeneration.generateModWorldGen();
 
 		ModVillagers.registerVillagers();
 		ModRegistries.registerModStuffs();
-
-
-
-
 
 		FabricDefaultAttributeRegistry.register(ModEntities.MUSKELLUNGE, MuskellungeEntity.createMuskellungeAttributes());
 

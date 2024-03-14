@@ -1,8 +1,12 @@
 package net.cookiebrain.youneedbait;
 
 import net.cookiebrain.youneedbait.datagen.*;
+import net.cookiebrain.youneedbait.world.ModConfiguredFeatures;
+import net.cookiebrain.youneedbait.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.minecraft.registry.RegistryBuilder;
+import net.minecraft.registry.RegistryKeys;
 
 public class YouNeedBaitDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -15,5 +19,13 @@ public class YouNeedBaitDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModPOITagProvider::new);
+		//Ore gen
+		pack.addProvider(ModWorldGenerator::new);
+	}
+
+	@Override
+	public void buildRegistry(RegistryBuilder registryBuilder) {
+		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::boostrap);
+		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::boostrap);
 	}
 }
