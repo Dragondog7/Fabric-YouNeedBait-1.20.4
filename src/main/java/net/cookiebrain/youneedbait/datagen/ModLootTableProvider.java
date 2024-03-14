@@ -28,11 +28,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        addDrop(ModBlocks.RAWSALT_BLOCK);
+        addDrop(ModBlocks.SALT_BLOCK,saltOreDrops(ModBlocks.SALT_BLOCK,ModItems.SALT));
         addDrop(ModBlocks.MINNOWTRAP_BLOCK);
         addDrop(ModBlocks.TACKLEBOX_BLOCK);
-        addDrop(ModBlocks.SALT_ORE,saltOreDrops(ModBlocks.SALT_ORE,ModItems.SALT));
-
+        addDrop(ModBlocks.AZUROMITE_BLOCK);
 
         BlockStatePropertyLootCondition.Builder builder = BlockStatePropertyLootCondition.builder(ModBlocks.ONION_CROP).properties(StatePredicate.Builder.create()
                 .exactMatch(OnionCropBlock.AGE, 2));

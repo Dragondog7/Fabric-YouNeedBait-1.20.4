@@ -17,6 +17,7 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModItems.MUSKELLUNGE)).entries((displayContext, entries) -> {
                         //Items
                         entries.add(ModItems.SALT);
+                        entries.add(ModItems.AZUROMITE_INGOT);
                         entries.add(ModItems.HOOK);
                         entries.add(ModItems.FILETKNIFE_ITEM);
                         entries.add(ModItems.ONION_BULBS);
@@ -48,7 +49,7 @@ public class ModItemGroups {
                         entries.add(ModItems.BLACKCRAPPIESPAWNEGG);
 
                         //Blocks
-                        entries.add(ModBlocks.RAWSALT_BLOCK);
+                        entries.add(ModBlocks.SALT_BLOCK);
                         entries.add(ModBlocks.MINNOWTRAP_BLOCK);
                         entries.add(ModBlocks.TACKLEBOX_BLOCK);
 
