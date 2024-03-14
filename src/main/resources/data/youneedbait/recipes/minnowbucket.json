@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "iWi",
+        "IiI"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:yellow_concrete"
+        },
+        "i": {
+            "item": "minecraft:iron_ingot"
+        },
+        "W": {
+            "item": "minecraft:water_bucket"
+        },
+        "I": {
+            "item": "minecraft:iron_nugget"
+        }
+    },
+    "result": {
+        "item": "youneedbait:minnowbucket",
+        "count": 1
+    }
+}

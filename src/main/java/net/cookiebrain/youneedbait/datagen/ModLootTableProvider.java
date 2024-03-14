@@ -29,6 +29,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         addDrop(ModBlocks.RAWSALT_BLOCK);
+        addDrop(ModBlocks.MINNOWTRAP_BLOCK);
+        addDrop(ModBlocks.TACKLEBOX_BLOCK);
         addDrop(ModBlocks.SALT_ORE,saltOreDrops(ModBlocks.SALT_ORE,ModItems.SALT));
 
 

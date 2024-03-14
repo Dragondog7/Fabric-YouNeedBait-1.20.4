@@ -33,6 +33,7 @@ public class ModItemGroups {
                         entries.add(ModItems.DRIEDFISHFILET);
                         entries.add(ModItems.BEEFJERKY);
                         entries.add(ModItems.ONION);
+                        entries.add(ModItems.LESSSUSPICIOUSSTEW_ITEM);
 
                         //Fish
                         entries.add(ModItems.MUSKELLUNGE);
@@ -49,6 +50,7 @@ public class ModItemGroups {
                         //Blocks
                         entries.add(ModBlocks.RAWSALT_BLOCK);
                         entries.add(ModBlocks.MINNOWTRAP_BLOCK);
+                        entries.add(ModBlocks.TACKLEBOX_BLOCK);
 
 
                     }).build());

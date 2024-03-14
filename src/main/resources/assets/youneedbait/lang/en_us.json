@@ -11,6 +11,7 @@
   "item.youneedbait.driedfishfilet": "Dried Fish Filet",
   "item.youneedbait.saltedbeef": "Salted Beef",
   "item.youneedbait.beefjerky": "Beef Jerky",
+  "item.youneedbait.lesssuspiciousstew": "Less Suspicious Stew",
   "item.youneedbait.muskellungespawnegg": "Muskellunge Spawn Egg",
   "item.youneedbait.blackcrappiespawnegg": "Black Crappie Spawn Egg",
   "item.youneedbait.largemouthbassspawnegg": "LargeMouth Bass Spawn Egg",
@@ -26,6 +27,7 @@
 
   "block.youneedbait.salt_block": "Salt Ore",
   "block.youneedbait.minnowtrap_block": "Minnow Trap",
+  "block.youneedbait.tacklebox_block": "Tackle Box",
 
   "itemgroup.youneedbait": "YouNeedBait"
 }

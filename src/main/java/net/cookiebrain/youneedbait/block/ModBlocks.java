@@ -16,15 +16,19 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 public class ModBlocks {
+    //Ores
     public static final Block RAWSALT_BLOCK = registerBlock("salt_block",
             new Block(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_DIAMOND_ORE)));
 
+    //Fishing blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
             new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.STONE).strength(2f)));
 
-    public static final Block MINNOWTRAP_BLOCK = registerBlock("minnowtrap",
+    public static final Block MINNOWTRAP_BLOCK = registerBlock("minnowtrap_block",
             new MinnowTrapBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
-
+    public static final Block TACKLEBOX_BLOCK = registerBlock("tacklebox_block",
+            new MinnowTrapBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+    //Crops
     public static final Block ONION_CROP = Registry.register(Registries.BLOCK, new Identifier(YouNeedBait.MOD_ID, "onion_crop"),
             new OnionCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT)));
 

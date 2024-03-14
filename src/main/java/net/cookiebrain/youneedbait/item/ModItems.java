@@ -29,13 +29,15 @@ public class ModItems {
     public static final Item DRIEDFISHFILET = registerItem("driedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.DRIEDFISHFILET)));
     public static final Item BEEFJERKY = registerItem("beefjerky", new Item(new FabricItemSettings().food(ModFoodComponents.BEEFJERKY)));
     public static final Item ONION = registerItem("onion_crop", new Item(new FabricItemSettings().food(ModFoodComponents.ONION)));
-
     public static final Item ONION_BULBS = registerItem("onion_bulbs",
             new AliasedBlockItem(ModBlocks.ONION_CROP, new FabricItemSettings()));
+    public static final Item LESSSUSPICIOUSSTEW_ITEM = registerItem("lesssuspiciousstew", new Item(new FabricItemSettings().food(ModFoodComponents.LESSSUSPICIOUSSTEW_FOOD)));
 
     public static final Item FILETKNIFE_ITEM = registerItem("filetknife", new Item(new FabricItemSettings()));
     public static final Item MINNOW_ITEM = registerItem("minnow", new Item(new FabricItemSettings()));
     public static final Item SUCKERMINNOW_ITEM = registerItem("suckerminnow", new Item(new FabricItemSettings()));
+
+    //Spawn Eggs
     public static final Item MUSKELLUNGESPAWNEGG = registerItem("muskellungespawnegg",
             new SpawnEggItem(ModEntities.MUSKELLUNGE, 669900, 73426, new FabricItemSettings()));
     public static final Item NORTHERNPIKESPAWNEGG = registerItem("northernpikespawnegg",

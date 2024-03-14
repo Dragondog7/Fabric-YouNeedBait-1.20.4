@@ -13,7 +13,10 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(YouNeedBait.MOD_ID, "minnowtrap_be"),
                     FabricBlockEntityTypeBuilder.create(MinnowTrapBlockEntity::new,
                             ModBlocks.MINNOWTRAP_BLOCK).build());
-
+    public static final BlockEntityType<MinnowTrapBlockEntity> TACKLEBOX_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(YouNeedBait.MOD_ID, "tacklebox_be"),
+                    FabricBlockEntityTypeBuilder.create(MinnowTrapBlockEntity::new,
+                            ModBlocks.TACKLEBOX_BLOCK).build());
     public static void registerBlockEntities() {
         YouNeedBait.LOGGER.info("Registering Block Entities for " + YouNeedBait.MOD_ID);
     }

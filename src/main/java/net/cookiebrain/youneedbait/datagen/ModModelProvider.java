@@ -23,6 +23,7 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleState(ModBlocks.MINNOWTRAP_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.TACKLEBOX_BLOCK);
 
         blockStateModelGenerator.registerCrop(ModBlocks.ONION_CROP, OnionCropBlock.AGE, 0, 1, 2);
 

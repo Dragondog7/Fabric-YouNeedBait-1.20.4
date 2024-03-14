@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#O#",
+        "iFi",
+        "iii"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:iron_nugget"
+        },
+        "O": {
+            "item": "minecraft:oak_log"
+        },
+        "i": {
+            "item": "minecraft:iron_ingot"
+        },
+        "F": {
+            "item": "minecraft:oak_planks"
+        }
+    },
+    "result": {
+        "item": "youneedbait:tacklebox",
+        "count": 1
+      }
+}

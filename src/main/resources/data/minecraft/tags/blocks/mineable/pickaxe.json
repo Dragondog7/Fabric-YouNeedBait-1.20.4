@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
+    "youneedbait:minnowbucket_block",
+    "youneedbait:minnowtrap_block",
+    "youneedbait:tacklebox_block",
     "youneedbait:salt_block"
   ]
 }

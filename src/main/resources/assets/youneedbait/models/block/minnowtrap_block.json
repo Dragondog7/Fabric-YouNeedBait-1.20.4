@@ -2,8 +2,8 @@
   "credit": "Made with Blockbench",
   "texture_size": [64, 64],
   "textures": {
-    "0": "youneedbait:block/minnowtrap",
-    "particle": "youneedbait/block/minnowtrap"
+    "0": "youneedbait:block/minnowtrap_block",
+    "particle": "youneedbait/block/minnowtrap_block"
   },
   "elements": [
     {
