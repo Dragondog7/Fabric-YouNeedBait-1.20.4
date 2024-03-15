@@ -1,7 +1,7 @@
-// 1.20.4	2024-03-14T21:41:47.9458925	You Need Bait/Block Loot Tables
+// 1.20.4	2024-03-14T22:54:50.8759691	You Need Bait/Block Loot Tables
 e7c9f1ce0b9736d9c866b05732706a90f5c4aa07 data\youneedbait\loot_tables\blocks\onion_crop.json
 fa587dffcbeee73e6657152d5ea8f91a382fe708 data\youneedbait\loot_tables\blocks\tacklebox_block.json
 714693a02bc7ca4aa2eef3ea1801cbc54bb85d6e data\youneedbait\loot_tables\blocks\salt_block.json
 f17cc9a63d6a31e21695046c70a58c97a9545e55 data\youneedbait\loot_tables\blocks\azuromite_block.json
-7c78b8f705ce6f453d5018f564b0e12a0de0cf73 data\youneedbait\loot_tables\blocks\minnowbucket_block.json
 49b120f11ad88725517bd89b29c2edff87be6f84 data\youneedbait\loot_tables\blocks\minnowtrap_block.json
+7c78b8f705ce6f453d5018f564b0e12a0de0cf73 data\youneedbait\loot_tables\blocks\minnowbucket_block.json
