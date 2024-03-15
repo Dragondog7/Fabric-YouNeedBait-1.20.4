@@ -17,5 +17,8 @@ public class ModModelLayers {
     public static final EntityModelLayer BLACKCRAPPIE =
             new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"blackcrappie"),"main");
 
+    public static final EntityModelLayer WALLEYE =
+            new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"walleye"),"main");
+
 }
 

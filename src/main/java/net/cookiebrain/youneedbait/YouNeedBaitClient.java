@@ -26,5 +26,8 @@ public class YouNeedBaitClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(ModEntities.BLACKCRAPPIE, BlackCrappieRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BLACKCRAPPIE, BlackCrappieModel::getTexturedModelData);
+
+        EntityRendererRegistry.register(ModEntities.WALLEYE, WalleyeRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.WALLEYE, WalleyeModel::getTexturedModelData);
     }
 }

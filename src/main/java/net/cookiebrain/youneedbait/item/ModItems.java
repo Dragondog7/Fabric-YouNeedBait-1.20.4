@@ -30,8 +30,8 @@ public class ModItems {
     public static final Item DRIEDFISHFILET = registerItem("driedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.DRIEDFISHFILET)));
     public static final Item BEEFJERKY = registerItem("beefjerky", new Item(new FabricItemSettings().food(ModFoodComponents.BEEFJERKY)));
     public static final Item ONION = registerItem("onion_crop", new Item(new FabricItemSettings().food(ModFoodComponents.ONION)));
-    public static final Item ONION_BULBS = registerItem("onion_bulbs",
-            new AliasedBlockItem(ModBlocks.ONION_CROP, new FabricItemSettings()));
+    public static final Item MUTILATED_FLESH = registerItem("mutilated_flesh", new Item(new FabricItemSettings().food(ModFoodComponents.MUTILATED_FLESH)));
+    public static final Item ONION_BULBS = registerItem("onion_bulbs", new AliasedBlockItem(ModBlocks.ONION_CROP, new FabricItemSettings()));
     public static final Item LESSSUSPICIOUSSTEW_ITEM = registerItem("lesssuspiciousstew", new Item(new FabricItemSettings().food(ModFoodComponents.LESSSUSPICIOUSSTEW_FOOD)));
 
     public static final Item FILETKNIFE_ITEM = registerItem("filetknife", new Item(new FabricItemSettings()));

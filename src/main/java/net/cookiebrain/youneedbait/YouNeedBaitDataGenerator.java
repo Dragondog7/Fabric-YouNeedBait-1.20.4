@@ -19,6 +19,7 @@ public class YouNeedBaitDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModPOITagProvider::new);
+		pack.addProvider(ModAdvancementProvider::new);
 		//Ore gen
 		pack.addProvider(ModWorldGenerator::new);
 	}

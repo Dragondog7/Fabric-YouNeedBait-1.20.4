@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "building",
   "key": {
     "A": {
       "item": "youneedbait:azuromite_ingot"
@@ -12,7 +12,6 @@
     "AAA"
   ],
   "result": {
-    "count": 3,
     "item": "youneedbait:azuromite_block"
   }
 }

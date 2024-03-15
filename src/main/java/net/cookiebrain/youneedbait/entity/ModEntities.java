@@ -1,10 +1,8 @@
 package net.cookiebrain.youneedbait.entity;
 
 import net.cookiebrain.youneedbait.YouNeedBait;
-import net.cookiebrain.youneedbait.entity.custom.BlackCrappieEntity;
-import net.cookiebrain.youneedbait.entity.custom.LargeMouthBassEntity;
-import net.cookiebrain.youneedbait.entity.custom.MuskellungeEntity;
-import net.cookiebrain.youneedbait.entity.custom.NorthernPikeEntity;
+import net.cookiebrain.youneedbait.entity.client.WalleyeModel;
+import net.cookiebrain.youneedbait.entity.custom.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -32,6 +30,11 @@ public class ModEntities {
     public static final EntityType<BlackCrappieEntity> BLACKCRAPPIE = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(YouNeedBait.MOD_ID,"blackcrappie"),
             FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE,BlackCrappieEntity::new)
+                    .dimensions(EntityDimensions.fixed(1f,1f)).build());
+
+    public static final EntityType<WalleyeEntity> WALLEYE = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(YouNeedBait.MOD_ID,"walleye"),
+            FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, WalleyeEntity::new)
                     .dimensions(EntityDimensions.fixed(1f,1f)).build());
 }
 
