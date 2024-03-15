@@ -22,7 +22,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public void generate(RecipeExporter exporter) {
 
         //Generates both the raw salt block and converting back to raw salt
-        offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.SALT,RecipeCategory.DECORATIONS, ModBlocks.SALT_BLOCK);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.SALT,RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BLOCK);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,ModItems.HOOK,3)
                 .pattern("I  ")
@@ -46,7 +46,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("QLQ")
                 .input('C', Items.COPPER_INGOT)
                 .input('L', Items.LAPIS_LAZULI)
-                .input('Q', Items.NETHER_QUARTZ_ORE)
+                .input('Q', Items.QUARTZ)
                 .criterion(hasItem(ModItems.AZUROMITE_INGOT),conditionsFromItem(ModItems.AZUROMITE_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.AZUROMITE_INGOT)));
     }

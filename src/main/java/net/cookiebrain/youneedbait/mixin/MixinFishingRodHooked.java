@@ -20,13 +20,12 @@ public class MixinFishingRodHooked {
         private void onTrigger(ServerPlayerEntity player, ItemStack rod, FishingBobberEntity bobber, Collection<ItemStack> fishingLootst, CallbackInfo ci) {
 
             if (Math.random() < 0.1) { // 10% chance
-                //Remove a worm
-                ItemStack itemStackToRemove = new ItemStack(ModItems.WORM, 1);
+                //Remove a bait
                 for (int i = 0; i < player.getInventory().size(); i++) {
                     ItemStack stack = player.getInventory().getStack(i);
 
                     // Check if the ItemStack is the item we want to remove
-                    if (stack.getItem().equals(ModItems.WORM)) {
+                    if (stack.isIn(ModTags.Items.FISH_BAIT_ITEMS)) {
                         // Decrement the ItemStack size by 1
                         stack.decrement(1);
 

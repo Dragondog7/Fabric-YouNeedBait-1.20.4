@@ -101,7 +101,7 @@ public class MixinFishingRodItem {
             ItemStack itemStack = player.getInventory().getStack(i);
 
             // Check if the ItemStack is not empty and it matches the tag
-            if (!itemStack.isEmpty() && itemStack.isIn(FISHING_BAIT_TAG)) {
+            if (!itemStack.isEmpty() && itemStack.isIn(ModTags.Items.FISH_BAIT_ITEMS)) {
                 //player.sendMessage(Text.literal("Found bait"));
                 //player.sendMessage(Text.literal(itemStack.toString()));
                 return true; // Found an item with the tag
