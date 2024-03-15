@@ -1,0 +1,38 @@
+## Fabric 0.2.0.0
+
+### New
+
+#### Items
+- Less Suspicious Stew
+- Mushroom soup recipe + raw fish filet
+- Azuromite Ingot
+- Azuromite Block
+- Mutilated Flesh
+	- Drops From Fish When Killed
+#### Blocks
+- Tackle Box
+	- Work in progress
+- Azuromite Block
+
+#### Entities
+- Added Walleye
+- Added Fish Spawning
+	- Walleye
+		- River
+	- Large Mouth Bass
+		- Plains
+	- Muskellunge
+		- Swamp
+	- Northern Pike
+		- River
+	- Black Crappie
+		- Plains
+#### Achievments
+- Learn to Fish
+ #### Structures
+ - Abandon house will randomly spawn
+	 - Has a chance of a parrot appearing
+
+### Updates
+- Salt Blocks generate on world creation
+- There is a 10% chance of losing bait on fish catch
