@@ -2,15 +2,23 @@ package net.cookiebrain.youneedbait.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.cookiebrain.youneedbait.block.entity.MinnowTrapBlockEntity;
+import net.cookiebrain.youneedbait.block.entity.ModBlockEntities;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -29,6 +37,22 @@ public class MinnowTrapBlock extends BlockWithEntity implements BlockEntityProvi
         super(settings);
         setDefaultState(stateManager.getDefaultState().with(WATERLOGGED, false));
     }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (!world.isClient && hand == Hand.MAIN_HAND) {
+            BlockEntity be = world.getBlockEntity(pos);
+            if(be instanceof MinnowTrapBlockEntity blockEntity){
+                //System.out.println("You used the minnow trap");
+                //ItemStack extracted = ((MinnowTrapBlockEntity) be).removeMinnows();
+                int selectedSlot = player.getInventory().selectedSlot;
+                player.getInventory().main.set(selectedSlot,((MinnowTrapBlockEntity) be).removeMinnows());
+                return ActionResult.SUCCESS;
+            }
+        }
+        return ActionResult.SUCCESS;
+    }
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
@@ -69,7 +93,12 @@ public class MinnowTrapBlock extends BlockWithEntity implements BlockEntityProvi
         return new MinnowTrapBlockEntity(pos,state);
     }
 
-
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return validateTicker(type, ModBlockEntities.MINNOWTRAP_BLOCK_ENTITY,
+                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+    }
 //    @Override
 //    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
 //        if (state.get(WATERLOGGED).booleanValue()) {
