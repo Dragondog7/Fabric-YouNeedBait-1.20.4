@@ -34,5 +34,20 @@
 
   "itemgroup.youneedbait": "YouNeedBait",
 
-  "entity.minecraft.villager.masterfisherman": "Master Fisherman"
+  "entity.minecraft.villager.masterfisherman": "Master Fisherman",
+
+  "tooltip.youneedbait.muskellunge.tooltip.shift": "Long & Strong Fish",
+  "tooltip.youneedbait.muskellunge.tooltip": "Press §eSHIFT§r for more Information",
+
+  "tooltip.youneedbait.blackcrappie.tooltip.shift": "Little Baby Fish",
+  "tooltip.youneedbait.blackcrappie.tooltip": "Press §eSHIFT§r for more Information",
+
+  "tooltip.youneedbait.walleye.tooltip.shift": "Bass But Different",
+  "tooltip.youneedbait.walleye.tooltip": "Press §eSHIFT§r for more Information",
+
+  "tooltip.youneedbait.largemouthbass.tooltip.shift": "Fun To Catch",
+  "tooltip.youneedbait.largemouthbass.tooltip": "Press §eSHIFT§r for more Information",
+
+  "tooltip.youneedbait.northernpike.tooltip.shift": "Similar to Muskellunge",
+  "tooltip.youneedbait.northernpike.tooltip": "Press §eSHIFT§r for more Information"
 }

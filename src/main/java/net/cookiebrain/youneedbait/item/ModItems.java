@@ -3,6 +3,7 @@ package net.cookiebrain.youneedbait.item;
 import net.cookiebrain.youneedbait.YouNeedBait;
 import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.entity.ModEntities;
+import net.cookiebrain.youneedbait.item.custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
@@ -12,11 +13,11 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
-    public static final Item MUSKELLUNGE = registerItem("muskellunge", new Item(new FabricItemSettings()));
-    public static final Item NORTHERNPIKE = registerItem("northernpike", new Item(new FabricItemSettings()));
-    public static final Item BLACKCRAPPIE = registerItem("blackcrappie", new Item(new FabricItemSettings()));
-    public static final Item WALLEYE = registerItem("walleye", new Item(new FabricItemSettings()));
-    public static final Item LARGEMOUTHBASS = registerItem("largemouthbass", new Item(new FabricItemSettings()));
+    public static final Item MUSKELLUNGE = registerItem("muskellunge", new MuskellungeItem(new FabricItemSettings()));
+    public static final Item NORTHERNPIKE = registerItem("northernpike", new NorthernpikeItem(new FabricItemSettings()));
+    public static final Item BLACKCRAPPIE = registerItem("blackcrappie", new BlackcrappieItem(new FabricItemSettings()));
+    public static final Item WALLEYE = registerItem("walleye", new WalleyeItem(new FabricItemSettings()));
+    public static final Item LARGEMOUTHBASS = registerItem("largemouthbass", new LargemouthbassItem(new FabricItemSettings()));
     public static final Item REDHERRING = registerItem("redherring", new Item(new FabricItemSettings()));
     public static final Item SALT = registerItem("salt", new Item(new FabricItemSettings()));
     public static final Item AZUROMITE_INGOT = registerItem("azuromite_ingot", new Item(new FabricItemSettings()));

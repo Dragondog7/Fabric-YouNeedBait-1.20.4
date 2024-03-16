@@ -1,11 +1,11 @@
-// 1.20.4	2024-03-14T22:54:50.8736206	You Need Bait/Recipes
+// 1.20.4	2024-03-15T17:55:25.4509013	You Need Bait/Recipes
 8345801cf716d1b31e4a07755291277b9eea3127 data\youneedbait\advancements\recipes\misc\hook.json
 5d9f70baf0653152c71d6ed865334eb32923bcbb data\youneedbait\recipes\hook.json
 252c78ffd8603b9fdfddfc53b925c640ed5d1920 data\youneedbait\recipes\salt.json
-6e2edd232b637f5239a81b543852ff33ce27aae3 data\youneedbait\advancements\recipes\decorations\salt_block.json
 75bbc1ee3e56d2cb4dc5af665f0a3187339d2448 data\youneedbait\recipes\azuromite_block.json
-ef42086b77fdf0f430c27fb5d608006fc93f0767 data\youneedbait\recipes\salt_block.json
-9644040d44bf8094b75fe36d6db5d15293abbbfe data\youneedbait\recipes\azuromite_ingot.json
+28c3b00621ba3406eb8646deb5c01ad0cf02a2c1 data\youneedbait\recipes\salt_block.json
+071541d633135a5d48f4cc0773674a572a330ca6 data\youneedbait\recipes\azuromite_ingot.json
 2862d9edbab542feca68b38012577f824fab433f data\youneedbait\advancements\recipes\building_blocks\salt.json
 f29fb1a399b30b6737ceb1cad30bb43f9caf4cf0 data\youneedbait\advancements\recipes\misc\azuromite_ingot.json
+6e2edd232b637f5239a81b543852ff33ce27aae3 data\youneedbait\advancements\recipes\building_blocks\salt_block.json
 61693f013408feaabf92bd0db5582de829697175 data\youneedbait\advancements\recipes\building_blocks\azuromite_block.json
