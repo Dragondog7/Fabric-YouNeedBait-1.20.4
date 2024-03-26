@@ -49,5 +49,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('Q', Items.QUARTZ)
                 .criterion(hasItem(ModItems.AZUROMITE_INGOT),conditionsFromItem(ModItems.AZUROMITE_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.AZUROMITE_INGOT)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,ModItems.CANOFWORMS,1)
+                .pattern("WWW")
+                .pattern("WCW")
+                .pattern("WWW")
+                .input('C', Items.COPPER_INGOT)
+                .input('W', ModItems.WORM)
+                .criterion(hasItem(ModItems.CANOFWORMS),conditionsFromItem(ModItems.CANOFWORMS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.CANOFWORMS)));
     }
 }

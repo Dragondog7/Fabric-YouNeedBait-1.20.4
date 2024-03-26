@@ -1,4 +1,4 @@
-package net.cookiebrain.youneedbait.entity.client;
+package net.cookiebrain.youneedbait.entity.layer;
 
 import net.cookiebrain.youneedbait.YouNeedBait;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
@@ -19,6 +19,12 @@ public class ModModelLayers {
 
     public static final EntityModelLayer WALLEYE =
             new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"walleye"),"main");
+
+    public static final EntityModelLayer CATFISH =
+            new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"catfish"),"main");
+
+    public static final EntityModelLayer GIANTSQUID =
+            new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"giantsquid"),"main");
 
 }
 

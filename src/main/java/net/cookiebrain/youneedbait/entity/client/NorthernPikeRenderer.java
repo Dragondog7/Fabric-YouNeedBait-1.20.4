@@ -3,6 +3,7 @@ package net.cookiebrain.youneedbait.entity.client;
 import net.cookiebrain.youneedbait.YouNeedBait;
 import net.cookiebrain.youneedbait.entity.custom.MuskellungeEntity;
 import net.cookiebrain.youneedbait.entity.custom.NorthernPikeEntity;
+import net.cookiebrain.youneedbait.entity.layer.ModModelLayers;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;

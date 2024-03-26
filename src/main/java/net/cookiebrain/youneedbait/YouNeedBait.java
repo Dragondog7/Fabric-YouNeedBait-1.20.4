@@ -45,5 +45,9 @@ public class YouNeedBait implements ModInitializer {
 
 		FabricDefaultAttributeRegistry.register(ModEntities.WALLEYE, WalleyeEntity.createwalleyeAttributes());
 
+		FabricDefaultAttributeRegistry.register(ModEntities.CATFISH, CatFishEntity.createcatfishAttributes());
+
+		FabricDefaultAttributeRegistry.register(ModEntities.GIANTSQUID, GiantSquidEntity.creategiantsquidAttributes());
+
 	}
 }

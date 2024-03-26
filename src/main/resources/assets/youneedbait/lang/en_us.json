@@ -26,6 +26,7 @@
   "item.youneedbait.suckerminnow": "Sucker Minnow",
   "item.youneedbait.onion_crop": "Onion",
   "item.youneedbait.mutilated_flesh": "Mutilated Flesh",
+  "item.youneedbait.canofworms": "Can Of Worms",
 
   "block.youneedbait.salt_block": "Salt Ore",
   "block.youneedbait.azuromite_block": "Azuromite Block",
@@ -49,5 +50,8 @@
   "tooltip.youneedbait.largemouthbass.tooltip": "Press §eSHIFT§r for more Information",
 
   "tooltip.youneedbait.northernpike.tooltip.shift": "Similar to Muskellunge",
-  "tooltip.youneedbait.northernpike.tooltip": "Press §eSHIFT§r for more Information"
+  "tooltip.youneedbait.northernpike.tooltip": "Press §eSHIFT§r for more Information",
+
+  "tooltip.youneedbait.canofworms.tooltip.shift": "You Feel Disgusted Even Holding This Abomination",
+  "tooltip.youneedbait.canofworms.tooltip": "Press §eSHIFT§r for more Information"
 }

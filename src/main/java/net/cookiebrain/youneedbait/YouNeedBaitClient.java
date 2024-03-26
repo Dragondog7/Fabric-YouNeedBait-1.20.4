@@ -3,6 +3,7 @@ package net.cookiebrain.youneedbait;
 import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.entity.ModEntities;
 import net.cookiebrain.youneedbait.entity.client.*;
+import net.cookiebrain.youneedbait.entity.layer.ModModelLayers;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -30,6 +31,13 @@ public class YouNeedBaitClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(ModEntities.WALLEYE, WalleyeRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.WALLEYE, WalleyeModel::getTexturedModelData);
+
+        EntityRendererRegistry.register(ModEntities.CATFISH, CatFishRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.CATFISH, CatFishModel::getTexturedModelData);
+
+        EntityRendererRegistry.register(ModEntities.GIANTSQUID, GiantSquidRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.GIANTSQUID, GiantSquidModel
+                ::getTexturedModelData);
 
     }
 }

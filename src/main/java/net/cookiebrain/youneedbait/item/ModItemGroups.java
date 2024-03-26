@@ -22,6 +22,7 @@ public class ModItemGroups {
                         entries.add(ModItems.FILETKNIFE_ITEM);
                         entries.add(ModItems.ONION_BULBS);
                         entries.add(ModItems.MUTILATED_FLESH);
+                        entries.add(ModItems.CANOFWORMS);
 
                         //Bait
                         entries.add(ModItems.WORM);

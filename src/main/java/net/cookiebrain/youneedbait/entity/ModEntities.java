@@ -1,7 +1,6 @@
 package net.cookiebrain.youneedbait.entity;
 
 import net.cookiebrain.youneedbait.YouNeedBait;
-import net.cookiebrain.youneedbait.entity.client.WalleyeModel;
 import net.cookiebrain.youneedbait.entity.custom.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
@@ -36,6 +35,16 @@ public class ModEntities {
             new Identifier(YouNeedBait.MOD_ID,"walleye"),
             FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, WalleyeEntity::new)
                     .dimensions(EntityDimensions.fixed(1f,1f)).build());
+
+    public static final EntityType<CatFishEntity> CATFISH = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(YouNeedBait.MOD_ID,"catfish"),
+            FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, CatFishEntity::new)
+                    .dimensions(EntityDimensions.fixed(1f,1f)).build());
+
+    public static final EntityType<GiantSquidEntity> GIANTSQUID = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(YouNeedBait.MOD_ID,"giantsquid"),
+            FabricEntityTypeBuilder.create(SpawnGroup.UNDERGROUND_WATER_CREATURE, GiantSquidEntity::new)
+                    .dimensions(EntityDimensions.fixed(1.5f,12f)).build());
 }
 
 

@@ -24,6 +24,7 @@ public class ModItems {
     public static final Item HOOK = registerItem("hook", new Item(new FabricItemSettings()));
     public static final Item WORM = registerItem("worm", new Item(new FabricItemSettings()));
     public static final Item CATERPILLAR = registerItem("caterpillar", new Item(new FabricItemSettings()));
+    public static final Item CANOFWORMS = registerItem("canofworms", new CanOfWormsItem(new FabricItemSettings()));
 
     public static final Item RAWFISHFILET = registerItem("rawfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.RAWFISHFILET)));
     public static final Item SALTEDFISHFILET = registerItem("saltedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.SALTEDFISHFILET)));

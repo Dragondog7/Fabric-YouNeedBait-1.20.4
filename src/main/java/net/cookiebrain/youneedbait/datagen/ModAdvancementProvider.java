@@ -85,5 +85,14 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .criterion("has_walleye", InventoryChangedCriterion.Conditions.items(ModItems.WALLEYE))
                 .parent(MutilatedFlesh)
                 .build(consumer, YouNeedBait.MOD_ID + ":walleye");
+
+//        AdvancementEntry Catfish = Advancement.Builder.create()
+//                .display(new AdvancementDisplay(new ItemStack(ModItems.CAT),
+//                        Text.literal("UGHHHH IT'S MUDDY!"), Text.literal("You Caught A Catfish"),
+//                        Optional.of(new Identifier(YouNeedBait.MOD_ID, "textures/block/water.png")), AdvancementFrame.TASK,
+//                        true, true, false))
+//                .criterion("has_catfish", InventoryChangedCriterion.Conditions.items(ModItems.CAT))
+//                .parent(MutilatedFlesh)
+//                .build(consumer, YouNeedBait.MOD_ID + ":catfish");
     }
 }
