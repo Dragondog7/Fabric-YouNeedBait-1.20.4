@@ -86,13 +86,22 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .parent(MutilatedFlesh)
                 .build(consumer, YouNeedBait.MOD_ID + ":walleye");
 
-//        AdvancementEntry Catfish = Advancement.Builder.create()
-//                .display(new AdvancementDisplay(new ItemStack(ModItems.CAT),
-//                        Text.literal("UGHHHH IT'S MUDDY!"), Text.literal("You Caught A Catfish"),
-//                        Optional.of(new Identifier(YouNeedBait.MOD_ID, "textures/block/water.png")), AdvancementFrame.TASK,
-//                        true, true, false))
-//                .criterion("has_catfish", InventoryChangedCriterion.Conditions.items(ModItems.CAT))
-//                .parent(MutilatedFlesh)
-//                .build(consumer, YouNeedBait.MOD_ID + ":catfish");
+        AdvancementEntry Catfish = Advancement.Builder.create()
+                .display(new AdvancementDisplay(new ItemStack(ModItems.CATFISH),
+                        Text.literal("UGHHHH IT'S MUDDY!"), Text.literal("You Caught A Catfish"),
+                        Optional.of(new Identifier(YouNeedBait.MOD_ID, "textures/block/water.png")), AdvancementFrame.TASK,
+                        true, true, false))
+                .criterion("has_catfish", InventoryChangedCriterion.Conditions.items(ModItems.CATFISH))
+                .parent(MutilatedFlesh)
+                .build(consumer, YouNeedBait.MOD_ID + ":catfish");
+
+        AdvancementEntry PumpkinSeed = Advancement.Builder.create()
+                .display(new AdvancementDisplay(new ItemStack(ModItems.PUMPKINSEED),
+                        Text.literal("Seriously? Give me a different fish!"), Text.literal("You Caught A PumpkinSeed"),
+                        Optional.of(new Identifier(YouNeedBait.MOD_ID, "textures/block/water.png")), AdvancementFrame.TASK,
+                        true, true, false))
+                .criterion("has_pumpkinseed", InventoryChangedCriterion.Conditions.items(ModItems.PUMPKINSEED))
+                .parent(MutilatedFlesh)
+                .build(consumer, YouNeedBait.MOD_ID + ":pumpkinseed");
     }
 }

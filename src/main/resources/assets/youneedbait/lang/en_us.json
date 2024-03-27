@@ -3,6 +3,8 @@
   "item.youneedbait.northernpike": "Northern Pike",
   "item.youneedbait.largemouthbass": "Largemouth Bass",
   "item.youneedbait.walleye": "Walleye",
+  "item.youneedbait.pumpkinseed": "PumpkinSeed Sunfish",
+  "item.youneedbait.catfish": "Cat Fish",
   "item.youneedbait.blackcrappie": "Black Crappie",
   "item.youneedbait.redherring": "Red Herring",
   "item.youneedbait.salt": "Raw Salt",
@@ -17,6 +19,8 @@
   "item.youneedbait.blackcrappiespawnegg": "Black Crappie Spawn Egg",
   "item.youneedbait.largemouthbassspawnegg": "LargeMouth Bass Spawn Egg",
   "item.youneedbait.northernpikespawnegg": "Northern Pike Spawn Egg",
+  "item.youneedbait.catfishspawnegg": "Cat Fish Spawn Egg",
+  "item.youneedbait.pumpkinseedspawnegg": "PumpkinSeed Spawn Egg",
   "item.youneedbait.hook": "Fishing Hook",
   "item.youneedbait.worm": "Worm",
   "item.youneedbait.caterpillar": "Caterpillar",
@@ -51,6 +55,12 @@
 
   "tooltip.youneedbait.northernpike.tooltip.shift": "Similar to Muskellunge",
   "tooltip.youneedbait.northernpike.tooltip": "Press §eSHIFT§r for more Information",
+
+  "tooltip.youneedbait.pumpkinseed.tooltip.shift": "What You Get When You Want Bass",
+  "tooltip.youneedbait.pumpkinseed.tooltip": "Press §eSHIFT§r for more Information",
+
+  "tooltip.youneedbait.catfish.tooltip.shift": "Ugh i have to get the hook out of this?",
+  "tooltip.youneedbait.catfish.tooltip": "Press §eSHIFT§r for more Information",
 
   "tooltip.youneedbait.canofworms.tooltip.shift": "You Feel Disgusted Even Holding This Abomination",
   "tooltip.youneedbait.canofworms.tooltip": "Press §eSHIFT§r for more Information"

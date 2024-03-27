@@ -25,6 +25,8 @@ public class ModItems {
     public static final Item WORM = registerItem("worm", new Item(new FabricItemSettings()));
     public static final Item CATERPILLAR = registerItem("caterpillar", new Item(new FabricItemSettings()));
     public static final Item CANOFWORMS = registerItem("canofworms", new CanOfWormsItem(new FabricItemSettings()));
+    public static final Item PUMPKINSEED = registerItem("pumpkinseed", new PumpkinSeedItem(new FabricItemSettings()));
+    public static final Item CATFISH = registerItem("catfish", new CatFishItem(new FabricItemSettings()));
 
     public static final Item RAWFISHFILET = registerItem("rawfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.RAWFISHFILET)));
     public static final Item SALTEDFISHFILET = registerItem("saltedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.SALTEDFISHFILET)));
@@ -49,6 +51,14 @@ public class ModItems {
             new SpawnEggItem(ModEntities.LARGEMOUTHBASS, 669900, 73426, new FabricItemSettings()));
     public static final Item BLACKCRAPPIESPAWNEGG = registerItem("blackcrappiespawnegg",
             new SpawnEggItem(ModEntities.BLACKCRAPPIE, 669900, 73426, new FabricItemSettings()));
+    public static final Item WALLEYESPAWNEGG = registerItem("walleyespawnegg",
+            new SpawnEggItem(ModEntities.WALLEYE, 669900, 73426, new FabricItemSettings()));
+    public static final Item PUMPKINSEEDSPAWNEGG = registerItem("pumpkinseedspawnegg",
+            new SpawnEggItem(ModEntities.PUMPKINSEED, 669900, 73426, new FabricItemSettings()));
+    public static final Item CATFISHSPAWNEGG = registerItem("catfishspawnegg",
+            new SpawnEggItem(ModEntities.CATFISH, 669900, 73426, new FabricItemSettings()));
+//    public static final Item GIANTSQUIDSPAWNEGG = registerItem("giantsquidspawnegg",
+//            new SpawnEggItem(ModEntities.GIANTSQUID, 669900, 73426, new FabricItemSettings()));
     public static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(YouNeedBait.MOD_ID, name), item);
     }

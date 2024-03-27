@@ -14,45 +14,51 @@ import net.minecraft.world.biome.BiomeKeys;
 public class ModEntitySpawns {
     public static void addSpawn() {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.RIVER),
-                SpawnGroup.WATER_CREATURE, ModEntities.WALLEYE, 50, 1, 2);
+                SpawnGroup.WATER_CREATURE, ModEntities.WALLEYE, 20, 1, 2);
 
         SpawnRestriction.register(ModEntities.WALLEYE, SpawnRestriction.Location.IN_WATER,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterCreatureEntity::canSpawn);
 
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.RIVER),
-                SpawnGroup.WATER_CREATURE, ModEntities.NORTHERNPIKE, 50, 1, 1);
+                SpawnGroup.WATER_CREATURE, ModEntities.NORTHERNPIKE, 20, 1, 1);
 
         SpawnRestriction.register(ModEntities.NORTHERNPIKE, SpawnRestriction.Location.IN_WATER,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterCreatureEntity::canSpawn);
 
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.SWAMP),
-                SpawnGroup.WATER_CREATURE, ModEntities.MUSKELLUNGE, 50, 1, 1);
+                SpawnGroup.WATER_CREATURE, ModEntities.MUSKELLUNGE, 10, 1, 1);
 
         SpawnRestriction.register(ModEntities.MUSKELLUNGE, SpawnRestriction.Location.IN_WATER,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterCreatureEntity::canSpawn);
 
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.PLAINS),
-                SpawnGroup.WATER_CREATURE, ModEntities.LARGEMOUTHBASS, 50, 2, 3);
+                SpawnGroup.WATER_CREATURE, ModEntities.LARGEMOUTHBASS, 40, 2, 3);
 
         SpawnRestriction.register(ModEntities.LARGEMOUTHBASS, SpawnRestriction.Location.IN_WATER,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterCreatureEntity::canSpawn);
 
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.PLAINS),
-                SpawnGroup.WATER_CREATURE, ModEntities.BLACKCRAPPIE, 50, 4, 8);
+                SpawnGroup.WATER_CREATURE, ModEntities.BLACKCRAPPIE, 30, 4, 8);
 
         SpawnRestriction.register(ModEntities.BLACKCRAPPIE, SpawnRestriction.Location.IN_WATER,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterCreatureEntity::canSpawn);
 
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_COLD_OCEAN, BiomeKeys.DEEP_FROZEN_OCEAN),
-                SpawnGroup.WATER_CREATURE, ModEntities.GIANTSQUID, 2, 1, 1);
-
-        SpawnRestriction.register(ModEntities.GIANTSQUID, SpawnRestriction.Location.IN_WATER,
-                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterCreatureEntity::canSpawn);
+//        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_COLD_OCEAN, BiomeKeys.DEEP_FROZEN_OCEAN),
+//                SpawnGroup.WATER_CREATURE, ModEntities.GIANTSQUID, 2, 1, 1);
+//
+//        SpawnRestriction.register(ModEntities.GIANTSQUID, SpawnRestriction.Location.IN_WATER,
+//                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterCreatureEntity::canSpawn);
 
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.SWAMP),
-                SpawnGroup.WATER_CREATURE, ModEntities.CATFISH, 20, 1, 2);
+                SpawnGroup.WATER_CREATURE, ModEntities.CATFISH, 30, 1, 2);
 
         SpawnRestriction.register(ModEntities.CATFISH, SpawnRestriction.Location.IN_WATER,
+                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterCreatureEntity::canSpawn);
+
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.RIVER),
+                SpawnGroup.WATER_CREATURE, ModEntities.PUMPKINSEED, 40, 4, 10);
+
+        SpawnRestriction.register(ModEntities.PUMPKINSEED, SpawnRestriction.Location.IN_WATER,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterCreatureEntity::canSpawn);
 
 

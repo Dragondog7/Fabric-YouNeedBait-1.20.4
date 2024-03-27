@@ -37,5 +37,26 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(ModItems.MUSKELLUNGESPAWNEGG,
                 new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+
+        itemModelGenerator.register(ModItems.NORTHERNPIKESPAWNEGG,
+                new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+
+        itemModelGenerator.register(ModItems.PUMPKINSEEDSPAWNEGG,
+                new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+
+        itemModelGenerator.register(ModItems.CATFISHSPAWNEGG,
+                new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+
+        itemModelGenerator.register(ModItems.LARGEMOUTHBASSSPAWNEGG,
+                new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+
+        itemModelGenerator.register(ModItems.WALLEYESPAWNEGG,
+                new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+
+        itemModelGenerator.register(ModItems.BLACKCRAPPIESPAWNEGG,
+                new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+
+//        itemModelGenerator.register(ModItems.GIANTSQUIDSPAWNEGG,
+//                new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
     }
 }

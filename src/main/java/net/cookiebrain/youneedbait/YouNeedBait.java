@@ -49,7 +49,9 @@ public class YouNeedBait implements ModInitializer {
 
 		FabricDefaultAttributeRegistry.register(ModEntities.CATFISH, CatFishEntity.createcatfishAttributes());
 
-		FabricDefaultAttributeRegistry.register(ModEntities.GIANTSQUID, GiantSquidEntity.creategiantsquidAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.PUMPKINSEED, PumpkinSeedEntity.createpumpkinseedAttributes());
+
+//		FabricDefaultAttributeRegistry.register(ModEntities.GIANTSQUID, GiantSquidEntity.creategiantsquidAttributes());
 
 	}
 }

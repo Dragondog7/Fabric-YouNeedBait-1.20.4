@@ -43,12 +43,17 @@ public class ModItemGroups {
                         entries.add(ModItems.NORTHERNPIKE);
                         entries.add(ModItems.BLACKCRAPPIE);
                         entries.add(ModItems.LARGEMOUTHBASS);
+                        entries.add(ModItems.CATFISH);
                         entries.add(ModItems.WALLEYE);
+                        entries.add(ModItems.PUMPKINSEED);
                         entries.add(ModItems.SALTEDBEEF);
                         entries.add(ModItems.MUSKELLUNGESPAWNEGG);
                         entries.add(ModItems.NORTHERNPIKESPAWNEGG);
                         entries.add(ModItems.LARGEMOUTHBASSSPAWNEGG);
                         entries.add(ModItems.BLACKCRAPPIESPAWNEGG);
+                        entries.add(ModItems.PUMPKINSEEDSPAWNEGG);
+                        entries.add(ModItems.CATFISHSPAWNEGG);
+
 
                         //Blocks
                         entries.add(ModBlocks.SALT_BLOCK);

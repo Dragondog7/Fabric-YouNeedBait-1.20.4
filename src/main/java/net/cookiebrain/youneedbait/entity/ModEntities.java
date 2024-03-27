@@ -41,10 +41,15 @@ public class ModEntities {
             FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, CatFishEntity::new)
                     .dimensions(EntityDimensions.fixed(1f,1f)).build());
 
-    public static final EntityType<GiantSquidEntity> GIANTSQUID = Registry.register(Registries.ENTITY_TYPE,
-            new Identifier(YouNeedBait.MOD_ID,"giantsquid"),
-            FabricEntityTypeBuilder.create(SpawnGroup.UNDERGROUND_WATER_CREATURE, GiantSquidEntity::new)
-                    .dimensions(EntityDimensions.fixed(1.5f,12f)).build());
+    public static final EntityType<PumpkinSeedEntity> PUMPKINSEED = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(YouNeedBait.MOD_ID,"pumpkinseed"),
+            FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, PumpkinSeedEntity::new)
+                    .dimensions(EntityDimensions.fixed(1f,1f)).build());
+
+//    public static final EntityType<GiantSquidEntity> GIANTSQUID = Registry.register(Registries.ENTITY_TYPE,
+//            new Identifier(YouNeedBait.MOD_ID,"giantsquid"),
+//            FabricEntityTypeBuilder.create(SpawnGroup.UNDERGROUND_WATER_CREATURE, GiantSquidEntity::new)
+//                    .dimensions(EntityDimensions.fixed(1.5f,12f)).build());
 }
 
 

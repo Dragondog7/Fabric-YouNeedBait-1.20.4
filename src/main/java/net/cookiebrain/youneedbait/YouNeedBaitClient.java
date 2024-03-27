@@ -39,9 +39,12 @@ public class YouNeedBaitClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.CATFISH, CatFishRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.CATFISH, CatFishModel::getTexturedModelData);
 
-        EntityRendererRegistry.register(ModEntities.GIANTSQUID, GiantSquidRenderer::new);
-        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.GIANTSQUID, GiantSquidModel
-                ::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.PUMPKINSEED, PumpkinSeedRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.PUMPKINSEED, PumpkinSeedModel::getTexturedModelData);
+
+//        EntityRendererRegistry.register(ModEntities.GIANTSQUID, GiantSquidRenderer::new);
+//        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.GIANTSQUID, GiantSquidModel
+//                ::getTexturedModelData);
 
         HandledScreens.register(ModScreenHandlers.TACKLEBOX_SCREEN_HANDLER, TackleBoxScreen::new);
     }
