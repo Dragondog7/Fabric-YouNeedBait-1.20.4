@@ -51,6 +51,16 @@
         },
         {
           "type": "minecraft:item",
+          "name": "youneedbait:catfish",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "name": "youneedbait:pumpkinseed",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:item",
           "name": "youneedbait:redherring",
           "conditions": [
             {
