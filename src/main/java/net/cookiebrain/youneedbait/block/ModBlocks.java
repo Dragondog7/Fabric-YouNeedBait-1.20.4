@@ -1,6 +1,7 @@
 package net.cookiebrain.youneedbait.block;
 
 import net.cookiebrain.youneedbait.YouNeedBait;
+import net.cookiebrain.youneedbait.block.custom.MinnowBucketBlock;
 import net.cookiebrain.youneedbait.block.custom.OnionCropBlock;
 import net.cookiebrain.youneedbait.block.custom.MinnowTrapBlock;
 import net.cookiebrain.youneedbait.block.custom.TackleBoxBlock;
@@ -29,7 +30,7 @@ public class ModBlocks {
     public static final Block TACKLEBOX_BLOCK = registerBlock("tacklebox_block",
             new TackleBoxBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(1f).nonOpaque()));
     public static final Block MINNOWBUCKET_BLOCK = registerBlock("minnowbucket_block",
-            new TackleBoxBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(1f).nonOpaque()));
+            new MinnowBucketBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(1f).nonOpaque()));
 
     //Crops
     public static final Block ONION_CROP = Registry.register(Registries.BLOCK, new Identifier(YouNeedBait.MOD_ID, "onion_crop"),

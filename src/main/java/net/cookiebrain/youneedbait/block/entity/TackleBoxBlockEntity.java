@@ -1,5 +1,6 @@
 package net.cookiebrain.youneedbait.block.entity;
 
+import net.cookiebrain.youneedbait.screen.TackleBoxScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -15,41 +16,11 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class TackleBoxBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory,ImplementedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
-
-//    private static final int INVENTORY_SLOT = 0;
-//    private static final int INVENTORY_SLOT2 = 2;
-//    private static final int INVENTORY_SLOT3 = 3;
-//    private static final int INVENTORY_SLOT4 = 4;
-//    private static final int INVENTORY_SLOT5 = 5;
-//    private static final int INVENTORY_SLOT6 = 6;
-//    private static final int INVENTORY_SLOT7 = 7;
-//    private static final int INVENTORY_SLOT8 = 8;
-//    private static final int INVENTORY_SLOT9 = 9;
-//    private static final int INVENTORY_SLOT10 = 10;
-//    private static final int INVENTORY_SLOT11 = 11;
-//    private static final int INVENTORY_SLOT12 = 12;
-//    private static final int INVENTORY_SLOT13 = 13;
-//    private static final int INVENTORY_SLOT14 = 14;
-//    private static final int INVENTORY_SLOT15 = 15;
-//    private static final int INVENTORY_SLOT16 = 16;
-//    private static final int INVENTORY_SLOT17 = 17;
-//    private static final int INVENTORY_SLOT18 = 18;
-//    private static final int INVENTORY_SLOT19 = 19;
-//    private static final int INVENTORY_SLOT20 = 20;
-//    private static final int INVENTORY_SLOT21 = 21;
-//    private static final int INVENTORY_SLOT22 = 22;
-//    private static final int INVENTORY_SLOT23 = 23;
-//    private static final int INVENTORY_SLOT24 = 24;
-//    private static final int INVENTORY_SLOT25 = 25;
-//    private static final int INVENTORY_SLOT26 = 26;
-//    private static final int INVENTORY_SLOT27 = 27;
-
-
-
+    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(27,ItemStack.EMPTY);
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 72;
@@ -57,9 +28,10 @@ public class TackleBoxBlockEntity extends BlockEntity implements ExtendedScreenH
     public TackleBoxBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.TACKLEBOX_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
+            //Allows the variables to be synchronized via the screen handler
             @Override
             public int get(int index) {
-                return switch (index) {
+                return switch (index){
                     case 0 -> TackleBoxBlockEntity.this.progress;
                     case 1 -> TackleBoxBlockEntity.this.maxProgress;
                     default -> 0;
@@ -69,21 +41,17 @@ public class TackleBoxBlockEntity extends BlockEntity implements ExtendedScreenH
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> TackleBoxBlockEntity.this.progress = value;
-                    case 1 -> TackleBoxBlockEntity.this.maxProgress = value;
+                    case 0: TackleBoxBlockEntity.this.progress = value;
+                    case 1: TackleBoxBlockEntity.this.maxProgress = value;
                 }
             }
 
             @Override
             public int size() {
+                //Size of the variables, not the inventory
                 return 2;
             }
         };
-    }
-
-    @Override
-    public DefaultedList<ItemStack> getItems() {
-        return inventory;
     }
 
     @Override
@@ -91,26 +59,52 @@ public class TackleBoxBlockEntity extends BlockEntity implements ExtendedScreenH
         buf.writeBlockPos(this.pos);
     }
 
+    @Nullable
+    @Override
+    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
+        return new TackleBoxScreenHandler(syncId,playerInventory,this, propertyDelegate);
+    }
+
     @Override
     public Text getDisplayName() {
         return Text.literal("Tackle Box");
     }
 
-    @Nullable
     @Override
-    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return null;
+    public DefaultedList<ItemStack> getItems() {
+        return this.inventory;
+    }
+
+    public void setItems(DefaultedList<ItemStack> itemStacks) {
+        this.inventory = itemStacks;
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, inventory);
+        Inventories.writeNbt(nbt,inventory);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
-        Inventories.readNbt(nbt, inventory);
+        Inventories.readNbt(nbt,inventory);
         super.readNbt(nbt);
+    }
+
+    public void tick(World world, BlockPos pos, BlockState state) {
+        if (world.isClient()) {
+            return;
+        }
+//        if(canInsertIntoOutputSlot() && hasRecipe()) {
+//            increaseCraftingProgress();
+//            markDirty(world, pos, state);
+//
+//            if(hasCraftingFinished()) {
+//                craftItem();
+//                resetProgress();
+//            }
+//        } else {
+//            resetProgress();
+//        }
     }
 }

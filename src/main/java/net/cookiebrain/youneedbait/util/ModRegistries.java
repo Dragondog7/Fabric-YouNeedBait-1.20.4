@@ -12,11 +12,6 @@ public class ModRegistries {
         registerCustomTrades();
     }
 
-
-
-
-
-
     private static void registerCustomTrades() {
             TradeOfferHelper.registerVillagerOffers(ModVillagers.MASTER_FISHERMAN, 1,
                     factories -> {

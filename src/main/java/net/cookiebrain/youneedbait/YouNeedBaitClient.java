@@ -4,10 +4,14 @@ import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.entity.ModEntities;
 import net.cookiebrain.youneedbait.entity.client.*;
 import net.cookiebrain.youneedbait.entity.layer.ModModelLayers;
+import net.cookiebrain.youneedbait.screen.ModScreenHandlers;
+import net.cookiebrain.youneedbait.screen.TackleBoxScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
@@ -39,5 +43,6 @@ public class YouNeedBaitClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.GIANTSQUID, GiantSquidModel
                 ::getTexturedModelData);
 
+        HandledScreens.register(ModScreenHandlers.TACKLEBOX_SCREEN_HANDLER, TackleBoxScreen::new);
     }
 }
