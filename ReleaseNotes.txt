@@ -36,3 +36,29 @@
 ### Updates
 - Salt Blocks generate on world creation
 - There is a 10% chance of losing bait on fish catch
+
+----------------
+## Fabric Version 0.3.0.0
+### New
+#### Items
+ - Onion
+ - Onion Bulb
+ - Can of Worms
+#### Crops
+ - Onions
+#### Entities
+ - White Crappie Variant
+ - Catfish
+ - Pumpkinseed Sunfish
+#### Misc
+ - Added Tooltips
+ - Added Achievments
+### Updates
+ - Water flows over Minnow Trap
+ - Minnow Trap slowly spawns minnows over time
+ - Tacklebox can now hold items
+	 - Needs to be placed on the ground to add/remove items
+ - Bait will be used from within tacklebox
+### Bugfixes
+ - Fixed bug where fish were spawning on land
+ - Fixed description for Minnow Bucket
