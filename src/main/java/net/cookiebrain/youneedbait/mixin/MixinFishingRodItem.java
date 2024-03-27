@@ -1,5 +1,6 @@
 package net.cookiebrain.youneedbait.mixin;
 
+import net.cookiebrain.youneedbait.inventory.FishingHelper;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.cookiebrain.youneedbait.util.ModTags;
 import net.minecraft.entity.Entity;
@@ -28,10 +29,10 @@ public class MixinFishingRodItem {
 
         //Check for a hook
         //player.sendMessage(Text.literal("Checking for a hook"));
-        if(hasHook(player)){
+        if(FishingHelper.hasHook(player)){
             //player.sendMessage(Text.literal("Hook found"));
             //player.sendMessage(Text.literal("Checking for bait"));
-            if (!hasBait(player)) {
+            if (!FishingHelper.hasBait(player)) {
                 // Cancel the event (prevent fishing rod use) if the condition is not met
                 // To effectively return "nothing" or indicate cancellation, use ActionResult.FAIL
                 // and ItemStack.EMPTY (or another appropriate ItemStack if needed).
@@ -87,27 +88,6 @@ public class MixinFishingRodItem {
 //        }
 //    }
 
-    private static boolean hasHook(PlayerEntity player){
-        return player.getInventory().contains(new ItemStack(ModItems.HOOK));
-    }
-    private static boolean hasBait(PlayerEntity player) {
-        //This checks that the player has valid bait from the FISHING_BAIT tag
 
-        // Get the tag
-        TagKey<Item> FISHING_BAIT_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier("youneedbait", "fishing_bait"));
-
-        for (int i = 0; i < player.getInventory().size(); i++) {
-            //player.sendMessage(Text.literal("Looping through inventory"));
-            ItemStack itemStack = player.getInventory().getStack(i);
-
-            // Check if the ItemStack is not empty and it matches the tag
-            if (!itemStack.isEmpty() && itemStack.isIn(ModTags.Items.FISH_BAIT_ITEMS)) {
-                //player.sendMessage(Text.literal("Found bait"));
-                //player.sendMessage(Text.literal(itemStack.toString()));
-                return true; // Found an item with the tag
-            }
-        }
-        return false;
-    }
 }
 

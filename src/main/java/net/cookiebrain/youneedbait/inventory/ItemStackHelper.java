@@ -42,12 +42,12 @@ public class ItemStackHelper {
         // Check if the ItemStack has a tag and the tag contains the specified key
 
         if (stack.hasNbt() && stack.getNbt().contains(key)) {
-            System.out.println("I found stuff to put in the block");
+            //System.out.println("I found stuff to put in the block");
             NbtList listTag = stack.getNbt().getList(key,NbtCompound.COMPOUND_TYPE);
 
             // Convert each CompoundNBT in the ListNBT back to an ItemStack
             for (int i = 0; i < items.size(); i++) {
-                System.out.println("Item being placed in the block");
+                //System.out.println("Item being placed in the block");
                 NbtCompound itemTag = listTag.getCompound(i);
                 ItemStack item = ItemStack.fromNbt(itemTag); // This line creates an ItemStack from the CompoundNBT
                 items.set(i,item);
