@@ -20,6 +20,7 @@ public class ModItemGroups {
                         entries.add(ModItems.AZUROMITE_INGOT);
                         entries.add(ModItems.HOOK);
                         entries.add(ModItems.FILETKNIFE_ITEM);
+                        entries.add(ModItems.FANCYFISHINGROD_ITEM);
                         entries.add(ModItems.ONION_BULBS);
                         entries.add(ModItems.MUTILATED_FLESH);
                         entries.add(ModItems.CANOFWORMS);

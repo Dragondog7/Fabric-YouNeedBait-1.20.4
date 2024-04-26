@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 
@@ -23,6 +24,7 @@ public class FishingHelper {
         // Get the tag
         TagKey<Item> FISHING_BAIT_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier("youneedbait", "fishing_bait"));
 
+        player.sendMessage(Text.literal("checking for bait inside hasBait"));
         for (int i = 0; i < player.getInventory().size(); i++) {
             ItemStack itemStack = player.getInventory().getStack(i);
             // Check if the ItemStack is not empty and it matches the tag

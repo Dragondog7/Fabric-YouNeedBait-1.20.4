@@ -41,7 +41,7 @@ public class ModItems {
     public static final Item FILETKNIFE_ITEM = registerItem("filetknife", new Item(new FabricItemSettings()));
     public static final Item MINNOW_ITEM = registerItem("minnow", new Item(new FabricItemSettings()));
     public static final Item SUCKERMINNOW_ITEM = registerItem("suckerminnow", new Item(new FabricItemSettings()));
-
+    public static final FancyFishingRodItem FANCYFISHINGROD_ITEM = (FancyFishingRodItem) registerItem("fancyfishingrod", new FancyFishingRodItem(new FabricItemSettings()));
     //Spawn Eggs
     public static final Item MUSKELLUNGESPAWNEGG = registerItem("muskellungespawnegg",
             new SpawnEggItem(ModEntities.MUSKELLUNGE, 669900, 73426, new FabricItemSettings()));
