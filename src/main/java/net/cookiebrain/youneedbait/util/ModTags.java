@@ -24,6 +24,9 @@ public class ModTags {
         public static final TagKey<Item> BONUS_FISH_THINGS =
                 createTag("bonus_fish_things");
 
+        public static final TagKey<Item> FISHINGROD_MODIFIERS =
+                createTag("fishingrod_modifiers");
+
         public static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(YouNeedBait.MOD_ID,name));
         }

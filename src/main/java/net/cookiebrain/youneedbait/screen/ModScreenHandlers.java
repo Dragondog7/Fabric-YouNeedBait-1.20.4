@@ -18,6 +18,10 @@ public class ModScreenHandlers {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(YouNeedBait.MOD_ID, "fish_cleaning_station_screen_handler"),
                     new ExtendedScreenHandlerType<>(FishCleaningStationScreenHandler::new));
 
+    public static final ScreenHandlerType<FancyFishingRodScreenHandler> FANCYFISHINGROD_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(YouNeedBait.MOD_ID, "fancyfishingrod_screen_handler"),
+                    new ExtendedScreenHandlerType<>(FancyFishingRodScreenHandler::new));
+
     public static void registerScreenHandler() {
         YouNeedBait.LOGGER.info("Registering Screen Handlers for " + YouNeedBait.MOD_ID);
     }

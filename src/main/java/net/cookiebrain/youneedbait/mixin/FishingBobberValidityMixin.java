@@ -1,5 +1,6 @@
 package net.cookiebrain.youneedbait.mixin;
 
+import net.cookiebrain.youneedbait.entity.custom.FancyFishingBobberEntity;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -7,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,12 +29,13 @@ public abstract class FishingBobberValidityMixin extends Entity {
             at = @At("HEAD"),
             cancellable = true
     )
+
+    // This checks to see if the bobber should be removed or not
     private void removeIfInvalid(PlayerEntity playerEntity, CallbackInfoReturnable<Boolean> cir) {
         ItemStack mainHandStack = playerEntity.getMainHandStack();
         ItemStack offHandStack = playerEntity.getOffHandStack();
-
         boolean mainHandHasRod = mainHandStack.isOf(Items.FISHING_ROD)
-                || offHandStack.isOf(ModItems.FANCYFISHINGROD_ITEM);
+                || mainHandStack.isOf(ModItems.FANCYFISHINGROD_ITEM);
         boolean offHandHasRod = offHandStack.isOf(Items.FISHING_ROD)
                 || offHandStack.isOf(ModItems.FANCYFISHINGROD_ITEM);
 

@@ -5,8 +5,11 @@ import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.entity.ModEntities;
 import net.cookiebrain.youneedbait.item.custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -38,10 +41,10 @@ public class ModItems {
     public static final Item ONION_BULBS = registerItem("onion_bulbs", new AliasedBlockItem(ModBlocks.ONION_CROP, new FabricItemSettings()));
     public static final Item LESSSUSPICIOUSSTEW_ITEM = registerItem("lesssuspiciousstew", new Item(new FabricItemSettings().food(ModFoodComponents.LESSSUSPICIOUSSTEW_FOOD)));
 
-    public static final Item FILETKNIFE_ITEM = registerItem("filetknife", new Item(new FabricItemSettings()));
+    public static final Item FILETKNIFE_ITEM = registerItem("filetknife", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item MINNOW_ITEM = registerItem("minnow", new Item(new FabricItemSettings()));
     public static final Item SUCKERMINNOW_ITEM = registerItem("suckerminnow", new Item(new FabricItemSettings()));
-    public static final FancyFishingRodItem FANCYFISHINGROD_ITEM = (FancyFishingRodItem) registerItem("fancyfishingrod", new FancyFishingRodItem(new FabricItemSettings()));
+    public static final Item FANCYFISHINGROD_ITEM = registerItem("fancyfishingrod", new FancyFishingRodItem(new Item.Settings().maxCount(1).maxDamage(64)));
     //Spawn Eggs
     public static final Item MUSKELLUNGESPAWNEGG = registerItem("muskellungespawnegg",
             new SpawnEggItem(ModEntities.MUSKELLUNGE, 669900, 73426, new FabricItemSettings()));
@@ -59,13 +62,16 @@ public class ModItems {
             new SpawnEggItem(ModEntities.CATFISH, 669900, 73426, new FabricItemSettings()));
 //    public static final Item GIANTSQUIDSPAWNEGG = registerItem("giantsquidspawnegg",
 //            new SpawnEggItem(ModEntities.GIANTSQUID, 669900, 73426, new FabricItemSettings()));
+
+    public static void addItemsToToolsItemGroup(FabricItemGroupEntries entries){
+        entries.add(FANCYFISHINGROD_ITEM);
+    }
     public static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(YouNeedBait.MOD_ID, name), item);
     }
 
-
     public static void registerModItems() {
         YouNeedBait.LOGGER.info("Registering Mod Items For " + YouNeedBait.MOD_ID);
-
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItems::addItemsToToolsItemGroup);
     }
 }

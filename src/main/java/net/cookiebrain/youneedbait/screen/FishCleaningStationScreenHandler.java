@@ -16,12 +16,13 @@ import net.minecraft.screen.slot.Slot;
 
 public class FishCleaningStationScreenHandler extends ScreenHandler {
     private final Inventory inventory;
-    private final int slotCount = 27;
+    private final int slotCount = 4;
     private final PropertyDelegate propertyDelegate;
     public final FishCleaningStationBlockEntity blockEntity;
+
     protected FishCleaningStationScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos())
-                ,new ArrayPropertyDelegate(27));
+                ,new ArrayPropertyDelegate(4));
     }
 
     public FishCleaningStationScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate propertyDelegate) {
@@ -30,11 +31,6 @@ public class FishCleaningStationScreenHandler extends ScreenHandler {
         this.inventory = ((Inventory) blockEntity);
         this.propertyDelegate = propertyDelegate;
         this.blockEntity = ((FishCleaningStationBlockEntity) blockEntity);
-
-
-
-
-
 
         //Define the different kinds of slots
         class FiletKnifeSlot extends Slot{
@@ -54,11 +50,6 @@ public class FishCleaningStationScreenHandler extends ScreenHandler {
             }
         }
 
-
-
-
-
-
         class RawFishSlot extends Slot{
 
             public RawFishSlot(Inventory inventory, int index, int x, int y) {
@@ -75,11 +66,6 @@ public class FishCleaningStationScreenHandler extends ScreenHandler {
                 return 64;
             }
         }
-
-
-
-
-
 
         class FishSlot extends Slot{
 
@@ -98,9 +84,6 @@ public class FishCleaningStationScreenHandler extends ScreenHandler {
             }
         }
 
-
-
-
         class BonusSlot extends Slot{
 
             public BonusSlot(Inventory inventory, int index, int x, int y) {
@@ -118,16 +101,11 @@ public class FishCleaningStationScreenHandler extends ScreenHandler {
             }
         }
 
-
-
-
         //Creates the slots
         this.addSlot(new FiletKnifeSlot(inventory,0,15,55));
         this.addSlot(new RawFishSlot(inventory,1,115,55));
         this.addSlot(new FishSlot(inventory,2,58,7));
         this.addSlot(new BonusSlot(inventory,3,138,55));
-
-
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

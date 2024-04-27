@@ -28,7 +28,7 @@ public class MixinFishingRodItem {
     private void injectUse(World world, PlayerEntity player, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> cir) {
 
         //Check for a hook
-        //player.sendMessage(Text.literal("Checking for a hook"));
+        player.sendMessage(Text.literal("Checking for a hook - Mixin"));
         if(FishingHelper.hasHook(player)){
             //player.sendMessage(Text.literal("Hook found"));
             //player.sendMessage(Text.literal("Checking for bait"));

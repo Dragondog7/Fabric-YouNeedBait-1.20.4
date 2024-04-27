@@ -4,6 +4,7 @@ import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.entity.ModEntities;
 import net.cookiebrain.youneedbait.entity.client.*;
 import net.cookiebrain.youneedbait.entity.layer.ModModelLayers;
+import net.cookiebrain.youneedbait.screen.FancyFishingRodScreen;
 import net.cookiebrain.youneedbait.screen.FishCleaningStationScreen;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.cookiebrain.youneedbait.item.custom.FancyFishingRodItem;
@@ -19,6 +20,7 @@ import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.FishingRodItem;
 import net.minecraft.util.Identifier;
 
 public class YouNeedBaitClient implements ClientModInitializer {
@@ -57,8 +59,9 @@ public class YouNeedBaitClient implements ClientModInitializer {
 
         HandledScreens.register(ModScreenHandlers.TACKLEBOX_SCREEN_HANDLER, TackleBoxScreen::new);
         HandledScreens.register(ModScreenHandlers.FISH_CLEANING_STATION_SCREEN_HANDLER, FishCleaningStationScreen::new);
+        HandledScreens.register(ModScreenHandlers.FANCYFISHINGROD_SCREEN_HANDLER, FancyFishingRodScreen::new);
 
-        //This is from FishingParadise
+//        //This is from FishingParadise
         ModelPredicateProviderRegistry.register(ModItems.FANCYFISHINGROD_ITEM, new Identifier("cast"), (stack, world, entity, seed) -> {
             boolean bl2;
             if (entity == null) {
@@ -66,7 +69,7 @@ public class YouNeedBaitClient implements ClientModInitializer {
             }
             boolean bl = entity.getMainHandStack() == stack;
             boolean bl3 = bl2 = entity.getOffHandStack() == stack;
-            if (entity.getMainHandStack().getItem() instanceof FancyFishingRodItem) {
+            if (entity.getMainHandStack().getItem() instanceof FishingRodItem) {
                 bl2 = false;
             }
             return (bl || bl2) && entity instanceof PlayerEntity && ((PlayerEntity)entity).fishHook != null ? 1.0f : 0.0f;
