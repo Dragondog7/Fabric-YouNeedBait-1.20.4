@@ -1,10 +1,7 @@
 package net.cookiebrain.youneedbait.block;
 
 import net.cookiebrain.youneedbait.YouNeedBait;
-import net.cookiebrain.youneedbait.block.custom.MinnowBucketBlock;
-import net.cookiebrain.youneedbait.block.custom.OnionCropBlock;
-import net.cookiebrain.youneedbait.block.custom.MinnowTrapBlock;
-import net.cookiebrain.youneedbait.block.custom.TackleBoxBlock;
+import net.cookiebrain.youneedbait.block.custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -29,6 +26,8 @@ public class ModBlocks {
             new MinnowTrapBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(1f).nonOpaque()));
     public static final Block TACKLEBOX_BLOCK = registerBlock("tacklebox_block",
             new TackleBoxBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(1f).nonOpaque()));
+    public static final Block FISHCLEANINGSTATION_BLOCK = registerBlock("fishcleaningstation_block",
+            new FishCleaningStationBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(1f).nonOpaque()));
     public static final Block MINNOWBUCKET_BLOCK = registerBlock("minnowbucket_block",
             new MinnowBucketBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(1f).nonOpaque()));
 

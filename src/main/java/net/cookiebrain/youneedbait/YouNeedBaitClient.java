@@ -4,6 +4,7 @@ import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.entity.ModEntities;
 import net.cookiebrain.youneedbait.entity.client.*;
 import net.cookiebrain.youneedbait.entity.layer.ModModelLayers;
+import net.cookiebrain.youneedbait.screen.FishCleaningStationScreen;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.cookiebrain.youneedbait.item.custom.FancyFishingRodItem;
 import net.cookiebrain.youneedbait.screen.ModScreenHandlers;
@@ -55,6 +56,7 @@ public class YouNeedBaitClient implements ClientModInitializer {
         ModelLoadingRegistry.INSTANCE.registerModelProvider(((manager, out) -> new ModelIdentifier(YouNeedBait.MOD_ID,"fancyfishingrod_3d","inventory")));
 
         HandledScreens.register(ModScreenHandlers.TACKLEBOX_SCREEN_HANDLER, TackleBoxScreen::new);
+        HandledScreens.register(ModScreenHandlers.FISH_CLEANING_STATION_SCREEN_HANDLER, FishCleaningStationScreen::new);
 
         //This is from FishingParadise
         ModelPredicateProviderRegistry.register(ModItems.FANCYFISHINGROD_ITEM, new Identifier("cast"), (stack, world, entity, seed) -> {

@@ -38,6 +38,7 @@
   "block.youneedbait.minnowtrap_block": "Minnow Trap",
   "block.youneedbait.minnowbucket_block": "Minnow Bucket",
   "block.youneedbait.tacklebox_block": "Tackle Box",
+  "block.youneedbait.fishcleaningstation_block": "Fish Cleaning Station",
 
   "itemgroup.youneedbait": "YouNeedBait",
 
@@ -65,5 +66,8 @@
   "tooltip.youneedbait.catfish.tooltip": "Press §eSHIFT§r for more Information",
 
   "tooltip.youneedbait.canofworms.tooltip.shift": "You Feel Disgusted Even Holding This Abomination",
-  "tooltip.youneedbait.canofworms.tooltip": "Press §eSHIFT§r for more Information"
+  "tooltip.youneedbait.canofworms.tooltip": "Press §eSHIFT§r for more Information",
+
+  "effect.youneedbait.electrified": "Electrified"
+
 }

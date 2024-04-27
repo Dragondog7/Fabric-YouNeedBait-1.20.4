@@ -1,5 +1,7 @@
 ## Fabric 0.2.0.0
 
+## ChangeLog
+
 ### New
 
 #### Items
@@ -39,6 +41,7 @@
 
 ----------------
 ## Fabric Version 0.3.0.0
+## ChangeLog
 ### New
 #### Items
  - Onion

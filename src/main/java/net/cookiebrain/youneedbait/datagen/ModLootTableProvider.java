@@ -31,6 +31,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SALT_BLOCK,saltOreDrops(ModBlocks.SALT_BLOCK,ModItems.SALT));
         addDrop(ModBlocks.MINNOWTRAP_BLOCK);
         addDrop(ModBlocks.TACKLEBOX_BLOCK);
+        addDrop(ModBlocks.FISHCLEANINGSTATION_BLOCK);
         addDrop(ModBlocks.MINNOWBUCKET_BLOCK);
         addDrop(ModBlocks.AZUROMITE_BLOCK);
 

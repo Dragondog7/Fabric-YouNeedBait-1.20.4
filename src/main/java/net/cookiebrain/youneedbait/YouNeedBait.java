@@ -2,6 +2,7 @@ package net.cookiebrain.youneedbait;
 
 import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.block.entity.ModBlockEntities;
+import net.cookiebrain.youneedbait.effect.ModEffects;
 import net.cookiebrain.youneedbait.entity.ModEntities;
 import net.cookiebrain.youneedbait.entity.custom.*;
 import net.cookiebrain.youneedbait.item.ModItemGroups;
@@ -36,6 +37,7 @@ public class YouNeedBait implements ModInitializer {
 		ModVillagers.registerVillagers();
 		ModRegistries.registerModStuffs();
 		ModScreenHandlers.registerScreenHandler();
+		ModEffects.registerEffects();
 
 		FabricDefaultAttributeRegistry.register(ModEntities.MUSKELLUNGE, MuskellungeEntity.createMuskellungeAttributes());
 

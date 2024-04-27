@@ -18,6 +18,12 @@ public class ModTags {
         public static final TagKey<Item> FISH_BAIT_ITEMS =
                 createTag("fishing_bait_items");
 
+        public static final TagKey<Item> CUSTOM_FISH =
+                createTag("custom_fish");
+
+        public static final TagKey<Item> BONUS_FISH_THINGS =
+                createTag("bonus_fish_things");
+
         public static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(YouNeedBait.MOD_ID,name));
         }

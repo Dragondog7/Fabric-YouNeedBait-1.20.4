@@ -24,6 +24,7 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleState(ModBlocks.MINNOWTRAP_BLOCK);
         blockStateModelGenerator.registerSimpleState(ModBlocks.TACKLEBOX_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.FISHCLEANINGSTATION_BLOCK);
         blockStateModelGenerator.registerSimpleState(ModBlocks.MINNOWBUCKET_BLOCK);
 
         blockStateModelGenerator.registerSimpleState(ModBlocks.AZUROMITE_BLOCK);

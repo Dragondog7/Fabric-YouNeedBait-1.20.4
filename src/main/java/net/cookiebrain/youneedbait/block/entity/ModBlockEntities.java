@@ -17,6 +17,10 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(YouNeedBait.MOD_ID, "tacklebox_be"),
                     FabricBlockEntityTypeBuilder.create(TackleBoxBlockEntity::new,
                             ModBlocks.TACKLEBOX_BLOCK).build(null));
+    public static final BlockEntityType<FishCleaningStationBlockEntity> FISHCLEANINGSTATION_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(YouNeedBait.MOD_ID, "fishcleaningstation_be"),
+                    FabricBlockEntityTypeBuilder.create(FishCleaningStationBlockEntity::new,
+                            ModBlocks.FISHCLEANINGSTATION_BLOCK).build(null));
     public static void registerBlockEntities() {
         YouNeedBait.LOGGER.info("Registering Block Entities for " + YouNeedBait.MOD_ID);
     }
