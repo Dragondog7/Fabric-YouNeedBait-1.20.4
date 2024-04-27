@@ -4,16 +4,21 @@ import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.entity.ModEntities;
 import net.cookiebrain.youneedbait.entity.client.*;
 import net.cookiebrain.youneedbait.entity.layer.ModModelLayers;
+import net.cookiebrain.youneedbait.item.ModItems;
+import net.cookiebrain.youneedbait.item.custom.FancyFishingRodItem;
 import net.cookiebrain.youneedbait.screen.ModScreenHandlers;
 import net.cookiebrain.youneedbait.screen.TackleBoxScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.util.ModelIdentifier;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Identifier;
 
 public class YouNeedBaitClient implements ClientModInitializer {
     @Override
@@ -46,6 +51,23 @@ public class YouNeedBaitClient implements ClientModInitializer {
 //        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.GIANTSQUID, GiantSquidModel
 //                ::getTexturedModelData);
 
+        //Handles the 3d Rendering
+        ModelLoadingRegistry.INSTANCE.registerModelProvider(((manager, out) -> new ModelIdentifier(YouNeedBait.MOD_ID,"fancyfishingrod_3d","inventory")));
+
         HandledScreens.register(ModScreenHandlers.TACKLEBOX_SCREEN_HANDLER, TackleBoxScreen::new);
+
+        //This is from FishingParadise
+        ModelPredicateProviderRegistry.register(ModItems.FANCYFISHINGROD_ITEM, new Identifier("cast"), (stack, world, entity, seed) -> {
+            boolean bl2;
+            if (entity == null) {
+                return 0.0f;
+            }
+            boolean bl = entity.getMainHandStack() == stack;
+            boolean bl3 = bl2 = entity.getOffHandStack() == stack;
+            if (entity.getMainHandStack().getItem() instanceof FancyFishingRodItem) {
+                bl2 = false;
+            }
+            return (bl || bl2) && entity instanceof PlayerEntity && ((PlayerEntity)entity).fishHook != null ? 1.0f : 0.0f;
+        });
     }
 }

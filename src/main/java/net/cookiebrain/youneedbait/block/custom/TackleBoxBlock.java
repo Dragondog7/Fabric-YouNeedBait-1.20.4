@@ -52,15 +52,15 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        System.out.println("Block was broken here");
+        //System.out.println("Block was broken here");
         BlockEntity be = world.getBlockEntity(pos);
         if(be instanceof TackleBoxBlockEntity blockEntity){
             ItemStack tbItem = new ItemStack(this);
-            System.out.println("Saving the items from the tacklebox");
+            //System.out.println("Saving the items from the tacklebox");
             System.out.println((long) ((TackleBoxBlockEntity) be).getItems().size());
             ItemStackHelper.itemStackToNBT(tbItem,"tacklebox_inv",((TackleBoxBlockEntity) be).getItems());
-            System.out.println("Checking if the saved items has nbt data");
-            System.out.println(tbItem.hasNbt());
+            //System.out.println("Checking if the saved items has nbt data");
+            //System.out.println(tbItem.hasNbt());
             ItemStackHelper.giveItemToPlayer(player,tbItem);
             //Get rid of the item
             DefaultedList<ItemStack> emptyItems = DefaultedList.ofSize(27,ItemStack.EMPTY);
@@ -72,7 +72,7 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        System.out.println("Block was replaced here");
+        //System.out.println("Block was replaced here");
         //This makes the inventory drop when your block breaks
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -87,11 +87,11 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
-            System.out.println("Not on client");
+            //System.out.println("Not on client");
             NamedScreenHandlerFactory screenHandlerFactory = ((TackleBoxBlockEntity) world.getBlockEntity(pos));
-            System.out.println("Screen Handler factory created");
+            //System.out.println("Screen Handler factory created");
             if (screenHandlerFactory != null) {
-                System.out.println("attempting to open the screen");
+                //System.out.println("attempting to open the screen");
                 player.openHandledScreen(screenHandlerFactory);
             }
         }
@@ -105,20 +105,4 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 
-    //    @Override
-    //    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-    //        if (world.isClient) {
-    //            return ActionResult.SUCCESS;
-    //        }
-    //        System.out.println("You used the tackle box");
-    //        NamedScreenHandlerFactory namedScreenHandlerFactory = this.createScreenHandlerFactory(state, world, pos);
-    //        if (namedScreenHandlerFactory != null) {
-    //            System.out.println("namedScreenHandlerFactory is not null");
-    //            player.openHandledScreen(namedScreenHandlerFactory);
-    //            System.out.println("openHandledScreen worked");
-    //            //player.incrementStat(this.getOpenStat());
-    //            //PiglinBrain.onGuardedBlockInteracted(player, true);
-    //        }
-    //        return ActionResult.CONSUME;
-    //    }
 }
