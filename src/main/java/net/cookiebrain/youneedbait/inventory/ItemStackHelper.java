@@ -1,6 +1,8 @@
 package net.cookiebrain.youneedbait.inventory;
 
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -57,6 +59,27 @@ public class ItemStackHelper {
         return items;
     }
 
+    //Converts an itemstack to a SimpleInventory (Inventory interface)
+
+    public static Inventory convertToInventory(DefaultedList<ItemStack> itemStacks){
+        SimpleInventory inventory = new SimpleInventory(itemStacks.size());
+
+        for (int i = 0; i < itemStacks.size(); i++) {
+            inventory.setStack(i,itemStacks.get(i));
+        }
+        return inventory;
+    }
+
+    public static DefaultedList<ItemStack> convertToDefaultedList(Inventory inventory){
+        DefaultedList<ItemStack> items = DefaultedList.ofSize(inventory.size(), ItemStack.EMPTY);
+
+        // Transfer the items from the Inventory to the DefaultedList
+        for (int i = 0; i < inventory.size(); i++) {
+            items.set(i, inventory.getStack(i));
+        }
+
+        return items;
+    }
     public static void giveItemToPlayer(PlayerEntity player, ItemStack stack){
         if(!player.giveItemStack(stack)){
             player.dropItem(stack,false);

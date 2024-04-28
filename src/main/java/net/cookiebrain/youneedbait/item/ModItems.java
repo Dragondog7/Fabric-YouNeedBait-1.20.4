@@ -24,7 +24,7 @@ public class ModItems {
     public static final Item REDHERRING = registerItem("redherring", new Item(new FabricItemSettings()));
     public static final Item SALT = registerItem("salt", new Item(new FabricItemSettings()));
     public static final Item AZUROMITE_INGOT = registerItem("azuromite_ingot", new Item(new FabricItemSettings()));
-    public static final Item HOOK = registerItem("hook", new Item(new FabricItemSettings()));
+    public static final Item HOOK = registerItem("hook", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item WORM = registerItem("worm", new Item(new FabricItemSettings()));
     public static final Item CATERPILLAR = registerItem("caterpillar", new Item(new FabricItemSettings()));
     public static final Item CANOFWORMS = registerItem("canofworms", new CanOfWormsItem(new FabricItemSettings()));

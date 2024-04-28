@@ -3,6 +3,7 @@ package net.cookiebrain.youneedbait.item.custom;
 import net.cookiebrain.youneedbait.block.entity.ImplementedInventory;
 import net.cookiebrain.youneedbait.entity.custom.FancyFishingBobberEntity;
 import net.cookiebrain.youneedbait.inventory.FishingHelper;
+import net.cookiebrain.youneedbait.inventory.ItemStackHelper;
 import net.cookiebrain.youneedbait.screen.FancyFishingRodScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -11,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.FishingRodItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
@@ -28,24 +30,26 @@ import org.jetbrains.annotations.Nullable;
 
 public class FancyFishingRodItem extends FishingRodItem implements ExtendedScreenHandlerFactory, ImplementedInventory {
     private ItemStack rodInstance;
-    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3,ItemStack.EMPTY);
+    private DefaultedList<ItemStack> rodInventory;
     public FancyFishingRodItem(Settings settings) {
         super(settings);
+        this.rodInventory = DefaultedList.ofSize(3,ItemStack.EMPTY);
 
     }
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         this.rodInstance = user.getStackInHand(hand);
+        this.rodInventory = ItemStackHelper.nbtToItemStack(user.getMainHandStack(),"fishingrod_inventory");
         int i;
 
         //Check if the player is holding down shift
         if (user.isSneaking()){
             if(!world.isClient()){
                 NamedScreenHandlerFactory screenHandlerFactory = this;
-                System.out.println(screenHandlerFactory);
-                System.out.println("Screen Handler factory created");
+                //System.out.println(screenHandlerFactory);
+                //System.out.println("Screen Handler factory created");
                 if (screenHandlerFactory != null) {
-                    System.out.println("attempting to open the screen");
+                    //System.out.println("attempting to open the screen");
                     user.openHandledScreen(screenHandlerFactory);
                 }
             }
@@ -71,6 +75,12 @@ public class FancyFishingRodItem extends FishingRodItem implements ExtendedScree
                     this.rodInstance.damage(i, user, (p) -> {
                         p.sendToolBreakStatus(hand);
                     });
+
+                    //Custom modifier slot logic
+                    if(this.rodInventory.stream().anyMatch(itemStack -> itemStack.getItem() == Items.GLOW_BERRIES)){
+                        user.addExperience(1);
+                        //System.out.println("Glow Berries bonus exp awarded");
+                    }
                 }
                 world.playSound((PlayerEntity) null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_FISHING_BOBBER_RETRIEVE, SoundCategory.NEUTRAL, 1.0F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
                 user.emitGameEvent(GameEvent.ITEM_INTERACT_FINISH);
@@ -110,10 +120,10 @@ public class FancyFishingRodItem extends FishingRodItem implements ExtendedScree
 
     @Override
     public DefaultedList<ItemStack> getItems() {
-        return this.inventory;
+        return this.rodInventory;
     }
 
     public void setItems(DefaultedList<ItemStack> itemStacks) {
-        this.inventory = itemStacks;
+        this.rodInventory = itemStacks;
     }
 }

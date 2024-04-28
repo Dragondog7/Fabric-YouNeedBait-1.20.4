@@ -2,7 +2,6 @@ package net.cookiebrain.youneedbait.screen;
 
 import net.cookiebrain.youneedbait.inventory.ItemStackHelper;
 import net.cookiebrain.youneedbait.item.ModItems;
-import net.cookiebrain.youneedbait.item.custom.FancyFishingRodItem;
 import net.cookiebrain.youneedbait.util.ModTags;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -15,11 +14,10 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.collection.DefaultedList;
 
 public class FancyFishingRodScreenHandler extends ScreenHandler {
-    private final Inventory inventory;
     private final int slotCount = 3;
-    public final FancyFishingRodItem rodInstance;
+    public final ItemStack rodInstance;
     private DefaultedList<ItemStack> menuInventory;
-
+    private Inventory inventory;
     protected FancyFishingRodScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncId, inventory, inventory.player.getMainHandStack());
     }
@@ -27,17 +25,17 @@ public class FancyFishingRodScreenHandler extends ScreenHandler {
     public FancyFishingRodScreenHandler(int syncId, PlayerInventory playerInventory, ItemStack itemStack) {
         super(ModScreenHandlers.FANCYFISHINGROD_SCREEN_HANDLER,syncId);
         Item item = itemStack.getItem();
-        //this.rodInstance = playerInventory.getMainHandStack();
-        this.rodInstance = (FancyFishingRodItem)  item;
+        this.rodInstance = playerInventory.getMainHandStack();
+        //this.rodInstance = itemStack;
         //Don't use .getitems() as it cannot be converted to an Inventory
-        checkSize(rodInstance,slotCount);
-        this.inventory = this.rodInstance;
-        //this.menuInventory = ItemStackHelper.nbtToItemStack(this.rodInstance,"fishingrod_inventory");
-
+        //checkSize(playerInventory,slotCount);
+        //this.inventory = this.rodInstance;
+        this.menuInventory = ItemStackHelper.nbtToItemStack(this.rodInstance,"fishingrod_inventory");
+        this.inventory = ItemStackHelper.convertToInventory(this.menuInventory);
         //Creates the slots
-        this.addSlot(new ModifierSlot((Inventory) this.inventory,0,62,16));
-        this.addSlot(new BaitSlot((Inventory) this.inventory,1,62,46));
-        this.addSlot(new HookSlot((Inventory) this.inventory,2,119,46));
+        this.addSlot(new ModifierSlot(this.inventory,0,62,16));
+        this.addSlot(new BaitSlot(this.inventory,1,62,46));
+        this.addSlot(new HookSlot(this.inventory,2,119,46));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
@@ -95,8 +93,9 @@ public class FancyFishingRodScreenHandler extends ScreenHandler {
     @Override
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
-        //ItemStackHelper.itemStackToNBT(this.rodInstance,"fishingrod_inventory",this.menuInventory);
-        System.out.println("The Fishing Rod Screen was closed");
+        DefaultedList<ItemStack> rodItems = ItemStackHelper.convertToDefaultedList(this.inventory);
+        ItemStackHelper.itemStackToNBT(this.rodInstance,"fishingrod_inventory",rodItems);
+        //System.out.println("The Fishing Rod Screen was closed");
     }
 
     @Override
