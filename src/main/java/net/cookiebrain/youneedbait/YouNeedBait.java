@@ -7,6 +7,7 @@ import net.cookiebrain.youneedbait.entity.ModEntities;
 import net.cookiebrain.youneedbait.entity.custom.*;
 import net.cookiebrain.youneedbait.item.ModItemGroups;
 import net.cookiebrain.youneedbait.item.ModItems;
+import net.cookiebrain.youneedbait.loot.ModBonusLoot;
 import net.cookiebrain.youneedbait.screen.ModScreenHandlers;
 import net.cookiebrain.youneedbait.util.ModCustomTrades;
 import net.cookiebrain.youneedbait.util.ModLootTableModifiers;

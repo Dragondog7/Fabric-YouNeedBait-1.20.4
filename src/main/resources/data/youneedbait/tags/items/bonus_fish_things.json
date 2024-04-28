@@ -1,12 +1,11 @@
 {
   "replace": false,
   "values": [
-    "youneedbait:walleye",
-    "youneedbait:pumpkinseed",
-    "youneedbait:largemouthbass",
-    "youneedbait:catfish",
-    "youneedbait:muskellunge",
-    "youneedbait:northernpike",
-    "youneedbait:blackcrappie"
+    "youneedbait:minnow",
+    "youneedbait:worm",
+    "youneedbait:caterpillar",
+    "youneedbait:suckerminnow",
+    "youneedbait:mutilated_flesh",
+    "youneedbait:hook"
   ]
 }

@@ -7,7 +7,6 @@ import net.cookiebrain.youneedbait.entity.layer.ModModelLayers;
 import net.cookiebrain.youneedbait.screen.FancyFishingRodScreen;
 import net.cookiebrain.youneedbait.screen.FishCleaningStationScreen;
 import net.cookiebrain.youneedbait.item.ModItems;
-import net.cookiebrain.youneedbait.item.custom.FancyFishingRodItem;
 import net.cookiebrain.youneedbait.screen.ModScreenHandlers;
 import net.cookiebrain.youneedbait.screen.TackleBoxScreen;
 import net.fabricmc.api.ClientModInitializer;

@@ -19,6 +19,10 @@ public class FishCleaningStationScreenHandler extends ScreenHandler {
     private final int slotCount = 4;
     private final PropertyDelegate propertyDelegate;
     public final FishCleaningStationBlockEntity blockEntity;
+    private static final int RAWFISH_SLOT = 0;
+    private static final int FILETKNIFE_SLOT = 1;
+    private static final int OUTPUT_SLOT = 2;
+    private static final int BONUS_SLOT = 3;
 
     protected FishCleaningStationScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos())
@@ -58,7 +62,7 @@ public class FishCleaningStationScreenHandler extends ScreenHandler {
 
             @Override
             public boolean canInsert(ItemStack stack) {
-                return stack.isOf(ModItems.RAWFISHFILET);
+                return stack.isIn(ModTags.Items.CUSTOM_FISH);
             }
 
             @Override
@@ -67,15 +71,15 @@ public class FishCleaningStationScreenHandler extends ScreenHandler {
             }
         }
 
-        class FishSlot extends Slot{
+        class FiletSlot extends Slot{
 
-            public FishSlot(Inventory inventory, int index, int x, int y) {
+            public FiletSlot(Inventory inventory, int index, int x, int y) {
                 super(inventory, index, x, y);
             }
 
             @Override
             public boolean canInsert(ItemStack stack) {
-                return stack.isIn(ModTags.Items.CUSTOM_FISH);
+                return stack.isOf(ModItems.RAWFISHFILET);
             }
 
             @Override
@@ -92,7 +96,8 @@ public class FishCleaningStationScreenHandler extends ScreenHandler {
 
             @Override
             public boolean canInsert(ItemStack stack) {
-                return stack.isIn(ModTags.Items.CUSTOM_FISH);
+                return false;
+                //stack.isIn(ModTags.Items.CUSTOM_FISH);
             }
 
             @Override
@@ -102,10 +107,10 @@ public class FishCleaningStationScreenHandler extends ScreenHandler {
         }
 
         //Creates the slots
-        this.addSlot(new FiletKnifeSlot(inventory,0,15,55));
-        this.addSlot(new RawFishSlot(inventory,1,115,55));
-        this.addSlot(new FishSlot(inventory,2,58,7));
-        this.addSlot(new BonusSlot(inventory,3,138,55));
+        this.addSlot(new RawFishSlot(inventory,RAWFISH_SLOT,58,7));
+        this.addSlot(new FiletKnifeSlot(inventory,FILETKNIFE_SLOT,15,55));
+        this.addSlot(new FiletSlot(inventory,OUTPUT_SLOT,115,55));
+        this.addSlot(new BonusSlot(inventory,BONUS_SLOT,138,55));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

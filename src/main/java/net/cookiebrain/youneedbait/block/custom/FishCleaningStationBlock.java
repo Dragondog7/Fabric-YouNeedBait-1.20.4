@@ -12,6 +12,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
@@ -89,6 +90,10 @@ public class FishCleaningStationBlock extends BlockWithEntity implements BlockEn
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             System.out.println("Not on client");
+            BlockEntity entity = world.getBlockEntity(pos);
+            if(entity instanceof FishCleaningStationBlockEntity){
+                ((FishCleaningStationBlockEntity) entity).setPlayer((ServerPlayerEntity) player);
+            }
             NamedScreenHandlerFactory screenHandlerFactory = ((FishCleaningStationBlockEntity) world.getBlockEntity(pos));
             System.out.println("Screen Handler factory created");
             if (screenHandlerFactory != null) {

@@ -21,6 +21,7 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(YouNeedBait.MOD_ID, "fishcleaningstation_be"),
                     FabricBlockEntityTypeBuilder.create(FishCleaningStationBlockEntity::new,
                             ModBlocks.FISHCLEANINGSTATION_BLOCK).build(null));
+
     public static void registerBlockEntities() {
         YouNeedBait.LOGGER.info("Registering Block Entities for " + YouNeedBait.MOD_ID);
     }

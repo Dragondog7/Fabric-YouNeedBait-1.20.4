@@ -10,7 +10,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class FishCleaningStationScreen extends HandledScreen<FishCleaningStationScreenHandler> {
-    public static final Identifier TEXTURE =
+    public static final Identifier FISHCLEANINGSTATION_GUI =
             new Identifier(YouNeedBait.MOD_ID,"textures/gui/fishcleaningstation_gui.png");
     public FishCleaningStationScreen(FishCleaningStationScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -27,18 +27,18 @@ public class FishCleaningStationScreen extends HandledScreen<FishCleaningStation
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, TEXTURE);
+        RenderSystem.setShaderTexture(0, FISHCLEANINGSTATION_GUI);
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
 
-        context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        context.drawTexture(FISHCLEANINGSTATION_GUI, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
-        //renderProgressArrow(context, x, y);
+        renderProgressArrow(context, x, y);
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
         if(handler.isCrafting()) {
-            context.drawTexture(TEXTURE, x + 85, y + 30, 176, 0, 8, handler.getScaledProgress());
+            context.drawTexture(FISHCLEANINGSTATION_GUI, x + 100, y + 36, 176, 0, 8, handler.getScaledProgress());
         }
     }
     @Override
