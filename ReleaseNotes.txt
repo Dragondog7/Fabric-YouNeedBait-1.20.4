@@ -65,3 +65,32 @@
 ### Bugfixes
  - Fixed bug where fish were spawning on land
  - Fixed description for Minnow Bucket
+
+ ## Fabric 0.3.2.0
+ ### New
+
+ Fishing Rod
+ - New custom fishing rod with 3d model
+ - Obtained from a Master level Fisherman Villager (9 Azuromite Blocks)
+ - Has a slot for bait, hook, and modifier
+ - Shift Right-click while holding in main hand opens the interface
+ - Modifier slot (green) - Glow Berries (Experience bonus after each catch)
+
+ Fish Cleaning Station
+ - Where you clean your fish
+ - Requires a filet knife
+ - There is a 10% chance for bonus loot
+
+ ### Updates
+ Tackle Box
+ - New 3d model and texture
+ - Drops item when broken instead of magically appearing in your inventory
+
+ Catfish - New icon
+
+ Fish Hook
+ - Needs to be equipped on the custom fishing rod to use it
+ - Shift-Right Click opens the fishing rod inventory
+
+ Fishing
+ - Increased the weighting of the custom fish loot table

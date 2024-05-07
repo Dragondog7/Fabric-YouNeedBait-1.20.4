@@ -8,6 +8,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
@@ -19,6 +20,7 @@ import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -61,11 +63,21 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
             ItemStackHelper.itemStackToNBT(tbItem,"tacklebox_inv",((TackleBoxBlockEntity) be).getItems());
             //System.out.println("Checking if the saved items has nbt data");
             //System.out.println(tbItem.hasNbt());
-            ItemStackHelper.giveItemToPlayer(player,tbItem);
+            //This puts the item directly in the inventory, would rather have it spawn
+            //ItemStackHelper.giveItemToPlayer(player,tbItem);
+            //Attempt to spawn the item
+
             //Get rid of the item
             DefaultedList<ItemStack> emptyItems = DefaultedList.ofSize(27,ItemStack.EMPTY);
             ((TackleBoxBlockEntity) be).setItems(emptyItems);
             world.removeBlock(pos,false);
+
+            // Create a new ItemEntity at the specified position
+            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tbItem);
+            // Set motion for the item entity if desired
+            itemEntity.setVelocity(Vec3d.ZERO); // Example: Set no motion
+            // Spawn the ItemEntity in the world
+            world.spawnEntity(itemEntity);
         }
         return super.onBreak(world, pos, state, player);
     }
