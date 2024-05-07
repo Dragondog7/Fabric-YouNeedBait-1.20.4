@@ -60,7 +60,7 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
             return 0;
         }
         int i = 0;
-        playerEntity.sendMessage(Text.literal("Inside bobber use"));
+        //playerEntity.sendMessage(Text.literal("Inside bobber use"));
         //This line is custom
         int hookCountdown = ((FishingBobberAccessor) this).getHookCountdown();
         if (this.getHookedEntity() != null) {
