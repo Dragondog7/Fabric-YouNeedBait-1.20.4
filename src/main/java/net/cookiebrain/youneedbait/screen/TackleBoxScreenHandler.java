@@ -1,6 +1,7 @@
 package net.cookiebrain.youneedbait.screen;
 
 import net.cookiebrain.youneedbait.block.entity.TackleBoxBlockEntity;
+import net.cookiebrain.youneedbait.util.ModTags;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -14,12 +15,12 @@ import net.minecraft.screen.slot.Slot;
 
 public class TackleBoxScreenHandler extends ScreenHandler {
     private final Inventory inventory;
-    private final int slotCount = 27;
+    private final int slotCount = 4;
     private final PropertyDelegate propertyDelegate;
     public final TackleBoxBlockEntity blockEntity;
     protected TackleBoxScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos())
-                ,new ArrayPropertyDelegate(27));
+                ,new ArrayPropertyDelegate(4));
     }
 
     public TackleBoxScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate propertyDelegate) {
@@ -30,16 +31,38 @@ public class TackleBoxScreenHandler extends ScreenHandler {
         this.blockEntity = ((TackleBoxBlockEntity) blockEntity);
 
         //This defines the slots for the tacklebox screen
-        for (int i = 0; i < 2; ++i) {
-            for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(inventory, l + i * 9 + 9, 8 + l * 18, 18 + i * 18));
-            }
-        }
+//        for (int i = 0; i < 2; ++i) {
+//            for (int l = 0; l < 9; ++l) {
+//                this.addSlot(new Slot(inventory, l + i * 9 + 9, 8 + l * 18, 18 + i * 18));
+//            }
+//        }
+
+        this.addSlot(new TackleBoxSlot(inventory,0,50,55));
+        this.addSlot(new TackleBoxSlot(inventory,1,70,55));
+        this.addSlot(new TackleBoxSlot(inventory,2,90,55));
+        this.addSlot(new TackleBoxSlot(inventory,3,110,55));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
 
         addProperties(propertyDelegate);
+    }
+
+    class TackleBoxSlot extends Slot{
+
+        public TackleBoxSlot(Inventory inventory, int index, int x, int y) {
+            super(inventory, index, x, y);
+        }
+
+        @Override
+        public boolean canInsert(ItemStack stack) {
+            return stack.isIn(ModTags.Items.BONUS_FISH_THINGS);
+        }
+
+        @Override
+        public int getMaxItemCount() {
+            return 64;
+        }
     }
 
     //The next two methods are for updating some sort of crafting progress

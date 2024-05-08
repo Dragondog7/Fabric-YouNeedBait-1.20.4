@@ -18,14 +18,19 @@ public class ModBonusLoot {
             .addItem(ModItems.MUTILATED_FLESH, 15)
             .addItem(ModItems.HOOK, 3);
 
+    private final BonusLoot swampBaitTrap = new BonusLoot("swampbaittrap")
+            .addItem(ModItems.LEECH,50)
+            .addItem(ModItems.SUCKERMINNOW_ITEM,50);
+
     public ModBonusLoot() {
         lootList.add(fishCleaningBonusLoot);
-
+        lootList.add(swampBaitTrap);
     }
     public List<BonusLoot> getLootTables()
     {
         return lootList;
     }
+
     public BonusLoot getLootTableByName(String name){
         for (int i = 0; i < lootList.size(); i++) {
             if(Objects.equals(lootList.get(i).getName(), name)){

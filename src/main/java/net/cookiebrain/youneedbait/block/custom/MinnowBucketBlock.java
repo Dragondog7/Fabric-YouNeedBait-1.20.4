@@ -42,7 +42,7 @@ public class MinnowBucketBlock extends BlockWithEntity implements BlockEntityPro
                 //System.out.println("You used the minnow trap");
                 //ItemStack extracted = ((MinnowTrapBlockEntity) be).removeMinnows();
                 int selectedSlot = player.getInventory().selectedSlot;
-                player.getInventory().main.set(selectedSlot,((MinnowTrapBlockEntity) be).removeMinnows());
+                player.getInventory().main.set(selectedSlot,((MinnowTrapBlockEntity) be).removeBait());
                 return ActionResult.SUCCESS;
             }
         }

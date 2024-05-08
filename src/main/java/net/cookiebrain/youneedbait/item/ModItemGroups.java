@@ -30,6 +30,8 @@ public class ModItemGroups {
                         entries.add(ModItems.CATERPILLAR);
                         entries.add(ModItems.MINNOW_ITEM);
                         entries.add(ModItems.SUCKERMINNOW_ITEM);
+                        entries.add(ModItems.LEECH);
+                        entries.add(ModItems.NIGHTCRAWLER);
 
                         //Food
                         entries.add(ModItems.RAWFISHFILET);

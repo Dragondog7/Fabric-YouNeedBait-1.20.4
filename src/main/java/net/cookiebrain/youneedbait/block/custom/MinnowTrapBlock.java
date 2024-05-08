@@ -7,6 +7,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -17,14 +18,12 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 public class MinnowTrapBlock extends BlockWithEntity implements BlockEntityProvider, Waterloggable {
@@ -43,10 +42,41 @@ public class MinnowTrapBlock extends BlockWithEntity implements BlockEntityProvi
         if (!world.isClient && hand == Hand.MAIN_HAND) {
             BlockEntity be = world.getBlockEntity(pos);
             if(be instanceof MinnowTrapBlockEntity blockEntity){
-                //System.out.println("You used the minnow trap");
-                //ItemStack extracted = ((MinnowTrapBlockEntity) be).removeMinnows();
+                System.out.println("You used the minnow trap");
                 int selectedSlot = player.getInventory().selectedSlot;
-                player.getInventory().main.set(selectedSlot,((MinnowTrapBlockEntity) be).removeMinnows());
+                System.out.println(((MinnowTrapBlockEntity) be).getBaitType().getName());
+                ItemStack bait = ((MinnowTrapBlockEntity) be).removeBait();
+                int existingSlot = player.getInventory().getSlotWithStack(bait);
+                if(!bait.isEmpty()){
+                    if(player.getInventory().getStack(selectedSlot).isOf(bait.getItem())) {
+                        //Adds to the stack if they have it selected
+                        player.getInventory().getStack(selectedSlot).increment(bait.getCount());
+                    } else if (existingSlot>=0 && player.getInventory().getStack(existingSlot).getCount()<player.getInventory().getStack(existingSlot).getMaxCount()) {
+                        //Adds to the stack if they have it somewhere in their inventory and it isn't full
+                        player.getInventory().getStack(existingSlot).increment(bait.getCount());
+                    } else if (player.getInventory().getStack(selectedSlot).isEmpty()) {
+                        //Sets the stack if empty
+                        player.getInventory().setStack(selectedSlot,bait);
+                    } else {
+                        //Find the first open slot
+                        int openSlot = player.getInventory().getEmptySlot();
+                        System.out.println("The selected slot is: "+ selectedSlot);
+                        System.out.println("First open slot is: "+ openSlot);
+                        if(openSlot>=0){
+                            System.out.println("First open slot is: "+ openSlot);
+                            player.getInventory().setStack(openSlot,bait);
+                        } else {
+                            System.out.println("Spawning a new item, no room");
+                            // Create a new ItemEntity at the specified position
+                            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, bait);
+                            // Set motion for the item entity if desired
+                            itemEntity.setVelocity(Vec3d.ZERO); // Example: Set no motion
+                            // Spawn the ItemEntity in the world
+                            world.spawnEntity(itemEntity);
+                        }
+                    }
+                }
+
                 return ActionResult.SUCCESS;
             }
         }

@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.Biome;
 
 public class ModTags {
     public static class Blocks {
@@ -30,5 +31,15 @@ public class ModTags {
         public static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(YouNeedBait.MOD_ID,name));
         }
+    }
+
+    public static class Biomes {
+        public static final TagKey<Biome> LEECH_TRAP_BIOMES =
+                createTag("leech_trap_biomes");
+
+        public static TagKey<Biome> createTag(String name) {
+            return TagKey.of(RegistryKeys.BIOME, new Identifier(YouNeedBait.MOD_ID,name));
+        }
+
     }
 }

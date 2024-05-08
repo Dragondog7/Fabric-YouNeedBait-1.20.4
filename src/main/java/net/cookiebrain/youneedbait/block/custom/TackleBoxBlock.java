@@ -68,7 +68,7 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
             //Attempt to spawn the item
 
             //Get rid of the item
-            DefaultedList<ItemStack> emptyItems = DefaultedList.ofSize(27,ItemStack.EMPTY);
+            DefaultedList<ItemStack> emptyItems = DefaultedList.ofSize(4,ItemStack.EMPTY);
             ((TackleBoxBlockEntity) be).setItems(emptyItems);
             world.removeBlock(pos,false);
 

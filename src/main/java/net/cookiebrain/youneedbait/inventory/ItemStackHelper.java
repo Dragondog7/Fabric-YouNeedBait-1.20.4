@@ -40,7 +40,7 @@ public class ItemStackHelper {
     public static DefaultedList<ItemStack> nbtToItemStack(ItemStack stack, String key){
         // Retrieves a list of ItemStacks from the specified ItemStack's NBT data
         DefaultedList<ItemStack> items;
-        items = DefaultedList.ofSize(27,ItemStack.EMPTY);
+        items = DefaultedList.ofSize(4,ItemStack.EMPTY);
         // Check if the ItemStack has a tag and the tag contains the specified key
 
         if (stack.hasNbt() && stack.getNbt().contains(key)) {

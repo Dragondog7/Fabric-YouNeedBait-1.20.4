@@ -47,7 +47,7 @@ public class BonusLoot {
         for (BonusLootItem item : items) {
             currentWeightSum += item.weight;
             if (randomNum < currentWeightSum) {
-                return new ItemStack(item.lootItem);
+                return new ItemStack(item.lootItem,1);
             }
         }
 

@@ -28,6 +28,8 @@ public class ModItems {
     public static final Item WORM = registerItem("worm", new Item(new FabricItemSettings()));
     public static final Item CATERPILLAR = registerItem("caterpillar", new Item(new FabricItemSettings()));
     public static final Item CANOFWORMS = registerItem("canofworms", new CanOfWormsItem(new FabricItemSettings()));
+    public static final Item LEECH = registerItem("leech", new Item(new FabricItemSettings()));
+    public static final Item NIGHTCRAWLER = registerItem("nightcrawler", new Item(new FabricItemSettings()));
     public static final Item PUMPKINSEED = registerItem("pumpkinseed", new PumpkinSeedItem(new FabricItemSettings()));
     public static final Item CATFISH = registerItem("catfish", new CatFishItem(new FabricItemSettings()));
 

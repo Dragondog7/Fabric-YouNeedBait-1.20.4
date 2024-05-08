@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class TackleBoxBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory,ImplementedInventory {
-    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(27,ItemStack.EMPTY);
+    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4,ItemStack.EMPTY);
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 72;
