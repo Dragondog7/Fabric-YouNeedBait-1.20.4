@@ -78,11 +78,6 @@ public class MinnowBucketBlock extends BlockWithEntity implements BlockEntityPro
         return BlockRenderType.MODEL;
     }
 
-    @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
-        return null;
-    }
-
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
@@ -92,7 +87,7 @@ public class MinnowBucketBlock extends BlockWithEntity implements BlockEntityPro
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return validateTicker(type, ModBlockEntities.MINNOWTRAP_BLOCK_ENTITY,
+        return checkType(type, ModBlockEntities.MINNOWTRAP_BLOCK_ENTITY,
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 //    @Override

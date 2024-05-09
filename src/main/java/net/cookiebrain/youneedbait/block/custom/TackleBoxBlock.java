@@ -1,6 +1,5 @@
 package net.cookiebrain.youneedbait.block.custom;
 
-import com.mojang.serialization.MapCodec;
 import net.cookiebrain.youneedbait.block.entity.ModBlockEntities;
 import net.cookiebrain.youneedbait.block.entity.TackleBoxBlockEntity;
 import net.cookiebrain.youneedbait.inventory.ItemStackHelper;
@@ -34,11 +33,7 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
     }
 
 
-    //Constructors
-    @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
-        return null;
-    }
+//    //Constructors
 
     @Override
     public BlockRenderType getRenderType(BlockState state) {
@@ -53,7 +48,7 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
     }
 
     @Override
-    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         //System.out.println("Block was broken here");
         BlockEntity be = world.getBlockEntity(pos);
         if(be instanceof TackleBoxBlockEntity blockEntity){
@@ -79,7 +74,7 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
             // Spawn the ItemEntity in the world
             world.spawnEntity(itemEntity);
         }
-        return super.onBreak(world, pos, state, player);
+        //return super.onBreak(world, pos, state, player);
     }
 
     @Override
@@ -113,7 +108,7 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return validateTicker(type, ModBlockEntities.TACKLEBOX_BLOCK_ENTITY,
+        return checkType(type, ModBlockEntities.TACKLEBOX_BLOCK_ENTITY,
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 

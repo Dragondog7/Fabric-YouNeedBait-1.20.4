@@ -35,7 +35,7 @@ public class FishCleaningStationBlock extends BlockWithEntity implements BlockEn
 
 
     //Constructors
-    @Override
+    //@Override
     protected MapCodec<? extends BlockWithEntity> getCodec() {
         return null;
     }
@@ -52,8 +52,8 @@ public class FishCleaningStationBlock extends BlockWithEntity implements BlockEn
         return new FishCleaningStationBlockEntity(pos,state);
     }
 
-    @Override
-    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    //@Override
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         System.out.println("Block was broken here");
         BlockEntity be = world.getBlockEntity(pos);
         if(be instanceof TackleBoxBlockEntity blockEntity){
@@ -69,7 +69,7 @@ public class FishCleaningStationBlock extends BlockWithEntity implements BlockEn
             ((TackleBoxBlockEntity) be).setItems(emptyItems);
             world.removeBlock(pos,false);
         }
-        return super.onBreak(world, pos, state, player);
+        //return super.onBreak(world, pos, state, player);
     }
 
     @Override
@@ -104,12 +104,12 @@ public class FishCleaningStationBlock extends BlockWithEntity implements BlockEn
         return ActionResult.SUCCESS;
     }
 
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return validateTicker(type, ModBlockEntities.FISHCLEANINGSTATION_BLOCK_ENTITY,
-                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
-    }
+//    @Nullable
+//    @Override
+//    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+//        return validateTicker(type, ModBlockEntities.FISHCLEANINGSTATION_BLOCK_ENTITY,
+//                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+//    }
 
     //    @Override
     //    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {

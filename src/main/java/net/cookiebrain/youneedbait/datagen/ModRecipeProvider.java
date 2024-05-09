@@ -4,13 +4,16 @@ import net.cookiebrain.youneedbait.block.ModBlocks;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeExporter;
+//import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.util.Identifier;
+
+import java.util.function.Consumer;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
     //private static List<ItemConvertible>
@@ -19,7 +22,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    public void generate(RecipeExporter exporter) {
+    public void generate(Consumer<RecipeJsonProvider> exporter) {
 
         //Generates both the raw salt block and converting back to raw salt
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.SALT,RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BLOCK);
