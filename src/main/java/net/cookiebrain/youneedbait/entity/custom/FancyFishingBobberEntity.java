@@ -2,12 +2,18 @@ package net.cookiebrain.youneedbait.entity.custom;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.cookiebrain.youneedbait.item.ModItems;
+import net.cookiebrain.youneedbait.item.custom.FancyFishingRodItem;
+import net.cookiebrain.youneedbait.loot.BonusLoot;
+import net.cookiebrain.youneedbait.loot.ModBonusLoot;
 import net.cookiebrain.youneedbait.mixin.FishingBobberAccessor;
+import net.cookiebrain.youneedbait.util.ModTags;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FishingBobberEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.context.LootContextParameterSet;
@@ -26,6 +32,9 @@ import java.util.Collections;
 public class FancyFishingBobberEntity extends FishingBobberEntity {
     private int luckOfTheSeaLevel = 0;
     private int lureLevel = 0;
+    private Item modifierItem;
+    private ItemStack lootItemStack;
+    private final ModBonusLoot bonusLoot = new ModBonusLoot();
 
     public FancyFishingBobberEntity(EntityType<? extends FishingBobberEntity> type, World world, int luckOfTheSeaLevel, int lureLevel) {
         super(type, world, luckOfTheSeaLevel, lureLevel);
@@ -39,6 +48,7 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
     }
     public FancyFishingBobberEntity(PlayerEntity thrower, World world, int luckOfTheSeaLevel, int lureLevel) {
         super(thrower, world, luckOfTheSeaLevel, lureLevel);
+        modifierItem = ((FancyFishingRodItem) thrower.getMainHandStack().getItem()).getModifierItemType();
     }
 
     private boolean removeIfInvalid(PlayerEntity player) {
@@ -72,6 +82,19 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
             LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder((ServerWorld)this.getWorld()).add(LootContextParameters.ORIGIN, this.getPos()).add(LootContextParameters.TOOL, usedItem).add(LootContextParameters.THIS_ENTITY, this).luck((float)this.luckOfTheSeaLevel + playerEntity.getLuck()).build(LootContextTypes.FISHING);
             LootTable lootTable = this.getWorld().getServer().getLootManager().getLootTable(LootTables.FISHING_GAMEPLAY);
             ObjectArrayList<ItemStack> list = lootTable.generateLoot(lootContextParameterSet);
+            //System.out.println("Loot size" + list.size());
+            //System.out.println("Loot position 0" + list.get(0).getName());
+            if(list.get(0).isIn(ModTags.Items.JUNK_ITEMS_MC)){
+                if(modifierItem.asItem().equals(Items.IRON_HOE)){
+                    BonusLoot bl = bonusLoot.getLootTableByName("junktogarden");
+                    //System.out.println("Junk to Garden was used");
+                    lootItemStack = bl.selectRandomWeightedItem();
+                }
+                if (Math.random() < 0.15) { // .15% chance
+                    //System.out.println("Junk item was converted");
+                    list.set(0, lootItemStack);
+                }
+            }
             Criteria.FISHING_ROD_HOOKED.trigger((ServerPlayerEntity)playerEntity, usedItem, this, list);
             for (ItemStack itemStack : list) {
                 ItemEntity itemEntity = new ItemEntity(this.getWorld(), this.getX(), this.getY(), this.getZ(), itemStack);

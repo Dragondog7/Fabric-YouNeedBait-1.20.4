@@ -22,7 +22,7 @@ public class MixinFishingRodHooked {
         @Inject(method = "trigger", at = @At("HEAD"))
         private void onTrigger(ServerPlayerEntity player, ItemStack rod, FishingBobberEntity bobber, Collection<ItemStack> fishingLootst, CallbackInfo ci) {
 
-            if (Math.random() < .99) { // 10% chance
+            if (Math.random() < .1) { // 10% chance
                 //Remove a bait
                 for (int i = 0; i < player.getInventory().size(); i++) {
                     ItemStack stack = player.getInventory().getStack(i);

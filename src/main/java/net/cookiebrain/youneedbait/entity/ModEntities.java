@@ -3,9 +3,11 @@ package net.cookiebrain.youneedbait.entity;
 import net.cookiebrain.youneedbait.YouNeedBait;
 import net.cookiebrain.youneedbait.entity.custom.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -50,6 +52,14 @@ public class ModEntities {
 //            new Identifier(YouNeedBait.MOD_ID,"giantsquid"),
 //            FabricEntityTypeBuilder.create(SpawnGroup.UNDERGROUND_WATER_CREATURE, GiantSquidEntity::new)
 //                    .dimensions(EntityDimensions.fixed(1.5f,12f)).build());
+
+    public static final EntityType<FancyFishingBobberEntity> FANCY_FISHING_BOBBER = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(YouNeedBait.MOD_ID,"fancy_fishing_bobber"),
+            FabricEntityTypeBuilder.<FancyFishingBobberEntity>create(SpawnGroup.MISC, FancyFishingBobberEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.25F,0.25F))
+                    .trackRangeBlocks(4)
+                    .trackedUpdateRate(5)
+                    .build());
 }
 
 

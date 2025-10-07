@@ -94,3 +94,28 @@
 
  Fishing
  - Increased the weighting of the custom fish loot table
+
+ ## Fabric 0.3.3.0
+ ### New
+ #### Items
+ Leech
+ * New bait type
+ Nightcrawler
+ * New bait type
+
+ ### Updates
+ Tacklebox
+ * New inventory screen
+ * Basic version has 4 slots
+ * Can only hold "fishing" items
+
+ Fishing Rod Modifier
+ - Iron Hoe - 15% chance of converting junk items to seeds (Melon, Pumpkin, Wheat)
+ -
+ Minnow Trap
+ * Retrieving bait from the trap is now more intelligent
+ * Placing the trap in a swamp biome will trap leeches
+
+ Cat Fish is now Catfish
+
+ Bait was being removed 99% of the time instead of 10%

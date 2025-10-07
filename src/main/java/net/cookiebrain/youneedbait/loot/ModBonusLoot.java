@@ -2,6 +2,7 @@ package net.cookiebrain.youneedbait.loot;
 
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.cookiebrain.youneedbait.loot.BonusLoot;
+import net.minecraft.item.Items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,15 @@ public class ModBonusLoot {
             .addItem(ModItems.LEECH,50)
             .addItem(ModItems.SUCKERMINNOW_ITEM,50);
 
+    private final BonusLoot junkToGardenLoot = new BonusLoot("junktogarden")
+            .addItem(Items.MELON_SEEDS,20)
+            .addItem(Items.PUMPKIN_SEEDS,20)
+            .addItem(Items.WHEAT_SEEDS,40);
+
     public ModBonusLoot() {
         lootList.add(fishCleaningBonusLoot);
         lootList.add(swampBaitTrap);
+        lootList.add(junkToGardenLoot);
     }
     public List<BonusLoot> getLootTables()
     {
