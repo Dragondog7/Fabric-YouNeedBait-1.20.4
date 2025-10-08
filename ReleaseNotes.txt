@@ -118,4 +118,15 @@
 
  Cat Fish is now Catfish
 
+ Fish spawn eggs are now colored correctly
+
  Bait was being removed 99% of the time instead of 10%
+
+ New icons for
+ * Can of Worms
+ * Filet Knife
+ * Leech
+ * Minnow
+ * Nightcrawler
+ * Salt
+ * Sucker Minnow

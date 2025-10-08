@@ -49,19 +49,19 @@ public class ModItems {
     public static final Item FANCYFISHINGROD_ITEM = registerItem("fancyfishingrod", new FancyFishingRodItem(new Item.Settings().maxCount(1).maxDamage(64)));
     //Spawn Eggs
     public static final Item MUSKELLUNGESPAWNEGG = registerItem("muskellungespawnegg",
-            new SpawnEggItem(ModEntities.MUSKELLUNGE, 669900, 73426, new FabricItemSettings()));
+            new SpawnEggItem(ModEntities.MUSKELLUNGE, 0x669900, 0x734d26, new FabricItemSettings()));
     public static final Item NORTHERNPIKESPAWNEGG = registerItem("northernpikespawnegg",
-            new SpawnEggItem(ModEntities.NORTHERNPIKE, 669900, 73426, new FabricItemSettings()));
+            new SpawnEggItem(ModEntities.NORTHERNPIKE, 0xace600, 0xdfdf20, new FabricItemSettings()));
     public static final Item LARGEMOUTHBASSSPAWNEGG = registerItem("largemouthbassspawnegg",
-            new SpawnEggItem(ModEntities.LARGEMOUTHBASS, 669900, 73426, new FabricItemSettings()));
+            new SpawnEggItem(ModEntities.LARGEMOUTHBASS, 0x5a5609, 0x20180d, new FabricItemSettings()));
     public static final Item BLACKCRAPPIESPAWNEGG = registerItem("blackcrappiespawnegg",
-            new SpawnEggItem(ModEntities.BLACKCRAPPIE, 669900, 73426, new FabricItemSettings()));
+            new SpawnEggItem(ModEntities.BLACKCRAPPIE, 0xccedab, 0xeeee2b, new FabricItemSettings()));
     public static final Item WALLEYESPAWNEGG = registerItem("walleyespawnegg",
-            new SpawnEggItem(ModEntities.WALLEYE, 669900, 73426, new FabricItemSettings()));
+            new SpawnEggItem(ModEntities.WALLEYE, 0xc4e242, 0x433b00, new FabricItemSettings()));
     public static final Item PUMPKINSEEDSPAWNEGG = registerItem("pumpkinseedspawnegg",
-            new SpawnEggItem(ModEntities.PUMPKINSEED, 669900, 73426, new FabricItemSettings()));
+            new SpawnEggItem(ModEntities.PUMPKINSEED, 0xc4e242, 0x433b00, new FabricItemSettings()));
     public static final Item CATFISHSPAWNEGG = registerItem("catfishspawnegg",
-            new SpawnEggItem(ModEntities.CATFISH, 669900, 73426, new FabricItemSettings()));
+            new SpawnEggItem(ModEntities.CATFISH, 0xc4e242, 0x433b00, new FabricItemSettings()));
 //    public static final Item GIANTSQUIDSPAWNEGG = registerItem("giantsquidspawnegg",
 //            new SpawnEggItem(ModEntities.GIANTSQUID, 669900, 73426, new FabricItemSettings()));
 
