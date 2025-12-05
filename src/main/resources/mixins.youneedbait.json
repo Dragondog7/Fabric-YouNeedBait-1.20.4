@@ -3,12 +3,10 @@
 	"package": "net.cookiebrain.youneedbait.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"MixinFishingRodItem",
 		"MixinFishingRodHooked",
 		"MixinBlockPlacement",
 		"FishingBobberAccessor",
-		"FishingBobberValidityMixin",
-		"FishingBobberRendererMixin"
+		"FishingBobberValidityMixin"
 	],
 	"client": [
 		"ItemRendererAccessor",

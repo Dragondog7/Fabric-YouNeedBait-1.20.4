@@ -1,6 +1,7 @@
 package net.cookiebrain.youneedbait.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.cookiebrain.youneedbait.YouNeedBait;
 import net.cookiebrain.youneedbait.block.entity.FishCleaningStationBlockEntity;
 import net.cookiebrain.youneedbait.block.entity.ModBlockEntities;
 import net.cookiebrain.youneedbait.block.entity.TackleBoxBlockEntity;
@@ -9,6 +10,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
@@ -21,11 +23,12 @@ import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class FishCleaningStationBlock extends BlockWithEntity implements BlockEntityProvider{
+public class FishCleaningStationBlock extends BlockWithEntity{
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     private static final VoxelShape FISHCLEANINGSTATION_BLOCK_SHAPE = Block.createCuboidShape(0, 0, 0, 12, 12, 12);
 
@@ -54,20 +57,23 @@ public class FishCleaningStationBlock extends BlockWithEntity implements BlockEn
 
     //@Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        System.out.println("Block was broken here");
+        YouNeedBait.LOGGER.info("Block was broken here");
         BlockEntity be = world.getBlockEntity(pos);
-        if(be instanceof TackleBoxBlockEntity blockEntity){
+        if(be instanceof FishCleaningStationBlockEntity blockEntity){
             ItemStack tbItem = new ItemStack(this);
-            System.out.println("Saving the items from the fishcleaningstation");
-            System.out.println((long) ((TackleBoxBlockEntity) be).getItems().size());
+            YouNeedBait.LOGGER.info("Saving the items from the fishcleaningstation");
             ItemStackHelper.itemStackToNBT(tbItem,"fishcleaningstation_inv",((FishCleaningStationBlockEntity) be).getItems());
-            System.out.println("Checking if the saved items has nbt data");
-            System.out.println(tbItem.hasNbt());
-            ItemStackHelper.giveItemToPlayer(player,tbItem);
             //Get rid of the item
             DefaultedList<ItemStack> emptyItems = DefaultedList.ofSize(27,ItemStack.EMPTY);
-            ((TackleBoxBlockEntity) be).setItems(emptyItems);
+            //((FishCleaningStationBlockEntity) be).setItems(emptyItems);
             world.removeBlock(pos,false);
+
+            // Create a new ItemEntity at the specified position
+            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tbItem);
+            // Set motion for the item entity if desired
+            itemEntity.setVelocity(Vec3d.ZERO); // Example: Set no motion
+            // Spawn the ItemEntity in the world
+            world.spawnEntity(itemEntity);
         }
         //return super.onBreak(world, pos, state, player);
     }
@@ -92,7 +98,7 @@ public class FishCleaningStationBlock extends BlockWithEntity implements BlockEn
             System.out.println("Not on client");
             BlockEntity entity = world.getBlockEntity(pos);
             if(entity instanceof FishCleaningStationBlockEntity){
-                ((FishCleaningStationBlockEntity) entity).setPlayer((ServerPlayerEntity) player);
+                //((FishCleaningStationBlockEntity) entity).setPlayer((ServerPlayerEntity) player);
             }
             NamedScreenHandlerFactory screenHandlerFactory = ((FishCleaningStationBlockEntity) world.getBlockEntity(pos));
             System.out.println("Screen Handler factory created");
@@ -102,6 +108,17 @@ public class FishCleaningStationBlock extends BlockWithEntity implements BlockEn
             }
         }
         return ActionResult.SUCCESS;
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        // Only tick on server side
+        if (world.isClient) {
+            return null;
+        }
+        return checkType(type, ModBlockEntities.FISHCLEANINGSTATION_BLOCK_ENTITY,
+                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 
 //    @Nullable

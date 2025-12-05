@@ -1,6 +1,7 @@
 package net.cookiebrain.youneedbait.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.cookiebrain.youneedbait.block.entity.MinnowBucketBlockEntity;
 import net.cookiebrain.youneedbait.block.entity.MinnowTrapBlockEntity;
 import net.cookiebrain.youneedbait.block.entity.ModBlockEntities;
 import net.minecraft.block.*;
@@ -22,12 +23,17 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class MinnowTrapBlock extends BlockWithEntity implements BlockEntityProvider, Waterloggable {
-    private static final VoxelShape MINNOW_TRAP_SHAPE = MinnowTrapBlock.createCuboidShape(3, 1, 0, 14, 11, 15);
+    private static final VoxelShape MINNOW_TRAP_SHAPE = Block.createCuboidShape(
+            3.0, 0.0, 3.0,  // Min: Left-front bottom
+            13.0, 10.0, 14.0  // Max: Right-back top
+    );
+
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     //public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     //private final Block baseBlock;
@@ -81,6 +87,18 @@ public class MinnowTrapBlock extends BlockWithEntity implements BlockEntityProvi
             }
         }
         return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public void onBreak(World world, BlockPos pos,BlockState state, PlayerEntity player){
+        BlockEntity be = world.getBlockEntity(pos);
+        if(be instanceof MinnowTrapBlockEntity blockEntity){
+            ItemStack mbItem = new ItemStack(this);
+            world.removeBlock(pos,false);
+            ItemEntity itemEntity = new ItemEntity(world,pos.getX() + 0.5, pos.getY() + 0.5,pos.getZ() + 0.5,mbItem);
+            itemEntity.setVelocity(Vec3d.ZERO);
+            world.spawnEntity(itemEntity);
+        }
     }
 
     @Override

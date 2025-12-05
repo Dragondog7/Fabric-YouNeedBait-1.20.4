@@ -21,12 +21,50 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvider{
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-    private static final VoxelShape TACKLEBOX_BLOCK_SHAPE = Block.createCuboidShape(0, 0, 0, 12, 12, 12);
+    private static final VoxelShape TACKLEBOX_BLOCK_SHAPE = VoxelShapes.union(
+            // Main base body (core rectangular prism, y=0-6)
+            Block.createCuboidShape(3.5, 0.0, 5.2, 12.5, 6.0, 11.2),
+
+            // Left side panel (thin vertical, y=0-5.5)
+            Block.createCuboidShape(2.0, 0.0, 6.2, 3.5, 5.5, 10.2),
+
+            // Right side panel (symmetric thin vertical)
+            Block.createCuboidShape(12.5, 0.0, 6.2, 14.0, 5.5, 10.2),
+
+            // Left back extension (protruding ledge)
+            Block.createCuboidShape(4.0, 0.0, 10.9, 7.5, 5.0, 11.9),
+
+            // Right back extension (symmetric)
+            Block.createCuboidShape(8.5, 0.0, 10.9, 12.0, 5.0, 11.9),
+
+            // Front bottom slat (rotated but forms a thin front panel)
+            Block.createCuboidShape(4.5, 0.0, 4.2, 11.5, 5.0, 5.2),
+
+            // Lid (slab on top, y=5.7-6.7, slightly inset)
+            Block.createCuboidShape(4.0, 5.7, 5.7, 12.0, 6.7, 10.7),
+
+            // Center latch/handle (small top bump)
+            Block.createCuboidShape(6.5, 8.2, 7.7, 9.5, 9.2, 8.7),
+
+            // Left side handle (protruding from lid edge)
+            Block.createCuboidShape(5.0, 6.7, 7.7, 6.0, 7.7, 8.7),
+
+            // Right side handle (symmetric)
+            Block.createCuboidShape(10.0, 6.7, 7.7, 11.0, 7.7, 8.7)
+
+            // Left clip/hinge (angled protrusion, clamped x=0-1 for block bounds)
+            //Block.createCuboidShape(0.0, 9.0, 7.7, 1.0, 11.0, 8.7),
+
+            // Right clip/hinge (angled, clamped x=15-16)
+            //Block.createCuboidShape(15.0, 9.0, 7.7, 16.0, 11.0, 8.7)
+    );
 
     public TackleBoxBlock(Settings settings) {
         super(settings);
@@ -105,6 +143,10 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
         return ActionResult.SUCCESS;
     }
 
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return TACKLEBOX_BLOCK_SHAPE;
+    }
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {

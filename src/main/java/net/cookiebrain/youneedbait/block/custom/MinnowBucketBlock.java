@@ -1,16 +1,19 @@
 package net.cookiebrain.youneedbait.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.cookiebrain.youneedbait.block.entity.MinnowBucketBlockEntity;
 import net.cookiebrain.youneedbait.block.entity.MinnowTrapBlockEntity;
 import net.cookiebrain.youneedbait.block.entity.ModBlockEntities;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -18,13 +21,28 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class MinnowBucketBlock extends BlockWithEntity implements BlockEntityProvider, Waterloggable {
-    private static final VoxelShape MINNOW_TRAP_SHAPE = MinnowBucketBlock.createCuboidShape(3, 1, 0, 14, 11, 15);
+//    private static final VoxelShape MINNOW_BUCKET_SHAPE = MinnowBucketBlock.createCuboidShape(
+//            3.0, 0.0, 3.0,  // Min X, Y, Z (shifted inward for the bucket base)
+//            13.0, 13.0, 13.0  // Max X, Y, Z (trimmed to fit the rim/handle without excess
+//    );
+    private static final VoxelShape MINNOW_BUCKET_SHAPE = VoxelShapes.union(
+        // Body/middle (y=0-11, slightly wider than original middle for better feel)
+        Block.createCuboidShape(3.5, 0, 3.5, 12.5, 11, 12.5),
+
+        // Rim/top (y=11-13, full width for the lip)
+        Block.createCuboidShape(3, 11, 3, 13, 13, 13)
+
+        // Handle protrusion (unchanged, approximating your side elements)
+        //Block.createCuboidShape(10, 2, 11, 13, 10, 12)
+    );
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     //public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     //private final Block baseBlock;
@@ -38,17 +56,27 @@ public class MinnowBucketBlock extends BlockWithEntity implements BlockEntityPro
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient && hand == Hand.MAIN_HAND) {
             BlockEntity be = world.getBlockEntity(pos);
-            if(be instanceof MinnowTrapBlockEntity blockEntity){
-                //System.out.println("You used the minnow trap");
-                //ItemStack extracted = ((MinnowTrapBlockEntity) be).removeMinnows();
-                int selectedSlot = player.getInventory().selectedSlot;
-                player.getInventory().main.set(selectedSlot,((MinnowTrapBlockEntity) be).removeBait());
-                return ActionResult.SUCCESS;
-            }
+//            if(be instanceof MinnowBucketBlockEntity blockEntity){
+//                //System.out.println("You used the minnow bucket");
+//                //ItemStack extracted = ((MinnowBucketBlockEntity) be).removeMinnows();
+//                int selectedSlot = player.getInventory().selectedSlot;
+//                player.getInventory().main.set(selectedSlot,((MinnowBucketBlockEntity) be).removeBait());
+//                return ActionResult.SUCCESS;
+//            }
         }
         return ActionResult.SUCCESS;
     }
-
+    @Override
+    public void onBreak(World world, BlockPos pos,BlockState state, PlayerEntity player){
+        BlockEntity be = world.getBlockEntity(pos);
+        if(be instanceof MinnowBucketBlockEntity blockEntity){
+            ItemStack mbItem = new ItemStack(this);
+            world.removeBlock(pos,false);
+            ItemEntity itemEntity = new ItemEntity(world,pos.getX() + 0.5, pos.getY() + 0.5,pos.getZ() + 0.5,mbItem);
+            itemEntity.setVelocity(Vec3d.ZERO);
+            world.spawnEntity(itemEntity);
+        }
+    }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
@@ -69,7 +97,7 @@ public class MinnowBucketBlock extends BlockWithEntity implements BlockEntityPro
     }
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return MINNOW_TRAP_SHAPE;
+        return MINNOW_BUCKET_SHAPE;
     }
 
     @Override
@@ -81,13 +109,13 @@ public class MinnowBucketBlock extends BlockWithEntity implements BlockEntityPro
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new MinnowTrapBlockEntity(pos,state);
+        return new MinnowBucketBlockEntity(pos,state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.MINNOWTRAP_BLOCK_ENTITY,
+        return checkType(type, ModBlockEntities.MINNOWBUCKET_BLOCK_ENTITY,
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 //    @Override
@@ -102,8 +130,8 @@ public class MinnowBucketBlock extends BlockWithEntity implements BlockEntityPro
 //    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
 //        if (state.getBlock() != newState.getBlock()) {
 //            BlockEntity blockEntity = world.getBlockEntity(pos);
-//            if (blockEntity instanceof MinnowTrapBlockEntity) {
-//                ItemScatterer.spawn(world, pos, (MinnowTrapBlockEntity)blockEntity);
+//            if (blockEntity instanceof MinnowBucketBlockEntity) {
+//                ItemScatterer.spawn(world, pos, (MinnowBucketBlockEntity)blockEntity);
 //                world.updateComparators(pos,this);
 //            }
 //            super.onStateReplaced(state, world, pos, newState, moved);

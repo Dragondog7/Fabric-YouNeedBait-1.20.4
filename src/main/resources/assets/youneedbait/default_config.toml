@@ -1,0 +1,16 @@
+# youneedbait default config
+schema_version = "0.3.4"
+mod_id = "youneedbait"
+
+[features]
+# Whether bait is required. Default: true (i.e., "Y")
+bait_required = true
+
+# Percentage chance of bait being consumed per use (0..100). Default: 10
+bait_usage_percent = 10
+
+[logging]
+# "off" | "error" | "warn" | "info" | "debug" | "trace"
+level = "info"
+to_file = true
+file_path = "logs/youneedbait.log"

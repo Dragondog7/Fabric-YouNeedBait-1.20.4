@@ -26,6 +26,9 @@ public class ModModelLayers {
     public static final EntityModelLayer PUMPKINSEED =
             new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"pumpkinseed"),"main");
 
+    public static final EntityModelLayer LARGEFISH =
+            new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"largefish"),"main");
+
 //    public static final EntityModelLayer GIANTSQUID =
 //            new EntityModelLayer(new Identifier(YouNeedBait.MOD_ID,"giantsquid"),"main");
 

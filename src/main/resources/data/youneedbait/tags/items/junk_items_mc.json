@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:lily_pad",
+    "minecraft:bowl",
+    "minecraft:fishing_rod",
+    "minecraft:leather",
+    "minecraft:leather_boots",
+    "minecraft:rotten_flesh",
+    "minecraft:stick",
+    "minecraft:string",
+    "minecraft:potion",
+    "minecraft:bone",
+    "minecraft:ink_sac",
+    "minecraft:tripwire_hook"
+  ]
+}

@@ -48,6 +48,11 @@ public class ModEntities {
             FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, PumpkinSeedEntity::new)
                     .dimensions(EntityDimensions.fixed(1f,1f)).build());
 
+    public static final EntityType<LargeFishEntity> LARGEFISH = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(YouNeedBait.MOD_ID,"largefish"),
+            FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, LargeFishEntity::new)
+                    .dimensions(EntityDimensions.fixed(1f,1f)).build());
+
 //    public static final EntityType<GiantSquidEntity> GIANTSQUID = Registry.register(Registries.ENTITY_TYPE,
 //            new Identifier(YouNeedBait.MOD_ID,"giantsquid"),
 //            FabricEntityTypeBuilder.create(SpawnGroup.UNDERGROUND_WATER_CREATURE, GiantSquidEntity::new)
@@ -60,6 +65,7 @@ public class ModEntities {
                     .trackRangeBlocks(4)
                     .trackedUpdateRate(5)
                     .build());
+
 }
 
 

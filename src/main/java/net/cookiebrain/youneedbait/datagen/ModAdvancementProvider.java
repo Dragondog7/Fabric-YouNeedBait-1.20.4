@@ -28,7 +28,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         Text.literal("You Need Bait!"), Text.literal("Obtain A Fishing Rod To Get On You're Fishing Journey"),
                         new Identifier(YouNeedBait.MOD_ID, "textures/block/water.png"), AdvancementFrame.TASK,
                         true, true, false))
-                .criterion("has_fishing_rod", InventoryChangedCriterion.Conditions.items(Items.FISHING_ROD))
+                .criterion("has_fishing_rod", InventoryChangedCriterion.Conditions.items(ModItems.FANCYFISHINGROD_ITEM))
                 .build(consumer, YouNeedBait.MOD_ID + ":youneedbait");
 
         Advancement MutilatedFlesh = Advancement.Builder.create()

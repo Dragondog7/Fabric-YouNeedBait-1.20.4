@@ -11,20 +11,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class MuskellungeItem extends Item {
-    public MuskellungeItem(Settings settings) {
+public class LargeFishItem extends Item {
+    public LargeFishItem(Settings settings) {
         super(settings);
     }
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-    if (Screen.hasShiftDown()) {
-            tooltip.add(Text.translatable("tooltip.youneedbait.muskellunge.tooltip.shift"));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.translatable("tooltip.youneedbait.largefish.tooltip.shift"));
         } else {
-            tooltip.add(Text.translatable("tooltip.youneedbait.muskellunge.tooltip"));
+            tooltip.add(Text.translatable("tooltip.youneedbait.largefish.tooltip"));
 
             super.appendTooltip(stack, world, tooltip, context);
         }
     }
 }
-
-

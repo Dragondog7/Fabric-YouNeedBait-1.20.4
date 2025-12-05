@@ -1,7 +1,6 @@
 package net.cookiebrain.youneedbait.loot;
 
 import net.cookiebrain.youneedbait.item.ModItems;
-import net.cookiebrain.youneedbait.loot.BonusLoot;
 import net.minecraft.item.Items;
 
 import java.util.ArrayList;
@@ -28,10 +27,30 @@ public class ModBonusLoot {
             .addItem(Items.PUMPKIN_SEEDS,20)
             .addItem(Items.WHEAT_SEEDS,40);
 
+    private final BonusLoot fishingFishLoot = new BonusLoot("fishing_fish")
+            .addItem(Items.COD, 60)
+            .addItem(Items.SALMON, 25)
+            .addItem(Items.TROPICAL_FISH, 2)
+            .addItem(Items.PUFFERFISH, 13)
+
+            // YouNeedBait mod fish – replace with your actual item references
+            .addItem(ModItems.MUSKELLUNGE, 2)
+            .addItem(ModItems.LARGEMOUTHBASS, 5)
+            .addItem(ModItems.BLACKCRAPPIE, 8)
+            .addItem(ModItems.NORTHERNPIKE, 6)
+            .addItem(ModItems.WALLEYE, 4)
+            .addItem(ModItems.CATFISH, 6)
+            .addItem(ModItems.PUMPKINSEED, 15);
+
+            // Conditional entry: only in biome minecraft:bamboo_jungle
+            // If BonusLoot supports conditions, swap this to your conditional API.
+            //.addItem(YouNeedBaitItems.REDHERRING.get(), 1);
+
     public ModBonusLoot() {
         lootList.add(fishCleaningBonusLoot);
         lootList.add(swampBaitTrap);
         lootList.add(junkToGardenLoot);
+        lootList.add(fishingFishLoot);
     }
     public List<BonusLoot> getLootTables()
     {

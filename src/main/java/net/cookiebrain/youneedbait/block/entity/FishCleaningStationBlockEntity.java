@@ -1,13 +1,17 @@
 package net.cookiebrain.youneedbait.block.entity;
 
+import net.cookiebrain.youneedbait.YouNeedBait;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.cookiebrain.youneedbait.loot.BonusLoot;
 import net.cookiebrain.youneedbait.loot.ModBonusLoot;
 import net.cookiebrain.youneedbait.screen.FishCleaningStationScreenHandler;
 import net.cookiebrain.youneedbait.util.ModTags;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -32,7 +36,6 @@ public class FishCleaningStationBlockEntity extends BlockEntity implements Exten
     private static final int FILETKNIFE_SLOT = 1;
     private static final int OUTPUT_SLOT = 2;
     private static final int BONUS_SLOT = 3;
-    private ServerPlayerEntity player;
 
     private DefaultedList<ItemStack> items = DefaultedList.ofSize(4,ItemStack.EMPTY);
     protected final PropertyDelegate propertyDelegate;
@@ -78,10 +81,6 @@ public class FishCleaningStationBlockEntity extends BlockEntity implements Exten
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
         return new FishCleaningStationScreenHandler(syncId,playerInventory,this, propertyDelegate);
-    }
-
-    public void setPlayer(ServerPlayerEntity player){
-        this.player = player;
     }
 
     @Override
@@ -132,6 +131,7 @@ public class FishCleaningStationBlockEntity extends BlockEntity implements Exten
 
             if(hasProgressFinished()){
                 craftItem();
+                //Bonus item CONFIG
                 if (Math.random() < 0.1) { // 10% chance
                     getBonusItem();
                 }
@@ -167,13 +167,15 @@ public class FishCleaningStationBlockEntity extends BlockEntity implements Exten
 
     private void reduceKnifeDurability() {
         System.out.println("Attempting to reduce filet knife durability");
-        if(!this.getStack(FILETKNIFE_SLOT).isEmpty()) {
+        if (!this.getStack(FILETKNIFE_SLOT).isEmpty() && this.world != null && !this.world.isClient) {
             System.out.println("Filet knife exists");
             ItemStack itemstack = this.getStack(FILETKNIFE_SLOT);
-            ItemStack original = itemstack.copy();
-            itemstack.damage(1, player, (player) -> {
-            });
-            System.out.println("Filet knife damaged (attempted?)");
+
+            // Damage using server world + random, no player context needed
+            if (this.world instanceof net.minecraft.server.world.ServerWorld serverWorld) {
+                itemstack.damage(1, serverWorld.getRandom(), null);
+                System.out.println("Filet knife damaged");
+            }
         }
     }
 

@@ -49,7 +49,12 @@ public class YouNeedBaitClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.PUMPKINSEED, PumpkinSeedRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.PUMPKINSEED, PumpkinSeedModel::getTexturedModelData);
 
+        EntityRendererRegistry.register(ModEntities.LARGEFISH, LargeFishRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.LARGEFISH, LargeFishModel::getTexturedModelData);
+
+        System.out.println("=== REGISTERING FancyFishingBobberRenderer ===");
         EntityRendererRegistry.register(ModEntities.FANCY_FISHING_BOBBER, FancyFishingBobberRenderer::new);
+        System.out.println("=== Registration complete ===");
 
 //        EntityRendererRegistry.register(ModEntities.GIANTSQUID, GiantSquidRenderer::new);
 //        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.GIANTSQUID, GiantSquidModel
@@ -63,17 +68,18 @@ public class YouNeedBaitClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandlers.FANCYFISHINGROD_SCREEN_HANDLER, FancyFishingRodScreen::new);
 
 //        //This is from FishingParadise
-        ModelPredicateProviderRegistry.register(ModItems.FANCYFISHINGROD_ITEM, new Identifier("cast"), (stack, world, entity, seed) -> {
-            boolean bl2;
-            if (entity == null) {
-                return 0.0f;
-            }
-            boolean bl = entity.getMainHandStack() == stack;
-            boolean bl3 = bl2 = entity.getOffHandStack() == stack;
-            if (entity.getMainHandStack().getItem() instanceof FishingRodItem) {
-                bl2 = false;
-            }
-            return (bl || bl2) && entity instanceof PlayerEntity && ((PlayerEntity)entity).fishHook != null ? 1.0f : 0.0f;
-        });
+//        ModelPredicateProviderRegistry.register(ModItems.FANCYFISHINGROD_ITEM, new Identifier("cast"), (stack, world, entity, seed) -> {
+//            boolean bl2;
+//            if (entity == null) {
+//                return 0.0f;
+//            }
+//            boolean bl = entity.getMainHandStack() == stack;
+//            boolean bl3 = bl2 = entity.getOffHandStack() == stack;
+//            if (entity.getMainHandStack().getItem() instanceof FishingRodItem) {
+//                bl2 = false;
+//            }
+//            return (bl || bl2) && entity instanceof PlayerEntity && ((PlayerEntity)entity).fishHook != null ? 1.0f : 0.0f;
+//        }
+        //);
     }
 }

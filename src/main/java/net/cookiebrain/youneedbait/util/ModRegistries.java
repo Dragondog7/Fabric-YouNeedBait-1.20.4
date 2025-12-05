@@ -13,13 +13,7 @@ public class ModRegistries {
     }
 
     private static void registerCustomTrades() {
-            TradeOfferHelper.registerVillagerOffers(ModVillagers.MASTER_FISHERMAN, 1,
-                    factories -> {
-                        factories.add((entity, random) -> new TradeOffer(
-                                new ItemStack(Items.EMERALD, 4),
-                                new ItemStack(ModItems.FILETKNIFE_ITEM, 1), 1, 6, 0.08f
-                        ));
-                    });
+
 
     }
 }

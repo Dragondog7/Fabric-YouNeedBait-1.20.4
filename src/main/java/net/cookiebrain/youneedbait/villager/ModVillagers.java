@@ -19,15 +19,9 @@ import net.minecraft.world.poi.PointOfInterestType;
 public class ModVillagers {
     public static final RegistryKey<PointOfInterestType> SOUND_POI_KEY = registerPoiKey("soundpoi");
 
-
-
     public static final PointOfInterestType SOUND_POI = registerPoi("soundpoi",ModBlocks.SALT_BLOCK);
 
     public static final VillagerProfession MASTER_FISHERMAN = registerProfession("masterfisherman", SOUND_POI_KEY);
-
-
-
-
 
     private static VillagerProfession registerProfession(String name, RegistryKey<PointOfInterestType> type) {
         return Registry.register(Registries.VILLAGER_PROFESSION, new Identifier(YouNeedBait.MOD_ID, name),
@@ -35,21 +29,14 @@ public class ModVillagers {
                         ImmutableSet.of(), ImmutableSet.of(), SoundEvents.ENTITY_VILLAGER_WORK_FISHERMAN));
     }
 
-
     private static PointOfInterestType registerPoi(String name, Block block) {
         return PointOfInterestHelper.register(new Identifier(YouNeedBait.MOD_ID, name),
                 1, 1, block);
     }
 
-
     private static RegistryKey<PointOfInterestType> registerPoiKey(String name) {
         return RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, new Identifier(YouNeedBait.MOD_ID, name));
     }
-
-
-
-
-
 
     public static void registerVillagers() {
         YouNeedBait.LOGGER.info("Registering Villagers for " + YouNeedBait.MOD_ID);

@@ -40,6 +40,7 @@ public class ModItemGroups {
                         entries.add(ModItems.BEEFJERKY);
                         entries.add(ModItems.ONION);
                         entries.add(ModItems.LESSSUSPICIOUSSTEW_ITEM);
+                        entries.add(ModItems.SALTEDBEEF);
 
                         //Fish
                         entries.add(ModItems.MUSKELLUNGE);
@@ -49,14 +50,16 @@ public class ModItemGroups {
                         entries.add(ModItems.CATFISH);
                         entries.add(ModItems.WALLEYE);
                         entries.add(ModItems.PUMPKINSEED);
-                        entries.add(ModItems.SALTEDBEEF);
+                        entries.add(ModItems.LARGEFISH);
+
                         entries.add(ModItems.MUSKELLUNGESPAWNEGG);
                         entries.add(ModItems.NORTHERNPIKESPAWNEGG);
                         entries.add(ModItems.LARGEMOUTHBASSSPAWNEGG);
                         entries.add(ModItems.BLACKCRAPPIESPAWNEGG);
                         entries.add(ModItems.PUMPKINSEEDSPAWNEGG);
                         entries.add(ModItems.CATFISHSPAWNEGG);
-
+                        entries.add(ModItems.WALLEYESPAWNEGG);
+                        //entries.add(ModItems.LARGEFISHSPAWNEGG);
 
                         //Blocks
                         entries.add(ModBlocks.SALT_BLOCK);
@@ -64,6 +67,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.TACKLEBOX_BLOCK);
                         entries.add(ModBlocks.MINNOWBUCKET_BLOCK);
                         entries.add(ModBlocks.AZUROMITE_BLOCK);
+                        entries.add(ModBlocks.FISHCLEANINGSTATION_BLOCK);
 
 
                     }).build());

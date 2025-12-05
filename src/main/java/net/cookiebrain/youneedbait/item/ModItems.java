@@ -22,16 +22,23 @@ public class ModItems {
     public static final Item WALLEYE = registerItem("walleye", new WalleyeItem(new FabricItemSettings()));
     public static final Item LARGEMOUTHBASS = registerItem("largemouthbass", new LargemouthbassItem(new FabricItemSettings()));
     public static final Item REDHERRING = registerItem("redherring", new Item(new FabricItemSettings()));
+    public static final Item PUMPKINSEED = registerItem("pumpkinseed", new PumpkinSeedItem(new FabricItemSettings()));
+    public static final Item CATFISH = registerItem("catfish", new CatFishItem(new FabricItemSettings()));
+    public static final Item LARGEFISH = registerItem("largefish", new LargeFishItem(new FabricItemSettings()));
+
     public static final Item SALT = registerItem("salt", new Item(new FabricItemSettings()));
     public static final Item AZUROMITE_INGOT = registerItem("azuromite_ingot", new Item(new FabricItemSettings()));
+
     public static final Item HOOK = registerItem("hook", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item WORM = registerItem("worm", new Item(new FabricItemSettings()));
     public static final Item CATERPILLAR = registerItem("caterpillar", new Item(new FabricItemSettings()));
     public static final Item CANOFWORMS = registerItem("canofworms", new CanOfWormsItem(new FabricItemSettings()));
     public static final Item LEECH = registerItem("leech", new Item(new FabricItemSettings()));
     public static final Item NIGHTCRAWLER = registerItem("nightcrawler", new Item(new FabricItemSettings()));
-    public static final Item PUMPKINSEED = registerItem("pumpkinseed", new PumpkinSeedItem(new FabricItemSettings()));
-    public static final Item CATFISH = registerItem("catfish", new CatFishItem(new FabricItemSettings()));
+    public static final Item MINNOW_ITEM = registerItem("minnow", new Item(new FabricItemSettings()));
+    public static final Item SUCKERMINNOW_ITEM = registerItem("suckerminnow", new Item(new FabricItemSettings()));
+
+    public static final Item FANCYFISHINGROD_ITEM = registerItem("fancyfishingrod", new FancyFishingRodItem(new Item.Settings().maxCount(1).maxDamage(64)));
 
     public static final Item RAWFISHFILET = registerItem("rawfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.RAWFISHFILET)));
     public static final Item SALTEDFISHFILET = registerItem("saltedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.SALTEDFISHFILET)));
@@ -44,9 +51,6 @@ public class ModItems {
     public static final Item LESSSUSPICIOUSSTEW_ITEM = registerItem("lesssuspiciousstew", new Item(new FabricItemSettings().food(ModFoodComponents.LESSSUSPICIOUSSTEW_FOOD)));
 
     public static final Item FILETKNIFE_ITEM = registerItem("filetknife", new Item(new FabricItemSettings().maxCount(1)));
-    public static final Item MINNOW_ITEM = registerItem("minnow", new Item(new FabricItemSettings()));
-    public static final Item SUCKERMINNOW_ITEM = registerItem("suckerminnow", new Item(new FabricItemSettings()));
-    public static final Item FANCYFISHINGROD_ITEM = registerItem("fancyfishingrod", new FancyFishingRodItem(new Item.Settings().maxCount(1).maxDamage(64)));
     //Spawn Eggs
     public static final Item MUSKELLUNGESPAWNEGG = registerItem("muskellungespawnegg",
             new SpawnEggItem(ModEntities.MUSKELLUNGE, 0x669900, 0x734d26, new FabricItemSettings()));
@@ -62,7 +66,10 @@ public class ModItems {
             new SpawnEggItem(ModEntities.PUMPKINSEED, 0xc4e242, 0x433b00, new FabricItemSettings()));
     public static final Item CATFISHSPAWNEGG = registerItem("catfishspawnegg",
             new SpawnEggItem(ModEntities.CATFISH, 0xc4e242, 0x433b00, new FabricItemSettings()));
-//    public static final Item GIANTSQUIDSPAWNEGG = registerItem("giantsquidspawnegg",
+    public static final Item LARGEFISHSPAWNEGG = registerItem("largefishspawnegg",
+            new SpawnEggItem(ModEntities.LARGEFISH, 0xc4e242, 0x433b00, new FabricItemSettings()));
+
+    //    public static final Item GIANTSQUIDSPAWNEGG = registerItem("giantsquidspawnegg",
 //            new SpawnEggItem(ModEntities.GIANTSQUID, 669900, 73426, new FabricItemSettings()));
 
     public static void addItemsToToolsItemGroup(FabricItemGroupEntries entries){
