@@ -48,7 +48,6 @@ public class MinnowTrapBlock extends BlockWithEntity implements BlockEntityProvi
         if (!world.isClient && hand == Hand.MAIN_HAND) {
             BlockEntity be = world.getBlockEntity(pos);
             if(be instanceof MinnowTrapBlockEntity blockEntity){
-                System.out.println("You used the minnow trap");
                 int selectedSlot = player.getInventory().selectedSlot;
                 System.out.println(((MinnowTrapBlockEntity) be).getBaitType().getName());
                 ItemStack bait = ((MinnowTrapBlockEntity) be).removeBait();
@@ -66,13 +65,9 @@ public class MinnowTrapBlock extends BlockWithEntity implements BlockEntityProvi
                     } else {
                         //Find the first open slot
                         int openSlot = player.getInventory().getEmptySlot();
-                        System.out.println("The selected slot is: "+ selectedSlot);
-                        System.out.println("First open slot is: "+ openSlot);
                         if(openSlot>=0){
-                            System.out.println("First open slot is: "+ openSlot);
                             player.getInventory().setStack(openSlot,bait);
                         } else {
-                            System.out.println("Spawning a new item, no room");
                             // Create a new ItemEntity at the specified position
                             ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, bait);
                             // Set motion for the item entity if desired

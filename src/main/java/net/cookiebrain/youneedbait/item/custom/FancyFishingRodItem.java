@@ -38,79 +38,64 @@ public class FancyFishingRodItem extends FishingRodItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
 
-        YouNeedBait.LOGGER.info("=== FancyFishingRodItem.use() START ===");
-        YouNeedBait.LOGGER.info("World isClient: {}", world.isClient);
-        YouNeedBait.LOGGER.info("Player: {}", user.getName().getString());
-        YouNeedBait.LOGGER.info("Hand: {}", hand);
-        YouNeedBait.LOGGER.info("Player isSneaking: {}", user.isSneaking());
+//        YouNeedBait.LOGGER.info("=== FancyFishingRodItem.use() START ===");
+//        YouNeedBait.LOGGER.info("World isClient: {}", world.isClient);
+//        YouNeedBait.LOGGER.info("Player: {}", user.getName().getString());
+//        YouNeedBait.LOGGER.info("Hand: {}", hand);
+//        YouNeedBait.LOGGER.info("Player isSneaking: {}", user.isSneaking());
 
         // Determine how many slots this rod *should* have based on its tier
         int slotCount = getSlotCountForStack(stack);
         int currentTier = getTier(stack);
 
-        YouNeedBait.LOGGER.info("Rod tier: {}, Slot count: {}", currentTier, slotCount);
+        //YouNeedBait.LOGGER.info("Rod tier: {}, Slot count: {}", currentTier, slotCount);
 
         // Load items from NBT
         DefaultedList<ItemStack> rodInventory = ItemStackHelper.nbtToItemStack(stack, "fishingrod_inventory");
-        YouNeedBait.LOGGER.info("Loaded inventory size: {}", rodInventory.size());
+        //YouNeedBait.LOGGER.info("Loaded inventory size: {}", rodInventory.size());
 
         // Ensure the list has the proper size for this tier
         rodInventory = resizeInventoryList(rodInventory, slotCount);
-        YouNeedBait.LOGGER.info("Resized inventory size: {}", rodInventory.size());
+        //YouNeedBait.LOGGER.info("Resized inventory size: {}", rodInventory.size());
 
         // Check if the player is holding down shift
         if (user.isSneaking()) {
-            YouNeedBait.LOGGER.info("Player is sneaking - attempting to open GUI");
+            //YouNeedBait.LOGGER.info("Player is sneaking - attempting to open GUI");
 
             if (!world.isClient) {
-                YouNeedBait.LOGGER.info("SERVER: Creating ExtendedScreenHandlerFactory");
+                //YouNeedBait.LOGGER.info("SERVER: Creating ExtendedScreenHandlerFactory");
 
                 try {
                     user.openHandledScreen(new ExtendedScreenHandlerFactory() {
                         @Override
                         public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
-                            YouNeedBait.LOGGER.info("SERVER: writeScreenOpeningData called");
-                            YouNeedBait.LOGGER.info("SERVER: Writing hand to packet: {}", hand);
                             buf.writeEnumConstant(hand);
-                            YouNeedBait.LOGGER.info("SERVER: Hand written successfully");
                         }
 
                         @Override
                         public Text getDisplayName() {
-                            YouNeedBait.LOGGER.info("SERVER: getDisplayName called");
                             return Text.literal("Fancy Fishing Rod");
                         }
 
                         @Override
                         public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-                            YouNeedBait.LOGGER.info("SERVER: createMenu called");
-                            YouNeedBait.LOGGER.info("SERVER: syncId: {}", syncId);
-                            YouNeedBait.LOGGER.info("SERVER: Creating FancyFishingRodScreenHandler");
 
                             try {
                                 FancyFishingRodScreenHandler handler = new FancyFishingRodScreenHandler(syncId, playerInventory, stack);
-                                YouNeedBait.LOGGER.info("SERVER: ScreenHandler created successfully");
                                 return handler;
                             } catch (Exception e) {
-                                YouNeedBait.LOGGER.error("SERVER: ERROR creating ScreenHandler", e);
                                 throw e;
                             }
                         }
                     });
 
-                    YouNeedBait.LOGGER.info("SERVER: openHandledScreen completed successfully");
                 } catch (Exception e) {
                     YouNeedBait.LOGGER.error("SERVER: ERROR opening screen", e);
                 }
             } else {
-                YouNeedBait.LOGGER.info("CLIENT: Skipping screen open (client-side)");
             }
-
-            YouNeedBait.LOGGER.info("=== FancyFishingRodItem.use() END (GUI) ===");
             return TypedActionResult.success(stack, world.isClient());
         } else {
-            YouNeedBait.LOGGER.info("Player is NOT sneaking - normal fishing rod behavior");
-
             // Check for requirements
             // Check for a hook
             if (FishingHelper.hasHook(user)) {
@@ -124,7 +109,6 @@ public class FancyFishingRodItem extends FishingRodItem {
             }
 
             if (user.fishHook != null) {
-                YouNeedBait.LOGGER.info("Reeling in fish hook");
 
                 if (!world.isClient) {
                     int damage = user.fishHook.use(stack);
@@ -144,8 +128,6 @@ public class FancyFishingRodItem extends FishingRodItem {
                         1.0F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
                 user.emitGameEvent(GameEvent.ITEM_INTERACT_FINISH);
             } else {
-                YouNeedBait.LOGGER.info("Casting fishing rod");
-
                 world.playSound(null, user.getX(), user.getY(), user.getZ(),
                         SoundEvents.ENTITY_FISHING_BOBBER_THROW, SoundCategory.NEUTRAL,
                         0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
@@ -154,19 +136,13 @@ public class FancyFishingRodItem extends FishingRodItem {
                     int lure = EnchantmentHelper.getLure(stack);
                     int luck = EnchantmentHelper.getLuckOfTheSea(stack);
 
-                    YouNeedBait.LOGGER.info("Spawning FancyFishingBobberEntity (lure: {}, luck: {})", lure, luck);
-
                     FancyFishingBobberEntity bobberEntity = new FancyFishingBobberEntity(user, world, luck, lure);
                     world.spawnEntity(bobberEntity);
-
-                    YouNeedBait.LOGGER.info("FancyFishingBobberEntity spawned successfully");
                 }
 
                 user.incrementStat(Stats.USED.getOrCreateStat(this));
                 user.emitGameEvent(GameEvent.ITEM_INTERACT_START);
             }
-
-            YouNeedBait.LOGGER.info("=== FancyFishingRodItem.use() END (fishing) ===");
             return TypedActionResult.success(stack, world.isClient());
         }
     }

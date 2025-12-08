@@ -80,7 +80,6 @@ public class FishCleaningStationBlock extends BlockWithEntity{
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        System.out.println("Block was replaced here");
         //This makes the inventory drop when your block breaks
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -95,15 +94,12 @@ public class FishCleaningStationBlock extends BlockWithEntity{
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
-            System.out.println("Not on client");
             BlockEntity entity = world.getBlockEntity(pos);
             if(entity instanceof FishCleaningStationBlockEntity){
                 //((FishCleaningStationBlockEntity) entity).setPlayer((ServerPlayerEntity) player);
             }
             NamedScreenHandlerFactory screenHandlerFactory = ((FishCleaningStationBlockEntity) world.getBlockEntity(pos));
-            System.out.println("Screen Handler factory created");
             if (screenHandlerFactory != null) {
-                System.out.println("attempting to open the screen");
                 player.openHandledScreen(screenHandlerFactory);
             }
         }
@@ -121,27 +117,4 @@ public class FishCleaningStationBlock extends BlockWithEntity{
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 
-//    @Nullable
-//    @Override
-//    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-//        return validateTicker(type, ModBlockEntities.FISHCLEANINGSTATION_BLOCK_ENTITY,
-//                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
-//    }
-
-    //    @Override
-    //    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-    //        if (world.isClient) {
-    //            return ActionResult.SUCCESS;
-    //        }
-    //        System.out.println("You used the tackle box");
-    //        NamedScreenHandlerFactory namedScreenHandlerFactory = this.createScreenHandlerFactory(state, world, pos);
-    //        if (namedScreenHandlerFactory != null) {
-    //            System.out.println("namedScreenHandlerFactory is not null");
-    //            player.openHandledScreen(namedScreenHandlerFactory);
-    //            System.out.println("openHandledScreen worked");
-    //            //player.incrementStat(this.getOpenStat());
-    //            //PiglinBrain.onGuardedBlockInteracted(player, true);
-    //        }
-    //        return ActionResult.CONSUME;
-    //    }
 }

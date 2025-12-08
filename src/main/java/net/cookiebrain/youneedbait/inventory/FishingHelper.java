@@ -59,32 +59,27 @@ public class FishingHelper {
             return;
         }
 
-        YouNeedBait.LOGGER.info("Attempting to remove bait for {} (held rod -> tacklebox -> inventory)",
-                player.getName().getString());
 
         // 1) Fishing rod bait slot (held rod only)
         if (removeBaitFromHeldRod(player)) {
-            YouNeedBait.LOGGER.info("Successfully removed bait from held fishing rod for {}",
-                    player.getName().getString());
+            //YouNeedBait.LOGGER.info("Successfully removed bait from held fishing rod for {}",player.getName().getString());
             return;
         }
 
         // 2) Tackle box
         if (removeBaitFromTackleBox(player)) {
-            YouNeedBait.LOGGER.info("Successfully removed bait from tackle box for {}",
-                    player.getName().getString());
+            //YouNeedBait.LOGGER.info("Successfully removed bait from tackle box for {}",player.getName().getString());
             return;
         }
 
         // 3) Player inventory
         if (removeBaitFromInventory(player)) {
-            YouNeedBait.LOGGER.info("Successfully removed bait from player inventory for {}",
-                    player.getName().getString());
+            //YouNeedBait.LOGGER.info("Successfully removed bait from player inventory for {}",player.getName().getString());
             return;
         }
 
         // Nothing found anywhere
-        YouNeedBait.LOGGER.warn("No bait found to remove for {}", player.getName().getString());
+        //YouNeedBait.LOGGER.warn("No bait found to remove for {}", player.getName().getString());
     }
 
     /**
@@ -94,33 +89,25 @@ public class FishingHelper {
      * @return true if bait was removed, false otherwise.
      */
     private static boolean removeBaitFromHeldRod(PlayerEntity player) {
-        YouNeedBait.LOGGER.debug("Checking held fishing rod inventory for bait for {}",
-                player.getName().getString());
-
         ItemStack rodStack = ItemStack.EMPTY;
 
         // Prefer rod in main hand
         ItemStack mainHand = player.getMainHandStack();
         if (!mainHand.isEmpty() && mainHand.isOf(ModItems.FANCYFISHINGROD_ITEM)) {
             rodStack = mainHand;
-            YouNeedBait.LOGGER.debug("Found fishing rod in main hand.");
         } else {
             // Then rod in offhand
             ItemStack offHand = player.getOffHandStack();
             if (!offHand.isEmpty() && offHand.isOf(ModItems.FANCYFISHINGROD_ITEM)) {
                 rodStack = offHand;
-                YouNeedBait.LOGGER.debug("Found fishing rod in offhand.");
             }
         }
 
         if (rodStack.isEmpty()) {
-            YouNeedBait.LOGGER.debug("No held fishing rod found for {}", player.getName().getString());
             return false;
         }
 
         if (rodStack.getNbt() == null || !rodStack.getNbt().contains("fishingrod_inventory")) {
-            YouNeedBait.LOGGER.debug("Held fishing rod has no 'fishingrod_inventory' NBT for {}",
-                    player.getName().getString());
             return false;
         }
 
@@ -131,12 +118,9 @@ public class FishingHelper {
             ItemStack baitStack = rodInv.get(i);
 
             if (!baitStack.isEmpty() && baitStack.isIn(ModTags.Items.FISH_BAIT_ITEMS)) {
-                YouNeedBait.LOGGER.info("Removing one bait from held fishing rod slot {}: {}",
-                        i, baitStack.getName().getString());
                 baitStack.decrement(1);
 
                 if (baitStack.isEmpty()) {
-                    YouNeedBait.LOGGER.debug("Rod bait stack in slot {} is now empty; clearing slot", i);
                     rodInv.set(i, ItemStack.EMPTY);
                 }
 
@@ -146,8 +130,6 @@ public class FishingHelper {
             }
         }
 
-        YouNeedBait.LOGGER.debug("No bait found inside held fishing rod inventory for {}",
-                player.getName().getString());
         return false;
     }
 
@@ -157,9 +139,6 @@ public class FishingHelper {
      * @return true if bait was removed, false otherwise.
      */
     private static boolean removeBaitFromTackleBox(PlayerEntity player) {
-        YouNeedBait.LOGGER.debug("Checking tackle box for bait for {}",
-                player.getName().getString());
-
         PlayerInventory inv = player.getInventory();
 
         for (int i = 0; i < inv.size(); i++) {
@@ -170,7 +149,6 @@ public class FishingHelper {
             }
 
             if (stack.getNbt().contains("tacklebox_inv")) {
-                YouNeedBait.LOGGER.info("Found tackle box in player inventory slot {} for bait removal", i);
 
                 DefaultedList<ItemStack> tbItems =
                         ItemStackHelper.nbtToItemStack(stack, "tacklebox_inv");
@@ -178,32 +156,21 @@ public class FishingHelper {
                 for (int j = 0; j < tbItems.size(); j++) {
                     ItemStack tbItemStack = tbItems.get(j);
 
-                    YouNeedBait.LOGGER.debug("Checking tackle box slot {} for bait", j);
-
                     if (!tbItemStack.isEmpty() && tbItemStack.isIn(ModTags.Items.FISH_BAIT_ITEMS)) {
-                        YouNeedBait.LOGGER.info("Found valid bait in tackle box slot {}: {}",
-                                j, tbItemStack.getName().getString());
 
                         tbItemStack.decrement(1);
 
                         if (tbItemStack.isEmpty()) {
-                            YouNeedBait.LOGGER.debug("Tackle box bait stack in slot {} is now empty; clearing slot", j);
                             tbItems.set(j, ItemStack.EMPTY);
                         }
 
                         // Write back to the tackle box NBT
                         ItemStackHelper.itemStackToNBT(stack, "tacklebox_inv", tbItems);
-
-                        YouNeedBait.LOGGER.info("Removed one bait from tackle box.");
                         return true;
                     }
                 }
-
-                YouNeedBait.LOGGER.debug("Tackle box in slot {} contains no bait items", i);
             }
         }
-
-        YouNeedBait.LOGGER.debug("No tackle box with bait found for {}", player.getName().getString());
         return false;
     }
 
@@ -213,8 +180,6 @@ public class FishingHelper {
      * @return true if bait was removed, false otherwise.
      */
     private static boolean removeBaitFromInventory(PlayerEntity player) {
-        YouNeedBait.LOGGER.debug("Checking player inventory for bait for {}",
-                player.getName().getString());
 
         PlayerInventory inv = player.getInventory();
 
@@ -222,13 +187,10 @@ public class FishingHelper {
             ItemStack stack = inv.getStack(i);
 
             if (!stack.isEmpty() && stack.isIn(ModTags.Items.FISH_BAIT_ITEMS)) {
-                YouNeedBait.LOGGER.info("Removing one bait from player inventory slot {}: {}",
-                        i, stack.getName().getString());
 
                 stack.decrement(1);
 
                 if (stack.isEmpty()) {
-                    YouNeedBait.LOGGER.debug("Inventory bait stack in slot {} is now empty; removing stack", i);
                     inv.removeStack(i);
                 }
 
@@ -236,8 +198,6 @@ public class FishingHelper {
             }
         }
 
-        YouNeedBait.LOGGER.debug("No bait found directly in player inventory for {}",
-                player.getName().getString());
         return false;
     }
 
