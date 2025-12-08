@@ -25,13 +25,14 @@ public class ModBonusLoot {
     private final BonusLoot junkToGardenLoot = new BonusLoot("junktogarden")
             .addItem(Items.MELON_SEEDS,20)
             .addItem(Items.PUMPKIN_SEEDS,20)
-            .addItem(Items.WHEAT_SEEDS,40);
+            .addItem(Items.WHEAT_SEEDS,40)
+            .addItem(ModItems.ONION_BULBS,10);
 
-    private final BonusLoot fishingFishLoot = new BonusLoot("fishing_fish")
-            .addItem(Items.COD, 60)
-            .addItem(Items.SALMON, 25)
-            .addItem(Items.TROPICAL_FISH, 2)
-            .addItem(Items.PUFFERFISH, 13)
+    private final BonusLoot fishingFishLoot = new FishBonusLoot("fishing_fish")
+//            .addItem(Items.COD, 60)
+//            .addItem(Items.SALMON, 25)
+//            .addItem(Items.TROPICAL_FISH, 2)
+//            .addItem(Items.PUFFERFISH, 13)
 
             // YouNeedBait mod fish – replace with your actual item references
             .addItem(ModItems.MUSKELLUNGE, 2)

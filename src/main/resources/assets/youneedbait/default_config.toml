@@ -1,16 +1,17 @@
 # youneedbait default config
-schema_version = "0.3.4"
+schema_version = "0.4.0"
 mod_id = "youneedbait"
 
 [features]
 # Whether bait is required. Default: true (i.e., "Y")
 bait_required = true
-
-# Percentage chance of bait being consumed per use (0..100). Default: 10
-bait_usage_percent = 10
-
-[logging]
-# "off" | "error" | "warn" | "info" | "debug" | "trace"
-level = "info"
-to_file = true
-file_path = "logs/youneedbait.log"
+# Percentage chance of bait being consumed per use (0..100). Default: 40
+bait_usage_percent = 40
+# Each custom fish has it's own unique weight
+weighted_fish_enabled = true
+# Unit of measure to display the weight lb or kg
+weight_unit = "lb"
+# Decrease this to make it easier to catch large fish
+# Increase this to make it more difficult
+# This is a global bias, each fish has it's own bias that combines with this
+fish_weight_bias = 4.0

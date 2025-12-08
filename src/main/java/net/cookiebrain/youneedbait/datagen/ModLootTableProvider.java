@@ -40,8 +40,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.ONION_CROP, cropDrops(ModBlocks.ONION_CROP, ModItems.ONION, ModItems.ONION_BULBS, builder));
     }
 
-
-
     public LootTable.Builder saltOreDrops(Block drop, Item item) {
         return BlockLootTableGenerator.dropsWithSilkTouch(drop,
                 (LootPoolEntry.Builder)this.applyExplosionDecay(drop,

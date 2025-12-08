@@ -50,7 +50,7 @@ public class ModItemGroups {
                         entries.add(ModItems.CATFISH);
                         entries.add(ModItems.WALLEYE);
                         entries.add(ModItems.PUMPKINSEED);
-                        entries.add(ModItems.LARGEFISH);
+                        //entries.add(ModItems.LARGEFISH);
 
                         entries.add(ModItems.MUSKELLUNGESPAWNEGG);
                         entries.add(ModItems.NORTHERNPIKESPAWNEGG);

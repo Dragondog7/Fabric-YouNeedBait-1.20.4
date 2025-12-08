@@ -73,6 +73,7 @@
   "tooltip.youneedbait.canofworms.tooltip.shift": "You Feel Disgusted Even Holding This Abomination",
   "tooltip.youneedbait.canofworms.tooltip": "Press §eSHIFT§r for more Information",
 
+  "tooltip.youneedbait.weight": "Weight: %s",
   "effect.youneedbait.electrified": "Electrified"
 
 }

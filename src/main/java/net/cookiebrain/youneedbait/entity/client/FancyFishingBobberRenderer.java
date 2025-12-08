@@ -24,8 +24,12 @@ import net.minecraft.client.render.OverlayTexture;
 
 public class FancyFishingBobberRenderer extends EntityRenderer<FancyFishingBobberEntity> {
 
-    // Texture is irrelevant for the solid-color box, but required by API
-    private static final Identifier TEXTURE = new Identifier(YouNeedBait.MOD_ID, "textures/entity/fishing_hook.png");
+    // Custom Texture
+    //private static final Identifier TEXTURE = new Identifier(YouNeedBait.MOD_ID, "textures/entity/fishing_hook.png");
+
+    // Vanilla bobber texture:
+    private static final Identifier TEXTURE =
+            new Identifier("minecraft", "textures/entity/fishing_hook.png");
     private static final RenderLayer LAYER = RenderLayer.getEntityCutoutNoCull(TEXTURE);
 
     // === TUNING KNOBS ===

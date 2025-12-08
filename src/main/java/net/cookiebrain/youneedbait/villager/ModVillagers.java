@@ -19,7 +19,7 @@ import net.minecraft.world.poi.PointOfInterestType;
 public class ModVillagers {
     public static final RegistryKey<PointOfInterestType> SOUND_POI_KEY = registerPoiKey("soundpoi");
 
-    public static final PointOfInterestType SOUND_POI = registerPoi("soundpoi",ModBlocks.SALT_BLOCK);
+    public static final PointOfInterestType SOUND_POI = registerPoi("soundpoi",ModBlocks.MINNOWBUCKET_BLOCK);
 
     public static final VillagerProfession MASTER_FISHERMAN = registerProfession("masterfisherman", SOUND_POI_KEY);
 

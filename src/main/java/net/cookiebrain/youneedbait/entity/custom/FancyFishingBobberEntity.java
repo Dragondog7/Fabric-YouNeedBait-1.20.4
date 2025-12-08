@@ -49,8 +49,8 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
 
     public FancyFishingBobberEntity(EntityType<? extends FishingBobberEntity> entityType, World world) {
         super(entityType, world);
-        YouNeedBait.LOGGER.info("[FancyFishingBobberEntity] ctor(EntityType, World) created. world={}, isClient={}",
-                world.getRegistryKey().getValue(), world.isClient());
+        //YouNeedBait.LOGGER.info("[FancyFishingBobberEntity] ctor(EntityType, World) created. world={}, isClient={}",
+                //world.getRegistryKey().getValue(), world.isClient());
     }
 
     public FancyFishingBobberEntity(PlayerEntity thrower, World world, int luckOfTheSeaLevel, int lureLevel) {
@@ -85,7 +85,7 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
         this.bobberGreen = g;
         this.bobberBlue = b;
         this.bobberAlpha = a;
-        YouNeedBait.LOGGER.info("[FancyFishingBobberEntity] setBobberColor to rgba({}, {}, {}, {})", r, g, b, a);
+        //YouNeedBait.LOGGER.info("[FancyFishingBobberEntity] setBobberColor to rgba({}, {}, {}, {})", r, g, b, a);
     }
 
     public void setLineColor(int r, int g, int b, int a) {
@@ -93,7 +93,7 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
         this.lineGreen = g;
         this.lineBlue = b;
         this.lineAlpha = a;
-        YouNeedBait.LOGGER.info("[FancyFishingBobberEntity] setLineColor to rgba({}, {}, {}, {})", r, g, b, a);
+        //YouNeedBait.LOGGER.info("[FancyFishingBobberEntity] setLineColor to rgba({}, {}, {}, {})", r, g, b, a);
     }
 
     // --- NEW: Getter methods for colors ---
@@ -119,10 +119,10 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
                 || this.squaredDistanceTo(player) > 1024.0;
 
         if (invalid) {
-            YouNeedBait.LOGGER.info(
-                    "[FancyFishingBobberEntity] removeIfInvalid -> true. playerRemoved={}, alive={}, mainIsFancyRod={}, offIsFancyRod={}, distSq={}",
-                    player.isRemoved(), player.isAlive(), bl, bl2, this.squaredDistanceTo(player)
-            );
+//            YouNeedBait.LOGGER.info(
+//                    "[FancyFishingBobberEntity] removeIfInvalid -> true. playerRemoved={}, alive={}, mainIsFancyRod={}, offIsFancyRod={}, distSq={}",
+//                    player.isRemoved(), player.isAlive(), bl, bl2, this.squaredDistanceTo(player)
+//            );
             this.discard();
             return true;
         }
@@ -133,36 +133,36 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
     @Override
     public int use(ItemStack usedItem) {
         PlayerEntity playerEntity = this.getPlayerOwner();
-        YouNeedBait.LOGGER.info(
-                "[FancyFishingBobberEntity] use() called. worldIsClient={}, owner={}, usedItem={}",
-                this.getWorld().isClient(),
-                playerEntity != null ? playerEntity.getName().getString() : "null",
-                usedItem
-        );
+//        YouNeedBait.LOGGER.info(
+//                "[FancyFishingBobberEntity] use() called. worldIsClient={}, owner={}, usedItem={}",
+//                this.getWorld().isClient(),
+//                playerEntity != null ? playerEntity.getName().getString() : "null",
+//                usedItem
+//        );
 
         if (this.getWorld().isClient || playerEntity == null || this.removeIfInvalid(playerEntity)) {
-            YouNeedBait.LOGGER.info(
-                    "[FancyFishingBobberEntity] use() early return with 0. isClient={}, playerNull={}, invalid={}",
-                    this.getWorld().isClient(),
-                    playerEntity == null,
-                    playerEntity != null && this.removeIfInvalid(playerEntity)
-            );
+//            YouNeedBait.LOGGER.info(
+//                    "[FancyFishingBobberEntity] use() early return with 0. isClient={}, playerNull={}, invalid={}",
+//                    this.getWorld().isClient(),
+//                    playerEntity == null,
+//                    playerEntity != null && this.removeIfInvalid(playerEntity)
+//            );
             return 0;
         }
 
         int i = 0;
         int hookCountdown = ((FishingBobberAccessor) this).getHookCountdown();
-        YouNeedBait.LOGGER.info(
-                "[FancyFishingBobberEntity] use() server-side. hookCountdown={}, hookedEntity={}",
-                hookCountdown,
-                this.getHookedEntity()
-        );
+//        YouNeedBait.LOGGER.info(
+//                "[FancyFishingBobberEntity] use() server-side. hookCountdown={}, hookedEntity={}",
+//                hookCountdown,
+//                this.getHookedEntity()
+//        );
 
         if (this.getHookedEntity() != null) {
-            YouNeedBait.LOGGER.info(
-                    "[FancyFishingBobberEntity] use() pulling hooked entity: {}",
-                    this.getHookedEntity().getType().toString()
-            );
+//            YouNeedBait.LOGGER.info(
+//                    "[FancyFishingBobberEntity] use() pulling hooked entity: {}",
+//                    this.getHookedEntity().getType().toString()
+//            );
             this.pullHookedEntity(this.getHookedEntity());
             Criteria.FISHING_ROD_HOOKED.trigger((ServerPlayerEntity) playerEntity, usedItem, this, Collections.emptyList());
             this.getWorld().sendEntityStatus(this, EntityStatuses.PULL_HOOKED_ENTITY);
@@ -278,14 +278,14 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
         }
 
         if (this.isOnGround()) {
-            YouNeedBait.LOGGER.info("[FancyFishingBobberEntity] use(): bobber isOnGround -> setting result to 2");
+            //YouNeedBait.LOGGER.info("[FancyFishingBobberEntity] use(): bobber isOnGround -> setting result to 2");
             i = 2;
         }
 
-        YouNeedBait.LOGGER.info(
-                "[FancyFishingBobberEntity] use() returning {} and discarding bobber. pos=({}, {}, {}), worldIsClient={}",
-                i, this.getX(), this.getY(), this.getZ(), this.getWorld().isClient()
-        );
+//        YouNeedBait.LOGGER.info(
+//                "[FancyFishingBobberEntity] use() returning {} and discarding bobber. pos=({}, {}, {}), worldIsClient={}",
+//                i, this.getX(), this.getY(), this.getZ(), this.getWorld().isClient()
+//        );
         this.discard();
         return i;
     }
@@ -294,10 +294,10 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
     @Override
     public void writeCustomDataToNbt(net.minecraft.nbt.NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        YouNeedBait.LOGGER.info(
-                "[FancyFishingBobberEntity] writeCustomDataToNbt called. owner={}",
-                this.getPlayerOwner() != null ? this.getPlayerOwner().getUuid() : "null"
-        );
+//        YouNeedBait.LOGGER.info(
+//                "[FancyFishingBobberEntity] writeCustomDataToNbt called. owner={}",
+//                this.getPlayerOwner() != null ? this.getPlayerOwner().getUuid() : "null"
+//        );
 
         // Ensure the owner's UUID is written to NBT for client sync
         if (this.getPlayerOwner() != null) {
@@ -312,11 +312,11 @@ public class FancyFishingBobberEntity extends FishingBobberEntity {
     @Override
     public void readCustomDataFromNbt(net.minecraft.nbt.NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        YouNeedBait.LOGGER.info(
-                "[FancyFishingBobberEntity] readCustomDataFromNbt called. hasOwner={}, worldIsClient={}",
-                nbt.containsUuid("Owner"),
-                this.getWorld() != null && this.getWorld().isClient()
-        );
+//        YouNeedBait.LOGGER.info(
+//                "[FancyFishingBobberEntity] readCustomDataFromNbt called. hasOwner={}, worldIsClient={}",
+//                nbt.containsUuid("Owner"),
+//                this.getWorld() != null && this.getWorld().isClient()
+//        );
         // The super call should handle reading the "Owner" UUID and setting playerOwner
         // If you had custom data, read it here
         // if (nbt.contains("ModifierItem")) {

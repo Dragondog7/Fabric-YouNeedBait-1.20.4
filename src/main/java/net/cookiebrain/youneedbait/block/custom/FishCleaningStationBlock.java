@@ -55,28 +55,28 @@ public class FishCleaningStationBlock extends BlockWithEntity{
         return new FishCleaningStationBlockEntity(pos,state);
     }
 
-    //@Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        YouNeedBait.LOGGER.info("Block was broken here");
-        BlockEntity be = world.getBlockEntity(pos);
-        if(be instanceof FishCleaningStationBlockEntity blockEntity){
-            ItemStack tbItem = new ItemStack(this);
-            YouNeedBait.LOGGER.info("Saving the items from the fishcleaningstation");
-            ItemStackHelper.itemStackToNBT(tbItem,"fishcleaningstation_inv",((FishCleaningStationBlockEntity) be).getItems());
-            //Get rid of the item
-            DefaultedList<ItemStack> emptyItems = DefaultedList.ofSize(27,ItemStack.EMPTY);
-            //((FishCleaningStationBlockEntity) be).setItems(emptyItems);
-            world.removeBlock(pos,false);
-
-            // Create a new ItemEntity at the specified position
-            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tbItem);
-            // Set motion for the item entity if desired
-            itemEntity.setVelocity(Vec3d.ZERO); // Example: Set no motion
-            // Spawn the ItemEntity in the world
-            world.spawnEntity(itemEntity);
-        }
-        //return super.onBreak(world, pos, state, player);
-    }
+//    //@Override
+//    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+//        YouNeedBait.LOGGER.info("Block was broken here");
+//        BlockEntity be = world.getBlockEntity(pos);
+//        if(be instanceof FishCleaningStationBlockEntity blockEntity){
+//            ItemStack tbItem = new ItemStack(this);
+//            YouNeedBait.LOGGER.info("Saving the items from the fishcleaningstation");
+//            ItemStackHelper.itemStackToNBT(tbItem,"fishcleaningstation_inv",((FishCleaningStationBlockEntity) be).getItems());
+//            //Get rid of the item
+//            DefaultedList<ItemStack> emptyItems = DefaultedList.ofSize(27,ItemStack.EMPTY);
+//            //((FishCleaningStationBlockEntity) be).setItems(emptyItems);
+//            world.removeBlock(pos,false);
+//
+//            // Create a new ItemEntity at the specified position
+//            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tbItem);
+//            // Set motion for the item entity if desired
+//            itemEntity.setVelocity(Vec3d.ZERO); // Example: Set no motion
+//            // Spawn the ItemEntity in the world
+//            world.spawnEntity(itemEntity);
+//        }
+//        //return super.onBreak(world, pos, state, player);
+//    }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {

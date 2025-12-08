@@ -24,7 +24,7 @@ public class ModItems {
     public static final Item REDHERRING = registerItem("redherring", new Item(new FabricItemSettings()));
     public static final Item PUMPKINSEED = registerItem("pumpkinseed", new PumpkinSeedItem(new FabricItemSettings()));
     public static final Item CATFISH = registerItem("catfish", new CatFishItem(new FabricItemSettings()));
-    public static final Item LARGEFISH = registerItem("largefish", new LargeFishItem(new FabricItemSettings()));
+    //public static final Item LARGEFISH = registerItem("largefish", new LargeFishItem(new FabricItemSettings()));
 
     public static final Item SALT = registerItem("salt", new Item(new FabricItemSettings()));
     public static final Item AZUROMITE_INGOT = registerItem("azuromite_ingot", new Item(new FabricItemSettings()));
@@ -66,8 +66,8 @@ public class ModItems {
             new SpawnEggItem(ModEntities.PUMPKINSEED, 0xc4e242, 0x433b00, new FabricItemSettings()));
     public static final Item CATFISHSPAWNEGG = registerItem("catfishspawnegg",
             new SpawnEggItem(ModEntities.CATFISH, 0xc4e242, 0x433b00, new FabricItemSettings()));
-    public static final Item LARGEFISHSPAWNEGG = registerItem("largefishspawnegg",
-            new SpawnEggItem(ModEntities.LARGEFISH, 0xc4e242, 0x433b00, new FabricItemSettings()));
+    //public static final Item LARGEFISHSPAWNEGG = registerItem("largefishspawnegg",
+    //        new SpawnEggItem(ModEntities.LARGEFISH, 0xc4e242, 0x433b00, new FabricItemSettings()));
 
     //    public static final Item GIANTSQUIDSPAWNEGG = registerItem("giantsquidspawnegg",
 //            new SpawnEggItem(ModEntities.GIANTSQUID, 669900, 73426, new FabricItemSettings()));

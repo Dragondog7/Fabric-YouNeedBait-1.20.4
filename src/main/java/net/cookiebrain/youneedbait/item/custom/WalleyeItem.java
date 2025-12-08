@@ -10,9 +10,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class WalleyeItem extends Item {
+public class WalleyeItem extends AbstractFishItem {
     public WalleyeItem(Settings settings) {
-        super(settings);
+
+        super(settings, 0.15, 13.0, 1.8);
     }
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {

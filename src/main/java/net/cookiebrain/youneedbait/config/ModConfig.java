@@ -14,6 +14,26 @@ public final class ModConfig {
     public static final class Features {
         public boolean baitRequired = true;
         public int baitUsagePercent = 10; // 0..100
+
+        // NEW:
+        /**
+         * Master switch to enable/disable the whole weighted fish system.
+         * If false, no weight NBT is written and fish stack normally.
+         */
+        public boolean weightedFishEnabled = true;
+
+        /**
+         * Display unit for tooltips. "kg" or "lb".
+         * Internally we always store kg in NBT.
+         */
+        public String weightUnit = "kg";
+
+        /**
+         * Global multiplier for how skewed weights are toward small fish.
+         * > 1 = big fish rarer; 1 = uniform; < 1 = big fish more common.
+         * We combine this with a per-fish bias exponent.
+         */
+        public double fishWeightBias = 4.0;
     }
 
     public static final class Logging {

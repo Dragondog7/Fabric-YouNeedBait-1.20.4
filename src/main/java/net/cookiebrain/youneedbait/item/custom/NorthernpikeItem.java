@@ -10,9 +10,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class NorthernpikeItem extends Item {
+public class NorthernpikeItem extends AbstractFishItem {
     public NorthernpikeItem(Settings settings) {
-        super(settings);
+
+        super(settings, 0.5, 25.0, 2.0);
     }
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {

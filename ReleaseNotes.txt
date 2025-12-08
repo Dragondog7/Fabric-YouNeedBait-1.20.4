@@ -130,3 +130,122 @@
  * Nightcrawler
  * Salt
  * Sucker Minnow
+
+ ## Fabric 0.4.0
+ ### New
+ Fish Weights
+ * Adds configuration options for weights for each fish caught
+ * Can be displayed in lb or kg
+ * Fish weight bias setting that allows configuration of the rarity of record size fish
+ * Only works with custom fish
+ * Each species has a custom weight range
+
+ Configuration File
+ * There is a new file for custom configuration. config/youneedbait.toml
+ * These are the initial settings
+ 	* Whether bait is required. Default: true (i.e., "Y")
+ 		*	bait_required = true
+ 	* Percentage chance of bait being consumed per use (0..100). Default: 10
+ 		* bait_usage_percent = 10
+ 	* Fish weight units
+ 		* 	weight_unit = "lb"
+ 	* Enable fish weights
+ 		* weighted_fish_enabled = true
+ 	* Fish weight bias. Larger number means harder to catch huge fish
+ 		* fish_weight_bias = 1.0		*
+
+ ### Master Fisherman Villager
+ We've significantly expanded and improved the Master Fisherman villager's trade offerings, providing a more engaging and progressive experience for all aspiring anglers! The "Fancy Fishing Rod" is now more accessible through a clear trade progression. It now requires a Minnow Bucket to obtain the villager instead of a Salt Block
+ #### **Trade Summary by Level:**
+
+ **Level 1: Novice Fisherman**
+
+ -   **Sell:** 16x Worms for 1x Emerald
+ -   **Buy:** 2x Emeralds for 8x Caterpillars
+ -   **Buy:** 3x Emeralds for 1x Fillet Knife
+
+ **Level 2: Apprentice Fisherman**
+
+ -   **Sell:** 8x Minnows for 1x Emerald
+ -   **Buy:** 3x Emeralds for 6x Leeches
+ -   **Buy:** 5x Emeralds for 1x Hook
+
+ **Level 3: Journeyman Fisherman**
+
+ -   **Sell:** 10x Cod for 1x Emerald
+ -   **Buy:** 5x Emeralds for 4x Nightcrawlers
+ -   **Buy:** 8x Emeralds for 1x Can of Worms
+ -   **Buy:** 4x Emeralds for 6x Dried Fish Filets
+
+ **Level 4: Expert Fisherman**
+
+ -   **Sell:** 6x Sucker Minnows for 2x Emeralds
+ -   **Sell:** 8x Salmon for 1x Emerald
+ -   **Buy:** 3x Emeralds for 12x Salt
+ -   **Buy:** 12x Emeralds for 1x Fishing Rod (Vanilla)
+
+ **Level 5: Master Fisherman**
+
+ -   **Sell:** 6x Tropical Fish for 2x Emeralds
+ -   **Sell:** 4x Pufferfish for 3x Emeralds
+ -   **Buy:** 15x Emeralds for 1x Azuromite Ingot
+ -   **Buy:** 18x Emeralds for 1x Fancy Fishing Rod
+ -   **Buy:** 10x Emeralds + 2x Azuromite Ingots for 1x Fancy Fishing Rod
+
+ Add Recipes
+ * Filet Knife
+ * Salted Beef
+ * Azuromite Block -> Ingots
+
+ ### Updates
+ Fabric Loader
+ * Updated version to 0.16.10
+ * Use fabric-api 0.92.6
+
+ Verified compatibility with JEI
+
+ Vanilla Fishing Rod
+ - Only catches vanilla items
+ - No longer requires bait
+
+ Fancy Fishing Rod
+ - Catches both vanilla and custom fish
+
+ Walleye
+ * Entirely rewritten model, texture and animation
+ * Basic custom swimming goals
+
+ Minnow Trap
+ * New Model
+
+ Modifier - Junk To Garden
+ * Using an Iron Hoe in the Fancy Fishing Rod modifier slot (green)
+ * Now has a chance to fish up Onion Bulbs
+
+ ### Fixes
+ Vanilla Fishing Rod
+ - Can still fish as normal without bait
+ - No longer tries to remove bait
+
+ Fancy Fishing Rod
+ * Line attaches to the end correctly
+ * - Bait removal now works correctly in this order, rod, tackle box, inventory
+
+ Fish Cleaning Station
+ - Now appears in gui as an item
+ - Change gui icon appearance
+ - Fish cleaning actually works now
+ - Now works with hoppers
+
+ Minnow Bucket
+ * No longer disappears when you break it
+ * Enhanced the hitbox to fit
+ * Used to create Master Fisherman Villager
+
+ Minnow Trap
+ * No longer disappears when you break it
+ * Breaking texture is now correct
+ * Enhanced the hitbox to fit
+
+ Tackle Box
+ * Enhanced the hitbox to fit

@@ -59,11 +59,22 @@ public final class ConfigManager {
                 } else {
                     // Fallback: write a minimal default if resource missing
                     Files.writeString(path, """
-                        schema_version = "0.3.3"
-                        mod_id = "youneedbait"
-                        [features]
-                        bait_required = true
-                        bait_usage_percent = 10
+                            # youneedbait default config
+                            schema_version = "0.4.0"
+                            mod_id = "youneedbait"
+                            [features]
+                            # Whether bait is required. Default: true (i.e., "Y")
+                            bait_required = true
+                            # Percentage chance of bait being consumed per use (0..100). Default: 40
+                            bait_usage_percent = 40
+                            # Each custom fish has it's own unique weight
+                            weighted_fish_enabled = true
+                            # Unit of measure to display the weight lb or kg
+                            weight_unit = "lb"
+                            # Decrease this to make it easier to catch large fish
+                            # Increase this to make it more difficult
+                            # This is a global bias, each fish has it's own bias that combines with this
+                            fish_weight_bias = 4.0
                         """);
                 }
             }
@@ -77,7 +88,6 @@ public final class ConfigManager {
         try (CommentedFileConfig c = CommentedFileConfig.builder(path).build()) {
             c.load();
 
-            // Parse into a POJO via manual mapping (clear and explicit)
             ModConfig cfg = new ModConfig();
             cfg.schemaVersion = c.getOrElse("schema_version", YouNeedBait.VERSION);
             cfg.modId = c.getOrElse("mod_id", YouNeedBait.MOD_ID);
@@ -86,26 +96,46 @@ public final class ConfigManager {
             cfg.features.baitRequired = features.getOrElse("bait_required", true);
             cfg.features.baitUsagePercent = features.getOrElse("bait_usage_percent", 10);
 
-            CommentedConfig logging = c.getOrElse("logging", CommentedConfig.inMemory());
-            cfg.logging.level = logging.getOrElse("level", "info");
-            cfg.logging.toFile = logging.getOrElse("to_file", true);
-            cfg.logging.filePath = logging.getOrElse("file_path", "logs/" + YouNeedBait.MOD_ID + ".log");
+            // NEW:
+            cfg.features.weightedFishEnabled = features.getOrElse("weighted_fish_enabled", true);
+            cfg.features.weightUnit = features.getOrElse("weight_unit", "kg");
+            cfg.features.fishWeightBias = features.getOrElse("fish_weight_bias", 4.0);
+
+//            CommentedConfig logging = c.getOrElse("logging", CommentedConfig.inMemory());
+//            cfg.logging.level = logging.getOrElse("level", "info");
+//            cfg.logging.toFile = logging.getOrElse("to_file", true);
+//            cfg.logging.filePath = logging.getOrElse("file_path", "logs/" + YouNeedBait.MOD_ID + ".log");
 
             CommentedConfig runtime = c.getOrElse("runtime", CommentedConfig.inMemory());
-//            cfg.runtime.hotReload = runtime.getOrElse("hot_reload", false);
-//            cfg.runtime.reloadIntervalSeconds = runtime.getOrElse("reload_interval_seconds", 2);
+//        cfg.runtime.hotReload = runtime.getOrElse("hot_reload", false);
+//        cfg.runtime.reloadIntervalSeconds = runtime.getOrElse("reload_interval_seconds", 2);
 
-            // Optional: write back defaults for missing keys
             boolean dirty = false;
             if (!c.contains("schema_version")) { c.set("schema_version", cfg.schemaVersion); dirty = true; }
             if (!c.contains("mod_id")) { c.set("mod_id", cfg.modId); dirty = true; }
             if (!c.contains("features.bait_required")) { c.set("features.bait_required", cfg.features.baitRequired); dirty = true; }
             if (!c.contains("features.bait_usage_percent")) { c.set("features.bait_usage_percent", cfg.features.baitUsagePercent); dirty = true; }
-            if (!c.contains("logging.level")) { c.set("logging.level", cfg.logging.level); dirty = true; }
-            if (!c.contains("logging.to_file")) { c.set("logging.to_file", cfg.logging.toFile); dirty = true; }
-            if (!c.contains("logging.file_path")) { c.set("logging.file_path", cfg.logging.filePath); dirty = true; }
-//            if (!c.contains("runtime.hot_reload")) { c.set("runtime.hot_reload", cfg.runtime.hotReload); dirty = true; }
-//            if (!c.contains("runtime.reload_interval_seconds")) { c.set("runtime.reload_interval_seconds", cfg.runtime.reloadIntervalSeconds); dirty = true; }
+
+            // NEW defaults
+            if (!c.contains("features.weighted_fish_enabled")) {
+                c.set("features.weighted_fish_enabled", cfg.features.weightedFishEnabled);
+                dirty = true;
+            }
+            if (!c.contains("features.weight_unit")) {
+                c.set("features.weight_unit", cfg.features.weightUnit);
+                dirty = true;
+            }
+            if (!c.contains("features.fish_weight_bias")) {
+                c.set("features.fish_weight_bias", cfg.features.fishWeightBias);
+                dirty = true;
+            }
+
+//            if (!c.contains("logging.level")) { c.set("logging.level", cfg.logging.level); dirty = true; }
+//            if (!c.contains("logging.to_file")) { c.set("logging.to_file", cfg.logging.toFile); dirty = true; }
+//            if (!c.contains("logging.file_path")) { c.set("logging.file_path", cfg.logging.filePath); dirty = true; }
+//        if (!c.contains("runtime.hot_reload")) { c.set("runtime.hot_reload", cfg.runtime.hotReload); dirty = true; }
+//        if (!c.contains("runtime.reload_interval_seconds")) { c.set("runtime.reload_interval_seconds", cfg.runtime.reloadIntervalSeconds); dirty = true; }
+
             if (dirty) c.save();
 
             return cfg;

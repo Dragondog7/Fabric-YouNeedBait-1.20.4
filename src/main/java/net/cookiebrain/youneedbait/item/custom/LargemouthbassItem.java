@@ -10,9 +10,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class LargemouthbassItem extends Item {
+public class LargemouthbassItem extends AbstractFishItem {
     public LargemouthbassItem(Settings settings) {
-        super(settings);
+
+        super(settings, 0.15, 9.5, 1.7);
     }
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {

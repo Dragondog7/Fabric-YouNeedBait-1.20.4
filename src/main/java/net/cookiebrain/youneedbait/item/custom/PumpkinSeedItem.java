@@ -10,9 +10,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class PumpkinSeedItem extends Item {
+public class PumpkinSeedItem extends AbstractFishItem {
     public PumpkinSeedItem(Settings settings) {
-        super(settings);
+        // Example range: 2 kg to 30 kg, with base exponent 4.0
+        super(settings, 0.02, 0.6, 1.5);
     }
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
