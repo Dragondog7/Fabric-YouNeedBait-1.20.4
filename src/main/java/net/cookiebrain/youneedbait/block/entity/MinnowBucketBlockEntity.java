@@ -20,7 +20,7 @@ public class MinnowBucketBlockEntity extends BlockEntity {
         return BlockEntityUpdateS2CPacket.create(this);
     }
 
-    public void tick(World world, BlockPos pos, BlockState state) {
+    public static void tick(World world, BlockPos pos, BlockState state, MinnowBucketBlockEntity blockEntity) {
         if (world.isClient()) {
             return;
         }

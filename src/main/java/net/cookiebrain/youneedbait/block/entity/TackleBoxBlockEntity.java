@@ -91,7 +91,7 @@ public class TackleBoxBlockEntity extends BlockEntity implements ExtendedScreenH
         super.readNbt(nbt);
     }
 
-    public void tick(World world, BlockPos pos, BlockState state) {
+    public static void tick(World world, BlockPos pos, BlockState state, TackleBoxBlockEntity blockEntity) {
         if (world.isClient()) {
             return;
         }

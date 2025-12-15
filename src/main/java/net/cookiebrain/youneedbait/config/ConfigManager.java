@@ -33,7 +33,16 @@ public final class ConfigManager {
 
     public static ModConfig get() {
         ModConfig local = CONFIG;
-        if (local == null) throw new IllegalStateException("Config not initialized");
+        if (local == null) {
+            synchronized (ConfigManager.class) {
+                local = CONFIG;
+                if (local == null) {
+                    // Safe, idempotent initialization on first use
+                    init();
+                    local = CONFIG;
+                }
+            }
+        }
         return local;
     }
 

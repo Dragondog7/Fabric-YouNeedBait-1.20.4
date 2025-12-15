@@ -1,5 +1,6 @@
 package net.cookiebrain.youneedbait.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import net.cookiebrain.youneedbait.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

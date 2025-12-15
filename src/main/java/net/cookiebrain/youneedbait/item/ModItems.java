@@ -38,7 +38,7 @@ public class ModItems {
     public static final Item MINNOW_ITEM = registerItem("minnow", new Item(new FabricItemSettings()));
     public static final Item SUCKERMINNOW_ITEM = registerItem("suckerminnow", new Item(new FabricItemSettings()));
 
-    public static final Item FANCYFISHINGROD_ITEM = registerItem("fancyfishingrod", new FancyFishingRodItem(new Item.Settings().maxCount(1).maxDamage(64)));
+    public static final Item FANCYFISHINGROD_ITEM = registerItem("fancyfishingrod", new FancyFishingRodItem(new Item.Settings().maxCount(1).maxDamage(256)));
 
     public static final Item RAWFISHFILET = registerItem("rawfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.RAWFISHFILET)));
     public static final Item SALTEDFISHFILET = registerItem("saltedfishfilet", new Item(new FabricItemSettings().food(ModFoodComponents.SALTEDFISHFILET)));

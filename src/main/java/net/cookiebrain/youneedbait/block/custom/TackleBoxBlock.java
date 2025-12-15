@@ -1,5 +1,6 @@
 package net.cookiebrain.youneedbait.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import net.cookiebrain.youneedbait.block.entity.ModBlockEntities;
 import net.cookiebrain.youneedbait.block.entity.TackleBoxBlockEntity;
 import net.cookiebrain.youneedbait.inventory.ItemStackHelper;
@@ -85,35 +86,35 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
         return new TackleBoxBlockEntity(pos,state);
     }
 
-    @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        //System.out.println("Block was broken here");
-        BlockEntity be = world.getBlockEntity(pos);
-        if(be instanceof TackleBoxBlockEntity blockEntity){
-            ItemStack tbItem = new ItemStack(this);
-            //System.out.println("Saving the items from the tacklebox");
-            System.out.println((long) ((TackleBoxBlockEntity) be).getItems().size());
-            ItemStackHelper.itemStackToNBT(tbItem,"tacklebox_inv",((TackleBoxBlockEntity) be).getItems());
-            //System.out.println("Checking if the saved items has nbt data");
-            //System.out.println(tbItem.hasNbt());
-            //This puts the item directly in the inventory, would rather have it spawn
-            //ItemStackHelper.giveItemToPlayer(player,tbItem);
-            //Attempt to spawn the item
-
-            //Get rid of the item
-            DefaultedList<ItemStack> emptyItems = DefaultedList.ofSize(4,ItemStack.EMPTY);
-            ((TackleBoxBlockEntity) be).setItems(emptyItems);
-            world.removeBlock(pos,false);
-
-            // Create a new ItemEntity at the specified position
-            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tbItem);
-            // Set motion for the item entity if desired
-            itemEntity.setVelocity(Vec3d.ZERO); // Example: Set no motion
-            // Spawn the ItemEntity in the world
-            world.spawnEntity(itemEntity);
-        }
-        //return super.onBreak(world, pos, state, player);
-    }
+//    @Override
+//    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+//        //System.out.println("Block was broken here");
+//        BlockEntity be = world.getBlockEntity(pos);
+//        if(be instanceof TackleBoxBlockEntity blockEntity){
+//            ItemStack tbItem = new ItemStack(this);
+//            //System.out.println("Saving the items from the tacklebox");
+//            System.out.println((long) ((TackleBoxBlockEntity) be).getItems().size());
+//            ItemStackHelper.itemStackToNBT(tbItem,"tacklebox_inv",((TackleBoxBlockEntity) be).getItems());
+//            //System.out.println("Checking if the saved items has nbt data");
+//            //System.out.println(tbItem.hasNbt());
+//            //This puts the item directly in the inventory, would rather have it spawn
+//            //ItemStackHelper.giveItemToPlayer(player,tbItem);
+//            //Attempt to spawn the item
+//
+//            //Get rid of the item
+//            DefaultedList<ItemStack> emptyItems = DefaultedList.ofSize(4,ItemStack.EMPTY);
+//            ((TackleBoxBlockEntity) be).setItems(emptyItems);
+//            world.removeBlock(pos,false);
+//
+//            // Create a new ItemEntity at the specified position
+//            ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tbItem);
+//            // Set motion for the item entity if desired
+//            itemEntity.setVelocity(Vec3d.ZERO); // Example: Set no motion
+//            // Spawn the ItemEntity in the world
+//            world.spawnEntity(itemEntity);
+//        }
+//        //return super.onBreak(world, pos, state, player);
+//    }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
@@ -147,11 +148,22 @@ public class TackleBoxBlock extends BlockWithEntity implements BlockEntityProvid
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return TACKLEBOX_BLOCK_SHAPE;
     }
-    @Nullable
+
     @Override
+    @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.TACKLEBOX_BLOCK_ENTITY,
-                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+        if (type != ModBlockEntities.TACKLEBOX_BLOCK_ENTITY) {
+            return null;
+        }
+
+        return (world1, pos, state1, blockEntity) ->
+                TackleBoxBlockEntity.tick(world1, pos, state1, (TackleBoxBlockEntity) blockEntity);
+    }
+
+    // 1.20.3+ block codecs: required by BlockWithEntity in 1.20.3/1.20.4+.
+    // Currently unused, so returning null is acceptable. This compiles fine on 1.20.1/1.20.2 as well.
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return null;
     }
 
 }

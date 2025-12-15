@@ -35,36 +35,34 @@ public class MinnowTrapBlockEntity extends BlockEntity  {
         super(ModBlockEntities.MINNOWTRAP_BLOCK_ENTITY, pos, state);
         }
 
-    public void tick(World world, BlockPos pos, BlockState state) {
+    public static void tick(World world, BlockPos pos, BlockState state, MinnowTrapBlockEntity blockEntity) {
         if (world.isClient()) {
             return;
         }
 
-        if (this.baitTicks++ % BAIT_SPAWN_RATE == 0) {
-//            System.out.println("Current minnow count: " + inventory.get(0).getCount());
+        if (blockEntity.baitTicks++ % BAIT_SPAWN_RATE == 0) {
+//            System.out.println("Current minnow count: " + blockEntity.inventory.get(0).getCount());
 //            System.out.println("Max Minnow Count:" + MAX_MINNOWS);
-            ItemStack spawnItemStack = new ItemStack(ModItems.MINNOW_ITEM,1);
+            ItemStack spawnItemStack = new ItemStack(ModItems.MINNOW_ITEM, 1);
             //Determine what spawns
             RegistryEntry<Biome> biomeEntry = world.getBiome(pos);
             boolean isSwamp = biomeEntry.isIn(ModTags.Biomes.LEECH_TRAP_BIOMES);
-            if (isSwamp){
+            if (isSwamp) {
                 System.out.println("We are in leech country baby!");
-                BonusLoot bl = bonusLoot.getLootTableByName("swampbaittrap");
+                BonusLoot bl = blockEntity.bonusLoot.getLootTableByName("swampbaittrap");
                 spawnItemStack = bl.selectRandomWeightedItem();
             }
-            if(inventory.get(0).getCount() < MAX_BAIT) {
-                //System.out.println("Checking blocks around the Minnow Trap");
+            if (blockEntity.inventory.get(0).getCount() < MAX_BAIT) {
                 boolean inWater = ModBlockUtil.isAdjacentToWater(world, pos);
 
-                if(inWater){
-                    if (this.inventory.get(0).isEmpty()) {
-                        this.inventory.set(0,spawnItemStack);
+                if (inWater) {
+                    if (blockEntity.inventory.get(0).isEmpty()) {
+                        blockEntity.inventory.set(0, spawnItemStack);
                     } else {
                         //Add a bait item if it's of the same type
-                        if(this.inventory.get(0).isOf(spawnItemStack.getItem())){
-                            this.inventory.get(0).increment(1);
+                        if (blockEntity.inventory.get(0).isOf(spawnItemStack.getItem())) {
+                            blockEntity.inventory.get(0).increment(1);
                         }
-
                     }
                 }
             }

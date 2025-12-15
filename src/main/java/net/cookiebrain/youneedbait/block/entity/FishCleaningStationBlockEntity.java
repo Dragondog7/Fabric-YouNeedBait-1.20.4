@@ -125,28 +125,28 @@ public class FishCleaningStationBlockEntity extends BlockEntity implements Exten
         super.readNbt(nbt);
     }
 
-    public void tick(World world, BlockPos pos, BlockState state) {
+    public static void tick(World world, BlockPos pos, BlockState state, FishCleaningStationBlockEntity blockEntity) {
         if (world.isClient()) {
             return;
         }
-        if(isOutputSlotEmptyOrReceivable() && hasRecipe()){
-            increaseCraftingProgress();
-            markDirty();
-            //setChanged(level,pPos,pState);
 
-            if(hasProgressFinished()){
-                craftItem();
-                //Bonus item CONFIG
+        if (blockEntity.isOutputSlotEmptyOrReceivable() && blockEntity.hasRecipe()) {
+            blockEntity.increaseCraftingProgress();
+            blockEntity.markDirty();
+            // setChanged(level, pPos, pState); // still not needed on Fabric
+
+            if (blockEntity.hasProgressFinished()) {
+                blockEntity.craftItem();
+                // Bonus item CONFIG
                 if (Math.random() < 0.1) { // 10% chance
-                    getBonusItem();
+                    blockEntity.getBonusItem();
                 }
-                reduceKnifeDurability();
-                resetProgress();
+                blockEntity.reduceKnifeDurability();
+                blockEntity.resetProgress();
             }
         } else {
-            resetProgress();
+            blockEntity.resetProgress();
         }
-
     }
 
     private void getBonusItem() {

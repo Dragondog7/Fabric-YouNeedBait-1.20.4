@@ -2,7 +2,6 @@ package net.cookiebrain.youneedbait.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.cookiebrain.youneedbait.block.entity.MinnowBucketBlockEntity;
-import net.cookiebrain.youneedbait.block.entity.MinnowTrapBlockEntity;
 import net.cookiebrain.youneedbait.block.entity.ModBlockEntities;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -67,15 +66,34 @@ public class MinnowBucketBlock extends BlockWithEntity implements BlockEntityPro
         return ActionResult.SUCCESS;
     }
     @Override
-    public void onBreak(World world, BlockPos pos,BlockState state, PlayerEntity player){
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.isOf(newState.getBlock())) {
+            // Same block type, just a state change (e.g., property update)
+            // Don't drop the block or clean up the block entity
+            super.onStateReplaced(state, world, pos, newState, moved);
+            return;
+        }
+
+        // Block is being replaced with a different block (including air when broken)
         BlockEntity be = world.getBlockEntity(pos);
-        if(be instanceof MinnowBucketBlockEntity blockEntity){
+        if (be instanceof MinnowBucketBlockEntity blockEntity) {
             ItemStack mbItem = new ItemStack(this);
-            world.removeBlock(pos,false);
-            ItemEntity itemEntity = new ItemEntity(world,pos.getX() + 0.5, pos.getY() + 0.5,pos.getZ() + 0.5,mbItem);
+
+            // Spawn the item entity at the block's center
+            ItemEntity itemEntity = new ItemEntity(
+                    world,
+                    pos.getX() + 0.5,
+                    pos.getY() + 0.5,
+                    pos.getZ() + 0.5,
+                    mbItem
+            );
             itemEntity.setVelocity(Vec3d.ZERO);
             world.spawnEntity(itemEntity);
         }
+
+        // Call super AFTER your logic to ensure proper cleanup
+        // This will handle removing the block entity and other vanilla cleanup
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -112,11 +130,21 @@ public class MinnowBucketBlock extends BlockWithEntity implements BlockEntityPro
         return new MinnowBucketBlockEntity(pos,state);
     }
 
-    @Nullable
     @Override
+    @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.MINNOWBUCKET_BLOCK_ENTITY,
-                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+        if (type != ModBlockEntities.MINNOWBUCKET_BLOCK_ENTITY) {
+            return null;
+        }
+
+        return (world1, pos, state1, blockEntity) ->
+                MinnowBucketBlockEntity.tick(world1, pos, state1, (MinnowBucketBlockEntity) blockEntity);
+    }
+
+    // 1.20.3+ block codecs: required by BlockWithEntity in 1.20.3/1.20.4+.
+    // Currently unused, so returning null is acceptable. This compiles fine on 1.20.1/1.20.2 as well.
+    protected MapCodec<? extends net.minecraft.block.BlockWithEntity> getCodec() {
+        return null;
     }
 //    @Override
 //    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {

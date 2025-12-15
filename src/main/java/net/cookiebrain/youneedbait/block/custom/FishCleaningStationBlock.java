@@ -1,29 +1,21 @@
 package net.cookiebrain.youneedbait.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.cookiebrain.youneedbait.YouNeedBait;
 import net.cookiebrain.youneedbait.block.entity.FishCleaningStationBlockEntity;
 import net.cookiebrain.youneedbait.block.entity.ModBlockEntities;
-import net.cookiebrain.youneedbait.block.entity.TackleBoxBlockEntity;
-import net.cookiebrain.youneedbait.inventory.ItemStackHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -34,13 +26,6 @@ public class FishCleaningStationBlock extends BlockWithEntity{
 
     public FishCleaningStationBlock(Settings settings) {
         super(settings);
-    }
-
-
-    //Constructors
-    //@Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
-        return null;
     }
 
     @Override
@@ -106,15 +91,23 @@ public class FishCleaningStationBlock extends BlockWithEntity{
         return ActionResult.SUCCESS;
     }
 
-    @Nullable
     @Override
+    @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        // Only tick on server side
-        if (world.isClient) {
+        // Only our block entity type gets a ticker
+        if (type != ModBlockEntities.FISHCLEANINGSTATION_BLOCK_ENTITY) {
             return null;
         }
-        return checkType(type, ModBlockEntities.FISHCLEANINGSTATION_BLOCK_ENTITY,
-                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+
+        // The static tick method already checks world.isClient(), so we don't have to here.
+        return (world1, pos, state1, blockEntity) ->
+                FishCleaningStationBlockEntity.tick(world1, pos, state1, (FishCleaningStationBlockEntity) blockEntity);
+    }
+
+    // 1.20.3+ block codecs: required by BlockWithEntity in 1.20.3/1.20.4+.
+    // Currently unused, so returning null is acceptable. This compiles fine on 1.20.1/1.20.2 as well.
+    protected MapCodec<? extends net.minecraft.block.BlockWithEntity> getCodec() {
+        return null;
     }
 
 }

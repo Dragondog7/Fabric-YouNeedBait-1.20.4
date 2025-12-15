@@ -1,11 +1,85 @@
 plugins {
-	id 'fabric-loom' version '1.5-SNAPSHOT'
+	//id 'fabric-loom' version '1.14-SNAPSHOT'
+	id 'fabric-loom' version '1.6.5'
 	id 'maven-publish'
 }
 
-version = project.mod_version
-group = project.maven_group
+// --- Minecraft version selection ---
+// 1) If a "minecraft_version" project property is provided on the command line,
+//    use that (e.g. ./gradlew build -Pminecraft_version=1.20.2).
+// 2) Otherwise, fall back to "minecraft_version_default" from gradle.properties.
+def mcVersion = project.findProperty("minecraft_version") ?: project.findProperty("minecraft_version_default")
+if (mcVersion == null) {
+	throw new GradleException("No Minecraft version specified and no 'minecraft_version_default' set in gradle.properties")
+}
 
+println "[build.gradle] Target Minecraft version: ${mcVersion}"
+
+// --- Resolve per-version configuration based on mcVersion ---
+def loomVersion
+def yarnMappingsVersion
+def fabricApiVersion
+def modVersionLabel
+
+if (mcVersion == project.findProperty("minecraft_version_1_20_1")) {
+	loomVersion = project.findProperty("loom_version_1_20_1")
+	yarnMappingsVersion = project.findProperty("yarn_mappings_1_20_1")
+	fabricApiVersion = project.findProperty("fabric_version_1_20_1")
+} else if (mcVersion == project.findProperty("minecraft_version_1_20_2")) {
+	loomVersion = project.findProperty("loom_version_1_20_2")
+	yarnMappingsVersion = project.findProperty("yarn_mappings_1_20_2")
+	fabricApiVersion = project.findProperty("fabric_version_1_20_2")
+} else if (mcVersion == project.findProperty("minecraft_version_1_20_3")) {
+	loomVersion = project.findProperty("loom_version_1_20_3")
+	yarnMappingsVersion = project.findProperty("yarn_mappings_1_20_3")
+	fabricApiVersion = project.findProperty("fabric_version_1_20_3")
+} else if (mcVersion == project.findProperty("minecraft_version_1_20_4")) {
+	loomVersion = project.findProperty("loom_version_1_20_4")
+	yarnMappingsVersion = project.findProperty("yarn_mappings_1_20_4")
+	fabricApiVersion = project.findProperty("fabric_version_1_20_4")
+} else if (mcVersion == project.findProperty("minecraft_version_1_20_5")) {
+	loomVersion = project.findProperty("loom_version_1_20_5")
+	yarnMappingsVersion = project.findProperty("yarn_mappings_1_20_5")
+	fabricApiVersion = project.findProperty("fabric_version_1_20_5")
+} else {
+	throw new GradleException("Unsupported Minecraft version '${mcVersion}'. Please configure per-version properties in gradle.properties.")
+}
+
+group = project.maven_group
+version = "${project.mod_version}-${mcVersion}"
+
+// Log what we resolved (for now, this is read-only)
+println "[build.gradle] (info) Config Loom version: ${loomVersion} (Loom plugin stays fixed at 1.14-SNAPSHOT)"
+println "[build.gradle] Using Yarn mappings: ${yarnMappingsVersion}"
+println "[build.gradle] Using Fabric API: ${fabricApiVersion}"
+
+sourceSets {
+	main {
+		java {
+			// Always use shared code
+			setSrcDirs(['src/main/java'])
+
+			// Add version-specific dirs depending on mcVersion
+			if (mcVersion == '1.20.1') {
+				srcDir 'src/main/java_1_20_1'
+			} else if (mcVersion == '1.20.2') {
+				srcDir 'src/main/java_1_20_2'
+			} else if (mcVersion == '1.20.3') {
+				srcDir 'src/main/java_1_20_4'
+			} else if (mcVersion == '1.20.4') {
+				srcDir 'src/main/java_1_20_4'
+			} else if (mcVersion == '1.20.5') {
+				srcDir 'src/main/java_1_20_4'
+			}
+		}
+
+		// IMPORTANT: include generated resources (datagen output)
+		resources {
+			srcDir 'src/main/resources'
+			srcDir 'src/main/generated'
+		}
+	}
+}
 base {
 	archivesName = project.archives_base_name
 }
@@ -24,12 +98,12 @@ fabricApi {
 
 dependencies {
 	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	minecraft "com.mojang:minecraft:${mcVersion}"
+	mappings "net.fabricmc:yarn:${yarnMappingsVersion}"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}"
 	
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
@@ -66,7 +140,7 @@ java {
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${project.base.archivesName.get()}"}
+		rename { "${it}_${project.base.archivesName.get()}" }
 	}
 }
 

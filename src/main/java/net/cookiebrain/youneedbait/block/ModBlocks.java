@@ -16,9 +16,10 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 public class ModBlocks {
     //Ores
-    public static final Block SALT_BLOCK = registerBlock("salt_block",
-            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_LAPIS_ORE).strength(2f)));
-    public static final Block AZUROMITE_BLOCK = registerBlock("azuromite_block",
+    public static final Block SALT_BLOCK = registerBlock(
+            "salt_block",
+            SaltBlockFactory.createSaltBlock()
+    );    public static final Block AZUROMITE_BLOCK = registerBlock("azuromite_block",
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
 
     //Fishing Related Blocks
