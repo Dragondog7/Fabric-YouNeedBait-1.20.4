@@ -48,7 +48,7 @@ if (mcVersion == project.findProperty("minecraft_version_1_20_1")) {
 group = project.maven_group
 version = "${project.mod_version}-${mcVersion}"
 
-// Log what we resolved (for now, this is read-only)
+// Log what we resolved (for now this is read-only)
 println "[build.gradle] (info) Config Loom version: ${loomVersion} (Loom plugin stays fixed at 1.14-SNAPSHOT)"
 println "[build.gradle] Using Yarn mappings: ${yarnMappingsVersion}"
 println "[build.gradle] Using Fabric API: ${fabricApiVersion}"
@@ -69,7 +69,7 @@ sourceSets {
 			} else if (mcVersion == '1.20.4') {
 				srcDir 'src/main/java_1_20_4'
 			} else if (mcVersion == '1.20.5') {
-				srcDir 'src/main/java_1_20_4'
+				srcDir 'src/main/java_1_20_5'
 			}
 		}
 

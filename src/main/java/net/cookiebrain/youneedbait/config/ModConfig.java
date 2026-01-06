@@ -3,7 +3,7 @@ package net.cookiebrain.youneedbait.config;
 import net.cookiebrain.youneedbait.YouNeedBait;
 
 public final class ModConfig {
-    public String schemaVersion = "0.3.4";
+    public String schemaVersion = "0.4.0";
     public String modId = YouNeedBait.MOD_ID;
     public Features features = new Features();
     public Logging logging = new Logging();

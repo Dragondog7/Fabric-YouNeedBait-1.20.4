@@ -248,4 +248,16 @@
  * Enhanced the hitbox to fit
 
  Tackle Box
- * Enhanced the hitbox to fit
+ * Enhanced the hitbox to
+
+ ## Fabric 0.4.1
+ ### New
+ New Versions
+ * 1.20.2
+ * 1.20.3
+ * 1.20.4
+ ### Updates
+ Fancy Fishing Rod
+ * Updated durability to 256 (was 64) to better reflect the difficulty in obtaining
+ ### Fixes
+ * Synced config file versions
